@@ -1,0 +1,26 @@
+[
+	{
+		"title": "DreamWave",
+		"description": "A DAW (Digital Audio Workstation) built from scratch, specialized for creating Dark Ambient / Dreamwave music.",
+		"tags": ["Svelte", "WebAudio", "TypeScript"],
+		"image": "/images/projects/dreamwave.png",
+		"link": "https://dreamwave.pages.dev/",
+		"status": "0x01 COMPLETE"
+	},
+	{
+		"title": "Turing Compiler",
+		"description": "A custom compiler written in Rust that compiles python-like syntax to a custom language driving a hypothetical Turing Machine.",
+		"tags": ["Rust", "OS Development"],
+		"image": "/images/projects/turing-compiler.png",
+		"link": "https://turingcompiler.pages.dev/",
+		"status": "0x02 STABLE"
+	},
+	{
+		"title": "Toorney",
+		"description": "Visualizing quantum entanglement and superpositions using WebGL and advanced linear algebra.",
+		"tags": ["Jquery", "Express", "Discord.js", "Mathematics"],
+		"image": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=800",
+		"link": "https://github.com",
+		"status": "0x03 BETA"
+	}
+]
