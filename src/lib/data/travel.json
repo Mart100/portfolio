@@ -1,0 +1,215 @@
+{
+	"visited": [
+		"Netherlands",
+		"United Kingdom",
+		"France",
+		"Germany",
+		"Italy",
+		"Spain",
+		"Denmark",
+		"Luxembourg",
+		"Belgium",
+		"Austria",
+		"Switzerland",
+		"Hungary",
+		"Czechia",
+		"Greece",
+		"Albania",
+		"Macedonia",
+		"Kosovo",
+		"Croatia",
+		"Slovenia",
+		"Slovakia",
+		"Bulgaria",
+		"South Africa",
+		"China",
+		"Japan",
+		"Taiwan",
+		"Hong Kong"
+	],
+	"trips": [
+		{
+			"id": "china-2024",
+			"name": "One Month in China",
+			"description": "A deep dive into Chinas high-tech cities and ancient landscapes.",
+			"startDate": "2024-05-01",
+			"endDate": "2024-06-01",
+			"path": [
+				{
+					"name": "Beijing",
+					"lat": 39.9042,
+					"lng": 116.4074,
+					"date": "May 1",
+					"caption": "The Great Wall was even more massive than I imagined.",
+					"image": "https://images.unsplash.com/photo-1508804185872-47adb4b6746f?auto=format&fit=crop&q=80&w=800"
+				},
+				{
+					"name": "Xi'an",
+					"lat": 34.2658,
+					"lng": 108.9541,
+					"date": "May 8",
+					"caption": "Terracotta Army and incredible food at the Muslim Quarter.",
+					"image": "https://images.unsplash.com/photo-1599572412854-7279b9b5bb41?auto=format&fit=crop&q=80&w=800"
+				},
+				{
+					"name": "Chengdu",
+					"lat": 30.5728,
+					"lng": 104.0668,
+					"date": "May 15",
+					"caption": "Pandas and the most spicy hotpot I've ever had.",
+					"image": "https://images.unsplash.com/photo-1529144415895-6aaf8be872ec?auto=format&fit=crop&q=80&w=800"
+				},
+				{
+					"name": "Zhangjiajie",
+					"lat": 29.117,
+					"lng": 110.479,
+					"date": "May 22",
+					"caption": "The floating mountains that inspired Avatar.",
+					"image": "https://images.unsplash.com/photo-1549693578-d683be217e58?auto=format&fit=crop&q=80&w=800"
+				},
+				{
+					"name": "Shanghai",
+					"lat": 31.2304,
+					"lng": 121.4737,
+					"date": "May 28",
+					"caption": "The neon skyline of the future.",
+					"image": "https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?auto=format&fit=crop&q=80&w=800"
+				}
+			]
+		},
+		{
+			"id": "japan-2023",
+			"name": "Japan Discovery",
+			"description": "Exploring the blend of tradition and future across the Japanese archipelago.",
+			"startDate": "2023-11-01",
+			"endDate": "2023-12-01",
+			"path": [
+				{
+					"name": "Tokyo",
+					"lat": 35.6762,
+					"lng": 139.6503,
+					"date": "Nov 1",
+					"caption": "Shibuya Crossing and endless ramen.",
+					"image": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&q=80&w=800"
+				},
+				{
+					"name": "Kyoto",
+					"lat": 35.0116,
+					"lng": 135.7681,
+					"date": "Nov 10",
+					"caption": "Golden Pavilion and peaceful Zen gardens.",
+					"image": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=800"
+				},
+				{
+					"name": "Osaka",
+					"lat": 34.6937,
+					"lng": 135.5023,
+					"date": "Nov 20",
+					"caption": "Dotonbori neon and world-class street food.",
+					"image": "https://images.unsplash.com/photo-1590559899731-397e79438260?auto=format&fit=crop&q=80&w=800"
+				}
+			]
+		},
+		{
+			"id": "germany-2022",
+			"name": "German Heartlands",
+			"description": "A journey through historic cities and lush forests.",
+			"startDate": "2022-09-01",
+			"endDate": "2022-10-01",
+			"path": [
+				{
+					"name": "Berlin",
+					"lat": 52.52,
+					"lng": 13.405,
+					"date": "Sep 1",
+					"caption": "Capital of culture and history.",
+					"image": "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&q=80&w=800"
+				},
+				{
+					"name": "Munich",
+					"lat": 48.1351,
+					"lng": 11.582,
+					"date": "Sep 15",
+					"caption": "Bavarian traditions and the English Garden.",
+					"image": "https://images.unsplash.com/photo-1595181146316-563964860b83?auto=format&fit=crop&q=80&w=800"
+				},
+				{
+					"name": "Black Forest",
+					"lat": 48.0667,
+					"lng": 8.1333,
+					"date": "Sep 25",
+					"caption": "Mystical woods and cuckoo clocks.",
+					"image": "https://images.unsplash.com/photo-1466065478491-2ca36d97cabb?auto=format&fit=crop&q=80&w=800"
+				}
+			]
+		}
+	],
+	"places": [
+		{ "name": "Amsterdam", "lat": 52.3676, "lng": 4.9041 },
+		{ "name": "London", "lat": 51.5074, "lng": -0.1278 },
+		{ "name": "Paris", "lat": 48.8566, "lng": 2.3522 },
+		{ "name": "Tokyo", "lat": 35.6762, "lng": 139.6503 },
+		{ "name": "Johannesburg", "lat": -26.2041, "lng": 28.0473 },
+		{ "name": "Vienna", "lat": 48.2082, "lng": 16.3738 },
+		{ "name": "Budapest", "lat": 47.4979, "lng": 19.0402 },
+		{ "name": "Prague", "lat": 50.0755, "lng": 14.4378 },
+		{ "name": "Bratislava", "lat": 48.1486, "lng": 17.1077 },
+		{ "name": "Zagreb", "lat": 45.815, "lng": 15.9819 },
+		{ "name": "Ljubljana", "lat": 46.0569, "lng": 14.5058 },
+		{ "name": "Milan", "lat": 45.4642, "lng": 9.19 },
+		{ "name": "Tirana", "lat": 41.3275, "lng": 19.8189 },
+		{ "name": "Skopje", "lat": 41.9981, "lng": 21.4254 },
+		{ "name": "Sofia", "lat": 42.6977, "lng": 23.3219 },
+		{ "name": "Crete", "lat": 35.2401, "lng": 24.8093 },
+		{ "name": "Carcassonne", "lat": 43.2138, "lng": 2.3511 },
+		{ "name": "Bilbao", "lat": 43.263, "lng": -2.935 },
+		{ "name": "Brussels", "lat": 50.8503, "lng": 4.3517 },
+		{ "name": "Lucerne", "lat": 47.0502, "lng": 8.3093 },
+		{ "name": "Vienna", "lat": 48.2082, "lng": 16.3738 },
+		{ "name": "Salzburg", "lat": 47.8095, "lng": 13.055 },
+		{ "name": "Prizren", "lat": 42.212, "lng": 20.7399 },
+		{ "name": "Berlin", "lat": 52.52, "lng": 13.405 },
+		{ "name": "Munich", "lat": 48.1351, "lng": 11.582 },
+		{ "name": "Heidelberg", "lat": 49.3988, "lng": 8.6724 },
+		{ "name": "Cologne", "lat": 50.9375, "lng": 6.9603 },
+		{ "name": "Dresden", "lat": 51.0504, "lng": 13.7373 },
+		{ "name": "Leipzig", "lat": 51.3397, "lng": 12.3731 },
+		{ "name": "Duisburg", "lat": 51.4344, "lng": 6.7623 },
+		{ "name": "Aachen", "lat": 50.7753, "lng": 6.0839 },
+		{ "name": "Füssen", "lat": 47.5716, "lng": 10.7002 },
+		{ "name": "Weimar", "lat": 50.9795, "lng": 11.329 },
+		{ "name": "Bamberg", "lat": 49.8988, "lng": 10.9028 },
+		{ "name": "Regensburg", "lat": 49.0134, "lng": 12.1016 },
+		{ "name": "Venice", "lat": 45.4408, "lng": 12.3155 },
+		{ "name": "Shkoder", "lat": 42.0683, "lng": 19.5126 },
+		{ "name": "Plovdiv", "lat": 42.1354, "lng": 24.7453 },
+		{ "name": "Bansko", "lat": 41.8381, "lng": 23.4884 },
+		{ "name": "Ohrid", "lat": 41.1231, "lng": 20.8015 },
+		{ "name": "Luxembourg", "lat": 49.6117, "lng": 6.1319 },
+		{ "name": "Beijing", "lat": 39.9042, "lng": 116.4074 },
+		{ "name": "Xi'an", "lat": 34.2658, "lng": 108.9541 },
+		{ "name": "Shanghai", "lat": 31.2304, "lng": 121.4737 },
+		{ "name": "Chongqing", "lat": 29.4316, "lng": 106.9123 },
+		{ "name": "Chengdu", "lat": 30.5728, "lng": 104.0668 },
+		{ "name": "Emei", "lat": 29.5603, "lng": 103.4996 },
+		{ "name": "Xiamen", "lat": 24.4798, "lng": 118.0895 },
+		{ "name": "Zhangjiajie", "lat": 29.117, "lng": 110.479 },
+		{ "name": "Guilin", "lat": 25.2736, "lng": 110.2903 },
+		{ "name": "Guangzhou", "lat": 23.1291, "lng": 113.2644 },
+		{ "name": "Hong Kong", "lat": 22.3193, "lng": 114.1694 },
+		{ "name": "Shenzhen", "lat": 22.5431, "lng": 114.0579 },
+		{ "name": "Fukuoka", "lat": 33.5904, "lng": 130.4017 },
+		{ "name": "Kagoshima", "lat": 31.5966, "lng": 130.5571 },
+		{ "name": "Kumamoto", "lat": 32.8031, "lng": 130.7079 },
+		{ "name": "Nagasaki", "lat": 32.7503, "lng": 129.8777 },
+		{ "name": "Beppu", "lat": 33.2842, "lng": 131.4973 },
+		{ "name": "Osaka", "lat": 34.6937, "lng": 135.5023 },
+		{ "name": "Kyoto", "lat": 35.0116, "lng": 135.7681 },
+		{ "name": "Wakayama", "lat": 34.226, "lng": 135.1675 },
+		{ "name": "Himeji", "lat": 34.8151, "lng": 134.6853 },
+		{ "name": "Kaohsiung", "lat": 22.6273, "lng": 120.3014 },
+		{ "name": "Taipei", "lat": 25.033, "lng": 121.5654 },
+		{ "name": "Sun Moon Lake", "lat": 23.8655, "lng": 120.9115 },
+		{ "name": "Tainan", "lat": 22.9999, "lng": 120.227 }
+	]
+}

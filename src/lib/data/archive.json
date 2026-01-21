@@ -1,0 +1,665 @@
+[
+	{
+		"title": "Game Of Life",
+		"image": "https://i.imgur.com/jiKiLsT.gif",
+		"link": "https://mart100.github.io/GameOfLife",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/GameOfLife",
+		"created": "02/10/2018",
+		"score": 10,
+		"description": "recreated the popular \"Game of life\" cellular automaton"
+	},
+	{
+		"title": "3D engine",
+		"image": "https://i.imgur.com/3EJ8mUf.png",
+		"link": "https://mart100.github.io/3Dengine",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/3Dengine",
+		"created": "15/01/2019",
+		"score": 15,
+		"description": "A 3D-engine fully custom made uses html canvas.",
+		"techStack": ["Javascript", "HTML Canvas"],
+		"tags": ["3D", "Game"]
+	},
+	{
+		"title": "Blonk",
+		"image": "https://i.imgur.com/SGhzYNr.png",
+		"link": "https://blonk.herokuapp.com",
+		"created": "20/11/2019",
+		"score": 16,
+		"description": "A 2D topdown multiplayer shooter",
+		"techStack": ["Node.js", "Socket.io", "Javascript"],
+		"tags": ["Game", "HTML Canvas"]
+	},
+	{
+		"title": "Virus spread",
+		"image": "https://i.imgur.com/BSIRuni.png",
+		"link": "https://mart100.github.io/spreadingVirus",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/spreadingVirus",
+		"created": "06/03/2020",
+		"score": 14,
+		"description": "Trying to simulate a virus"
+	},
+	{
+		"title": "Analog Clock",
+		"image": "https://i.imgur.com/V9xZWsT.png",
+		"link": "fhttps://mart100.github.io/analogClock",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/analogClock",
+		"created": "03/10/2018",
+		"score": 8,
+		"description": "Just an analog clock"
+	},
+	{
+		"title": "Toorney",
+		"image": "https://i.imgur.com/oUKLIXv.png",
+		"link": "https://mart100.github.io/toorney",
+		"created": "07/06/2019",
+		"score": 100,
+		"description": "A discord-bot and website to automate tournaments. This project has been sold to Tourneybot.gg",
+		"techStack": ["Express", "Jquery", "Vercel", "Javascript", "CSS", "Firebase", "Discord.js"],
+		"tags": ["Discord Bot", "Website"]
+	},
+	{
+		"title": "Explora",
+		"image": "https://i.imgur.com/gbouk4O.png",
+		"link": "https://github.com/Mart100/Explora",
+		"code": "https://github.com/Mart100/Explora",
+		"created": "10/05/2019",
+		"score": 10,
+		"description": "An attempt to make windows explorer using electron",
+		"techStack": ["Electron", "Node.js", "Jquery"],
+		"tags": ["Desktop App"]
+	},
+	{
+		"title": "HRinfo",
+		"image": "https://i.imgur.com/xnILjFI.png",
+		"link": "https://mart100.github.io/HRinfo",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/HRinfo",
+		"created": "15/05/2019",
+		"score": 15,
+		"description": "This was an information and community site + discord bot for an upcomming game named Helmet Royale.",
+		"techStack": ["Node.js", "Express", "Discord.js", "Jquery", "Firebase"],
+		"tags": ["Discord Bot", "Website"]
+	},
+	{
+		"title": "Mindmap tool",
+		"image": "https://i.imgur.com/b6JhQHV.jpg",
+		"link": "https://mart100.github.io/MindMap",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/MindMap",
+		"created": "13/08/2019",
+		"score": 15,
+		"description": "A tool to make mind maps!",
+		"techStack": ["Javascript", "Jquery"],
+		"tags": ["Website"]
+	},
+	{
+		"title": "Dualistic",
+		"image": "https://i.imgur.com/CgK2g64.png",
+		"link": "https://mart100.github.io/dualistic",
+		"created": "02/11/2018",
+		"score": 14,
+		"description": "A game ment for Game off 2018. But never finished"
+	},
+	{
+		"title": "Moving backgrounds folder",
+		"image": "https://i.imgur.com/5BVa1ZW.png",
+		"link": "https://mart100.github.io/art",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/art",
+		"created": "12/08/2019",
+		"score": 12,
+		"description": "Multiple projects which contain moving backgrounds \"art\" thingies"
+	},
+	{
+		"title": "Car AI",
+		"image": "https://i.imgur.com/2Ci9Prc.png",
+		"link": "https://mart100.github.io/SimpleCarAI",
+		"code": "https://github.com/Mart100/SimpleCarAI",
+		"created": "08/3/2023",
+		"score": 25,
+		"description": "A generational neural network learning how to drive. Click \"Start Evolution\" at the bottom to start.",
+		"techStack": ["Typescript", "Vite"],
+		"tags": ["AI", "Simulation", "HTML Canvas"]
+	},
+	{
+		"title": "1D-collisions",
+		"image": "https://i.imgur.com/D1xh2Aj.png",
+		"link": "https://mart100.github.io/1D-collision",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/1D-collision",
+		"created": "25/04/2018",
+		"score": 5,
+		"description": "I made this so it would be simpler to understand how to make the 2D-collisions. Later i added some more settings so it is able to recreate <a href=\"https://www.youtube.com/watch?v=HEfHFsfGXjs\">this video</a>"
+	},
+	{
+		"title": "EvolutionSimulator",
+		"image": "https://i.imgur.com/5gPDWwt.png",
+		"link": "https://mart100.github.io/evolutionSim",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/evolutionSim",
+		"created": "24/04/2019",
+		"score": 13,
+		"description": "Trying to make a simulation using cells that reproduce eat food and move.Slight chance of mutation. And new crossover cells between 2 parents"
+	},
+	{
+		"title": "TSCPY-2",
+		"image": "https://i.imgur.com/u4aKXiY.png",
+		"link": "https://mart100.github.io/TSCPY/2",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/TSCPY/2",
+		"created": "18/02/2020",
+		"score": 13,
+		"description": "TSCPY-2 is an own cellular automaton that I created with specific rules."
+	},
+	{
+		"title": "night Skyline",
+		"image": "https://i.imgur.com/FFcikhY.png",
+		"link": "https://mart100.github.io/nightSkyline",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/nightSkyline",
+		"created": "27/07/2020",
+		"score": 12,
+		"description": "A simulation that tries to create a skyline pixel by pixel. Using image effects etc"
+	},
+	{
+		"title": "Train-Pain",
+		"image": "https://i.imgur.com/EH1t9sD.png",
+		"link": "https://train-pain.herokuapp.com/",
+		"code": "https://github.com/Mart100/Train-Pain",
+		"created": "14/03/2021",
+		"score": 15,
+		"description": "Trains",
+		"techStack": ["Javascript", "Express", "Socket.io"],
+		"tags": ["Game", "HTML Canvas"]
+	},
+	{
+		"title": "Waves",
+		"image": "https://i.imgur.com/QMRUOgR.png",
+		"link": "https://mart100.github.io/Waves",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/Waves",
+		"created": "01/10/2018",
+		"score": 9,
+		"description": "Not much to say about it. Just mess some with the settings in the corner"
+	},
+	{
+		"title": "home Isolation",
+		"image": "https://i.imgur.com/1f8JBv9.png",
+		"link": "https://mart100.github.io/homeisolation",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/homeisolation",
+		"created": "08/02/2019",
+		"score": 10,
+		"description": "Home Isolation Simulation"
+	},
+	{
+		"title": "Terrain Generation",
+		"image": "https://i.imgur.com/ptZ03rB.png",
+		"link": "https://mart100.github.io/terrainGeneration",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/terrainGeneration",
+		"created": "04/03/2019",
+		"score": 15,
+		"description": "a random terrain generator.<br>That makes use of multiple noise layers onto eachother",
+		"techStack": ["Javascript", "HTML Canvas"],
+		"tags": ["Simulation"]
+	},
+	{
+		"title": "Minecraft Servers",
+		"image": "https://i.imgur.com/jW1FeCw.png",
+		"link": "https://mart100.github.io/mcservers",
+		"created": "10/03/2020",
+		"score": 15,
+		"description": "A list of minecraft servers I made, for these I coded a lot of custom behavior in the programming language \"Skript\". These were hosted on minehut.",
+		"techStack": ["Skript", "Java"],
+		"tags": ["Minecraft"]
+	},
+	{
+		"title": "PONG multiplayer",
+		"image": "https://i.imgur.com/NH6Ny2e.png",
+		"link": "https://neuralnetpong.glitch.me/",
+		"code": "https://glitch.com/edit/#!/neuralnetpong",
+		"created": "00./0/2018",
+		"score": 10,
+		"description": "PONG singleplayer and multiplayer"
+	},
+	{
+		"title": "Transporty",
+		"image": "https://i.imgur.com/FRvG55O.png",
+		"link": "https://mart100.github.io/transporty",
+		"code": "https://github.com/Mart100/transporty",
+		"created": "17/02/2022",
+		"score": 20,
+		"description": "Simulation of traffic, and metro systems",
+		"techStack": ["Typescript", "React", "Jquery"],
+		"tags": ["Simulation", "Game", "HTML Canvas"]
+	},
+	{
+		"title": "TextStatics",
+		"image": "https://i.imgur.com/3Gjk3bv.png",
+		"link": "https://mart100.github.io/TextStatics",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/TextStatics",
+		"created": "00/00/2018",
+		"score": 4,
+		"description": "Simple: Put in a long text. Hit submit.And get some simple statistics about the text."
+	},
+	{
+		"title": "Cufix",
+		"image": "https://i.imgur.com/lq2okCi.png",
+		"link": "https://cufix.herokuapp.com",
+		"created": "25/07/2019",
+		"score": 13,
+		"description": "Yet another game. With simple rulesYou win when you reach the side of your opponent.You can capture cells when you click on themBut you can only capture a cell when you have more neighbors that are claimed by you then the opponent has of that cell."
+	},
+	{
+		"title": "Pixelart",
+		"image": "https://i.imgur.com/nXTOOOf.png",
+		"link": "https://mart100.github.io/pixelart",
+		"created": "19/04/2020",
+		"score": 10,
+		"description": "All pixelart that I've made"
+	},
+	{
+		"title": "MinehutSkriptUploader",
+		"image": "https://i.imgur.com/z1Fz3eJ.png",
+		"link": "https://www.npmjs.com/package/minehutskriptuploader",
+		"code": "https://github.com/Mart100/minehutSkriptUploader",
+		"created": "21/01/2020",
+		"score": 10,
+		"description": "A application that watches local files. And when saved pushes those files to the minehut servers"
+	},
+	{
+		"title": "Path finding algorithm",
+		"image": "https://i.imgur.com/MEGLgsu.png",
+		"link": "https://mart100.github.io/pathFindingAlgorithm",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/pathFindingAlgorithm",
+		"created": "10/05/2018",
+		"score": 15,
+		"description": "This was a huge project of me.When you're on the site, you can start by dragging your mouse to draw walls.When you're done, click on the arrow button in the bottom-right corner. After a while, you see the cubes start to head towards the finish. All of the cubes have a list of instructions, for example: (left, right, down, down, up, left). And they move according those instructions. But after a new generation, there will be mutations of the best 10% of the previous generation (green), crossovers of the best 10% (blue) and the 10% themselves (red). This way, the spiecies in a whole will evolve. How good a cube is, is calculated by how nearby it is from the finish and how many steps has it taken."
+	},
+	{
+		"title": "MouseStrat",
+		"image": "https://i.imgur.com/fY9ZPs1.png",
+		"link": "https://mousestrat.herokuapp.com/",
+		"created": "13/07/2019",
+		"score": 14,
+		"description": "MouseStrat is an online 2D strategy game. With a plottwist... You can't see any of your opponents buildings. Only with the use of an ability.The goal of the game is to find where your opponent is hiding and destroy your opponents core.To achieve this you can use buildings and abilities. Altough these do cost energy.An important part of the game is that the opponent will be able to see your mouse.Knowing your opponent is able to see the position of your mouse, You are able to use this to lead your opponent to fake paths.Also make sure to manage your electricity, You can spend electricity on Power Towers to increase your electricity income. But if you spend too much time focussing on this, Your opponent might have already found your coreWill you be able to find and destroy your opponent before your opponent finds you?"
+	},
+	{
+		"title": "brainTrain",
+		"image": "https://i.imgur.com/WGtAnWc.png",
+		"link": "https://mart100.github.io/brainTrain",
+		"code": "https://github.com/Mart100/brainTrain",
+		"created": "14/07/2019",
+		"score": 8,
+		"description": "Simple project with my dad. Where you have to remember numbers. ",
+		"techStack": ["Javascript", "Jquery", "Chart.js", "Firebase"],
+		"tags": ["Website", ""]
+	},
+	{
+		"title": "Aimbot using screencapture",
+		"image": "https://i.imgur.com/aS1X5bU.png",
+		"link": "https://github.com/Mart100/ZombsRoyaleAimbot2",
+		"code": "https://github.com/Mart100/ZombsRoyaleAimbot2",
+		"created": "06/06/2019",
+		"score": 10,
+		"description": "An aimbot for a game named ZombsRoyale.It doesn't actually work good"
+	},
+	{
+		"title": "3D terrain",
+		"image": "https://i.imgur.com/TFbs0Xt.png",
+		"link": "https://mart100.github.io/3DterrainNoise",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/3DterrainNoise",
+		"created": "06/06/2019",
+		"score": 10,
+		"description": "Some random terrain noise height. With fully custom made 3D engine",
+		"techStack": ["Javascript"],
+		"tags": ["3D", "HTML Canvas"]
+	},
+	{
+		"title": "Snake Game!",
+		"image": "https://i.imgur.com/QVfGknI.png",
+		"link": "https://mart100.github.io/Snake",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/Snake",
+		"created": "02/02/2018",
+		"score": 5,
+		"description": "Just a snake game.Interesting part is that its made of 400 div elements.While if id make this now. I would just use html canvas"
+	},
+	{
+		"title": "Randum.",
+		"image": "https://i.imgur.com/5C9fpws.png",
+		"link": "https://mart100.github.io/randum",
+		"created": "18/12/2020",
+		"score": 16,
+		"description": "A discord bot that send a wide variety of random things",
+		"techStack": ["Node.js", "Discord.js", "Axios"]
+	},
+	{
+		"title": "Discord Democracy Bot",
+		"image": "https://i.imgur.com/7mVq1Ku.png",
+		"created": "07/09/2023",
+		"score": 20,
+		"description": "Democratically Run Discord Server. A discord bot that automated the process of voting on changes in a discord server.",
+		"techStack": ["Discord.js", "Node.js", "Vercel", "Typescript", "Prisma"],
+		"tags": ["Discord Bot"]
+	},
+	{
+		"title": "Moosic",
+		"image": "https://i.imgur.com/F4kbBJz.png",
+		"link": "https://mart100.github.io/Moosic",
+		"code": "https://github.com/Mart100/Moosic",
+		"created": "07/09/2019",
+		"score": 16,
+		"description": "A music player which uses youtube.",
+		"techStack": [
+			"Electron",
+			"Flutter",
+			"Node.js",
+			"Firebase",
+			"Socket.io",
+			"Typescript",
+			"Jquery"
+		],
+		"tags": ["Desktop App", "Mobile App"]
+	},
+	{
+		"title": "Trashcan Projects",
+		"image": "https://i.imgur.com/KAvEc2C.png",
+		"link": "https://mart100.github.io/trashcan",
+		"created": "00/00/0000",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/trashcan",
+		"score": 0,
+		"description": "All other projects I've made that don't deserve a place here"
+	},
+	{
+		"title": "Distats",
+		"image": "https://i.imgur.com/TEEPhdh.png",
+		"link": "https://github.com/Mart100/discordMessagesStats",
+		"code": "https://github.com/Mart100/discordMessagesStats",
+		"created": "21/01/2020",
+		"score": 14,
+		"description": "An application that extracts statistics from a discord server and makes handy graphs",
+		"techStack": ["Node.js", "Electron", "Chart.js", "Jquery"]
+	},
+	{
+		"title": "Keeping Track",
+		"image": "https://i.imgur.com/4FnSd4Q.png",
+		"link": "https://mart100.github.io/keepingTrack",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/keepingTrack",
+		"created": "04/08/2020",
+		"score": 14,
+		"description": "An app to keep track of your habits made in flutter",
+		"techStack": ["Flutter", "Firebase"],
+		"tags": ["Mobile App"]
+	},
+	{
+		"title": "Spaceship-animation",
+		"image": "https://i.imgur.com/XIU7QrW.png",
+		"link": "https://mart100.github.io/coolSomething",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/coolSomething",
+		"created": "07/02/2021",
+		"score": 13,
+		"description": "An animation",
+		"techStack": ["Javascript"],
+		"tags": ["HTML Canvas"]
+	},
+	{
+		"title": "Odin",
+		"image": "https://i.imgur.com/JTvkT8R.png",
+		"link": "https://mart100.github.io/Odin",
+		"code": "https://github.com/Mart100/Odin",
+		"created": "01/06/2021",
+		"score": 15,
+		"description": "Simulation of people",
+		"techStack": ["Javascript", "Jquery"],
+		"tags": ["Simulation", "Game", "HTML Canvas"]
+	},
+	{
+		"title": "PrimeNumbers",
+		"image": "https://i.imgur.com/T8i0aVS.png",
+		"link": "https://mart100.github.io/PrimeNumbers",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/PrimeNumbers",
+		"created": "00/04/2017",
+		"score": 2,
+		"description": "The very first project i made in javascript. First made it in node.js few days later turned it into a website"
+	},
+	{
+		"title": "Kenmerkende Aspecten",
+		"image": "https://i.imgur.com/IALBVeV.png",
+		"link": "https://geschiedenis.glitch.me/",
+		"code": "https://glitch.com/edit/#!/neuralnetpong",
+		"created": "00/00/2018",
+		"score": 2,
+		"description": "A thing we have to learn at school.So my sister requested to make a website to learn it easier."
+	},
+	{
+		"title": "Multiplayer game",
+		"image": "https://i.imgur.com/M5DH0yq.png",
+		"link": "https://fuct.herokuapp.com/",
+		"code": "https://github.com/Mart100/fuct",
+		"created": "03/03/2018",
+		"score": 16,
+		"description": "An agar.io-like game. <br> My friend and I started this game a long time ago and later on we decided to continue. <br>Since it's hosted on a free hosting site, you will have to wait a while for it to start. <br><br>The goal is to defend your \"core\" with walls and turrets, which you can buy with coins. <br> It is a multiplayer-game, so you have to destroy the \"core\" of other players. <br><br>Controls: <br>- WASD to move around <br>- ENTER to chat <br>- B to toggle build mode <br>- F to open shop <br>",
+		"techStack": ["Javascript", "Node.js", "Socket.io", "Express", "HTML Canvas"],
+		"tags": ["Game", "HTML Canvas"]
+	},
+	{
+		"title": "Particles",
+		"image": "https://i.imgur.com/X2krS2O.png",
+		"link": "https://mart100.github.io/Particles",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/Particles",
+		"created": "10/03/2019",
+		"score": 15,
+		"description": "All sorts of particles."
+	},
+	{
+		"title": "Type Speed",
+		"image": "https://i.imgur.com/KKTNlnh.png",
+		"link": "https://mart100.github.io/typeSpeed",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/typeSpeed",
+		"created": "31/08/2019",
+		"score": 12,
+		"description": "A tool to test your typing speed!",
+		"techStack": ["Javascript", "Jquery"],
+		"tags": ["Website"]
+	},
+	{
+		"title": "HFF maps",
+		"image": "https://i.imgur.com/qkwaBzx.png",
+		"link": "https://mart100.github.io/hffmaps",
+		"created": "10/04/2019",
+		"score": 15,
+		"description": "Maps that I have made for a game called \"Human fall flat\", multiple quickly gained a lot of attention"
+	},
+	{
+		"title": "Big Bang",
+		"image": "https://i.imgur.com/OIDyNRw.png",
+		"link": "https://mart100.github.io/galaxy",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/galaxy",
+		"created": "00/00/2018",
+		"score": 2,
+		"description": "Tried to recreate the start of the universe. Was ment to work way more on this and add planets orbiting etc.But quitted fairly quick.Still a cool thing to look at"
+	},
+	{
+		"title": "Rock Paper Sciccors Cellular Automaton",
+		"image": "https://i.imgur.com/7OWUVhM.gif",
+		"link": "https://mart100.github.io/RGBcellularAutomaton",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/RGBcellularAutomaton",
+		"created": "26/01/2019",
+		"score": 10,
+		"description": "So i got the inspiration of this from <a href=\"https://www.youtube.com/watch?v=M4cV0nCIZoc\">This video</a>But as you can see i changed it quite a lot. You can click on the color buttons To change your selected colorand Draw on the canvas or fill. click on the \"generator\" for an interesting mechanic."
+	},
+	{
+		"title": "Mouse Light Shadows",
+		"image": "https://i.imgur.com/WWZDsGc.png",
+		"link": "https://mart100.github.io/mouseLight",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/mouseLight",
+		"created": "03/02/2019",
+		"score": 10,
+		"description": "A small project where your mouse is the light.And it draws shadows<br>Use \" for(let i of objects) i.removeRotation() \" In console For removing all rotation of the objects<br>Its still a bit buggy, Might fix later. or not"
+	},
+	{
+		"title": "Market Simu",
+		"image": "https://i.imgur.com/HkpnkFe.png",
+		"link": "https://mart100.github.io/marketSimu",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/marketSimu",
+		"created": "27/06/2020",
+		"score": 13,
+		"description": "A program that simulates an open market making products."
+	},
+	{
+		"title": "My Code Snippets",
+		"image": "https://i.imgur.com/kyDMRl9.png",
+		"link": "https://mart100.github.io/myCodeSnippets",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/myCodeSnippets",
+		"created": "29/01/2019",
+		"score": 10,
+		"description": "Since, it happens to me many times that when I'm trying to find a little piece of code,but have to search all over the internet to find it.So, I made a page where I store all my most-used-code-snippets.The animations are 👌 if I do say so myself."
+	},
+	{
+		"title": "StickyParticles",
+		"image": "https://i.imgur.com/Z9uLRW9.png",
+		"link": "https://mart100.github.io/StickyParticles",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/StickyParticles",
+		"created": "04/10/2019",
+		"score": 14,
+		"description": "Simple particles with gravity"
+	},
+	{
+		"title": "Tunneling",
+		"image": "https://i.imgur.com/2RaI8jZ.png",
+		"link": "https://mart100.github.io/tunneling",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/tunneling",
+		"created": "28/07/2020",
+		"score": 10,
+		"description": "Tunnel with circles? or something"
+	},
+	{
+		"title": "Belts",
+		"image": "https://i.imgur.com/4fC0823.png",
+		"link": "https://mart100.github.io/belts",
+		"code": "https://github.com/Mart100/belts",
+		"created": "05/08/2023",
+		"score": 16,
+		"description": "Make a little factory with some simple tools",
+		"techStack": ["Typescript", "Svelte", "Vite"],
+		"tags": ["Simulation", "Game", "HTML Canvas"]
+	},
+	{
+		"title": "Dext",
+		"image": "https://i.imgur.com/VUbnjov.png",
+		"link": "https://mart100.github.io/Dext",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/Dext",
+		"created": "11/08/2019",
+		"score": 12,
+		"description": "An own programming language that compiles back to javascriptThe programming language called Dext ( dutch text). Is basically fully text, so no symbolsAnd in dutch. And that is about it"
+	},
+	{
+		"title": "Platformer",
+		"image": "https://i.imgur.com/bpbHSPs.png",
+		"link": "https://mart100.github.io/Platformer",
+		"created": "17/01/2018",
+		"score": 5,
+		"description": "Some platformer I never finished"
+	},
+	{
+		"title": "Raytracer",
+		"image": "https://i.imgur.com/k4Gs3Bi.png",
+		"link": "https://mart100.github.io/raytracing",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/raytracing",
+		"created": "08/05/2020",
+		"score": 14,
+		"description": "It uses raytracing so cast a view of a 3D scene",
+		"techStack": ["Javascript"],
+		"tags": ["3D", "HTML Canvas"]
+	},
+	{
+		"title": "Older Blogs",
+		"image": "https://i.imgur.com/tkBZR4n.png",
+		"link": "https://mart100.github.io/blog",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/blog",
+		"created": "08/06/2020",
+		"score": 13,
+		"description": "Here I keep and write down my journey on specific projects I've done."
+	},
+	{
+		"title": "treesFog / 2D raytracer",
+		"image": "https://i.imgur.com/AwgHpGs.png",
+		"link": "https://mart100.github.io/treesFog",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/treesFog",
+		"created": "26/07/2020",
+		"score": 10,
+		"description": "a 2D raytracer, with some weird trees. I don't know where this project went, It was ment to look like a forest."
+	},
+	{
+		"title": "Chatty",
+		"image": "https://i.imgur.com/KttOXSN.png",
+		"link": "https://chatty1.herokuapp.com/",
+		"created": "23/03/2019",
+		"score": 15,
+		"description": "A simple chatApp made with socket.io and firebase",
+		"techStack": ["Node.js", "Socket.io", "Firebase"],
+		"tags": ["Website"]
+	},
+	{
+		"title": "Learning The Useless",
+		"image": "https://i.imgur.com/HhyDfdp.png",
+		"link": "https://learning-the-useless.vercel.app/",
+		"code": "https://github.com/Mart100/LearningTheUseless",
+		"created": "07/09/2023",
+		"score": 50,
+		"description": "A website to learn various useless things, with an account system and friends system with a leaderboard.",
+		"techStack": ["Svelte", "Supabase", "Vercel", "Typescript", "Sass", "Chart.js"],
+		"tags": ["Website"]
+	},
+	{
+		"title": "ChristmasTree",
+		"image": "https://i.imgur.com/quathCp.png",
+		"link": "https://mart100.github.io/Kerstspel/Kerstboom.html",
+		"code": "https://github.com/Mart100/Kerstspel",
+		"created": "25/11/2017",
+		"score": 7,
+		"description": "A project i made to show off at my family's yearly christmas dinner.Only works on chrome currently.You can drag the balls and lights from the side onto the tree.And right click them to change some settings."
+	},
+	{
+		"title": "Random Cod",
+		"image": "https://i.imgur.com/oWKVfbw.png",
+		"link": "https://mart100.github.io/SecretCode",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/SecretCode",
+		"created": "0/3/1908",
+		"score": {
+			"$numberLong": "2"
+		},
+		"description": "The second website project i made",
+		"tags": [""],
+		"techStack": [""]
+	},
+	{
+		"title": "2D-collisions",
+		"image": "https://i.imgur.com/Dr91qha.png",
+		"link": "https://mart100.github.io/2D-collision",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/2D-collision",
+		"created": "25/05/2018",
+		"score": 10,
+		"description": "Random mass 2D balls. That collide with eachother and the wall."
+	},
+	{
+		"title": "TSCPY-1",
+		"image": "https://i.imgur.com/5FlTFLd.png",
+		"link": "https://mart100.github.io/TSCPY/1",
+		"created": "15/02/2020",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/TSCPY/1",
+		"score": 15,
+		"description": "TSCPY-1 is a \"simulation\" of an infinite world with rooms and connectons living a daily life."
+	},
+	{
+		"title": "Dungeoons",
+		"image": "https://i.imgur.com/lDkCjum.png",
+		"link": "https://mart100.github.io/dungeoons",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/dungeoons",
+		"created": "10/04/2020",
+		"score": 15,
+		"description": "Survive in an infinite random generated dungeons game!",
+		"techStack": ["Javascript", "Jquery"],
+		"tags": ["Game", "HTML Canvas"]
+	},
+	{
+		"title": "MonitorSim",
+		"image": "https://i.imgur.com/JUObzyx.png",
+		"link": "https://mart100.github.io/monitorSimu",
+		"code": "https://github.com/Mart100/Mart100.github.io/tree/master/monitorSimu",
+		"created": "02/05/2020",
+		"score": 13,
+		"description": "It simulates how a monitor works. And has a grid system with each cell being 3x3. with one row for red, green and blue."
+	}
+]

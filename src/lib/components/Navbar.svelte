@@ -3,35 +3,33 @@
 
 	if (typeof window !== 'undefined') {
 		window.addEventListener('scroll', () => {
-			scrolled = window.scrollY > 50;
+			scrolled = window.scrollY > 20;
 		});
 	}
 </script>
 
 <nav
-	class="fixed top-0 left-0 z-50 w-full transition-all duration-300 {scrolled
-		? 'border-b border-white/10 bg-background-dark/80 backdrop-blur-md'
-		: 'bg-transparent'}"
+	class="fixed top-0 left-0 z-50 w-full transition-all duration-500 {scrolled
+		? 'border-b border-white/5 bg-black/50 py-4 backdrop-blur-xl'
+		: 'bg-transparent py-8'}"
 >
-	<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-		<div class="flex items-center gap-2">
-			<div class="flex h-7 w-7 items-center justify-center bg-primary">
-				<span class="text-xs font-black text-background-dark">MV</span>
-			</div>
-			<span class="hidden text-[10px] font-bold tracking-[0.3em] text-white sm:block"
-				>CORE_SYSTEM.V01</span
-			>
-		</div>
+	<div class="mx-auto flex max-w-5xl items-center justify-between px-6">
+		<a href="/" class="group flex items-center gap-2">
+			<span class="text-sm font-medium tracking-tight text-white">MART_V</span>
+		</a>
 
-		<div class="flex items-center gap-6 font-mono text-[9px] font-bold tracking-[0.2em] uppercase">
-			<a href="#home" class="transition-colors hover:text-primary">INIT</a>
-			<a href="#projects" class="transition-colors hover:text-primary">DATA_SETS</a>
-			<a href="#about" class="transition-colors hover:text-primary">KERNEL</a>
+		<div class="flex items-center gap-8">
+			<div class="flex items-center gap-6 text-[11px] font-medium tracking-wide uppercase">
+				<a href="#work" class="text-gray-400 transition-colors hover:text-white">Work</a>
+				<a href="#travel" class="text-gray-400 transition-colors hover:text-white">Travel</a>
+				<a href="#about" class="text-gray-400 transition-colors hover:text-white">About</a>
+			</div>
 			<a
-				href="#contact"
-				class="border border-primary px-3 py-1 text-primary transition-all hover:bg-primary hover:text-background-dark"
-				>LINK</a
+				href="mailto:hello@example.com"
+				class="rounded-full bg-white px-4 py-1.5 text-[11px] font-medium text-black transition-transform hover:scale-105"
 			>
+				Contact
+			</a>
 		</div>
 	</div>
 </nav>
