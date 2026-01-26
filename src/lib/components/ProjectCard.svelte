@@ -14,33 +14,55 @@
 	href={link}
 	target="_blank"
 	rel="noopener noreferrer"
-	class="group relative flex flex-col gap-6 rounded-2xl p-6 transition-all duration-500 hover:bg-white/[0.03]"
+	class="group relative flex flex-col gap-8 rounded-[40px] border border-transparent p-6 transition-all duration-500 hover:border-white/10 hover:bg-white/[0.03] hover:shadow-2xl"
 >
-	<div class="relative aspect-video w-full overflow-hidden rounded-xl bg-surface">
+	<div class="relative aspect-[16/10] w-full overflow-hidden rounded-[28px] bg-neutral-900">
 		<img
 			src={image}
 			alt={title}
-			class="h-full w-full object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
+			class="h-full w-full object-cover opacity-60 grayscale-[0.3] transition-all duration-700 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"
 		/>
+		<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 	</div>
 
-	<div class="space-y-4">
+	<div class="space-y-5 px-2">
 		<div class="flex items-center justify-between">
-			<h3 class="text-xl font-medium text-white group-hover:text-primary">
+			<h3
+				class="text-2xl font-medium tracking-tight text-white transition-colors group-hover:text-emerald-400"
+			>
 				{title}
 			</h3>
-			<span class="text-xs text-gray-500 transition-transform group-hover:translate-x-1">→</span>
+			<div
+				class="flex h-10 w-10 items-center justify-center rounded-full border border-white/5 bg-white/[0.03] transition-all group-hover:border-emerald-500/50 group-hover:bg-emerald-500 group-hover:text-black"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="2.5"
+					stroke="currentColor"
+					class="h-4 w-4"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+					/>
+				</svg>
+			</div>
 		</div>
 
-		<p class="text-sm leading-relaxed text-gray-400">
+		<p class="text-base leading-relaxed text-gray-400">
 			{description}
 		</p>
 
-		<div class="flex flex-wrap gap-2 text-[10px] font-medium tracking-wide text-gray-500 uppercase">
+		<div
+			class="flex flex-wrap gap-x-4 gap-y-2 text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase"
+		>
 			{#each tags as tag}
-				<span class="transition-colors group-hover:text-white">{tag}</span>
+				<span class="transition-colors group-hover:text-emerald-400">{tag}</span>
 				{#if tag !== tags[tags.length - 1]}
-					<span class="text-white/10">/</span>
+					<span class="text-white/10">•</span>
 				{/if}
 			{/each}
 		</div>

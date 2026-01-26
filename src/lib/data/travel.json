@@ -111,35 +111,130 @@
 			]
 		},
 		{
-			"id": "germany-2022",
-			"name": "German Heartlands",
+			"id": "germany-2023",
+			"name": "All over Germany",
 			"description": "A journey through historic cities and lush forests.",
-			"startDate": "2022-09-01",
-			"endDate": "2022-10-01",
+			"startDate": "2023-05-31",
+			"endDate": "2023-06-25",
 			"path": [
 				{
-					"name": "Berlin",
-					"lat": 52.52,
-					"lng": 13.405,
-					"date": "Sep 1",
-					"caption": "Capital of culture and history.",
-					"image": "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&q=80&w=800"
+					"name": "Dusseldorf",
+					"lat": 51.2277,
+					"lng": 6.7735,
+					"date": "Jun 1",
+					"caption": "Rhein promenade and modern architecture."
+				},
+				{
+					"name": "Aachen",
+					"lat": 50.7753,
+					"lng": 6.0839,
+					"date": "Jun 2",
+					"caption": "Historic cathedral and Roman baths."
+				},
+				{
+					"name": "Cologne",
+					"lat": 50.9375,
+					"lng": 6.96,
+					"date": "Jun 3",
+					"caption": "The iconic cathedral and Rhine views."
+				},
+				{
+					"name": "Wuppertal",
+					"lat": 51.2562,
+					"lng": 7.1508,
+					"date": "Jun 4",
+					"caption": "The famous suspended railway."
+				},
+				{
+					"name": "Duisburg",
+					"lat": 51.4344,
+					"lng": 6.7623,
+					"date": "Jun 5",
+					"caption": "Industrial heritage and the inner harbor."
+				},
+				{
+					"name": "Heidelberg",
+					"lat": 49.3988,
+					"lng": 8.6724,
+					"date": "Jun 6",
+					"caption": "Castle perched above the old town."
+				},
+				{
+					"name": "Speyer",
+					"lat": 49.3167,
+					"lng": 8.4333,
+					"date": "Jun 10",
+					"caption": "Romanesque cathedral and riverside charm."
+				},
+				{
+					"name": "Fussen",
+					"lat": 47.5716,
+					"lng": 10.7002,
+					"date": "Jun 11",
+					"caption": "Gateway to Neuschwanstein's fairytale views."
+				},
+				{
+					"name": "Nuremberg",
+					"lat": 49.4521,
+					"lng": 11.0767,
+					"date": "Jun 14",
+					"caption": "Medieval walls and historic castle."
+				},
+				{
+					"name": "Bamberg",
+					"lat": 49.8988,
+					"lng": 10.9028,
+					"date": "Jun 16",
+					"caption": "Riverside old town and smoked beer."
+				},
+				{
+					"name": "Regensburg",
+					"lat": 49.0134,
+					"lng": 12.1016,
+					"date": "Jun 17",
+					"caption": "Stone bridge and well-preserved medieval center."
 				},
 				{
 					"name": "Munich",
 					"lat": 48.1351,
 					"lng": 11.582,
-					"date": "Sep 15",
-					"caption": "Bavarian traditions and the English Garden.",
-					"image": "https://images.unsplash.com/photo-1595181146316-563964860b83?auto=format&fit=crop&q=80&w=800"
+					"date": "Jun 18",
+					"caption": "Bavarian traditions and the English Garden."
 				},
 				{
-					"name": "Black Forest",
-					"lat": 48.0667,
-					"lng": 8.1333,
-					"date": "Sep 25",
-					"caption": "Mystical woods and cuckoo clocks.",
-					"image": "https://images.unsplash.com/photo-1466065478491-2ca36d97cabb?auto=format&fit=crop&q=80&w=800"
+					"name": "Leipzig",
+					"lat": 51.3397,
+					"lng": 12.3731,
+					"date": "Jun 19",
+					"caption": "Music history and vibrant arts scene."
+				},
+				{
+					"name": "Weimar",
+					"lat": 50.9795,
+					"lng": 11.329,
+					"date": "Jun 21",
+					"caption": "Classical heritage and Bauhaus roots."
+				},
+				{
+					"name": "Dresden",
+					"lat": 51.0504,
+					"lng": 13.7373,
+					"date": "Jun 22",
+					"caption": "Baroque architecture and riverbanks."
+				},
+				{
+					"name": "Rathen",
+					"lat": 50.9516,
+					"lng": 14.1579,
+					"date": "Jun 24",
+					"caption": "Gateway to the Bastei and Saxon Switzerland."
+				},
+				{
+					"name": "Ludwigshafen",
+					"lat": 49.4774,
+					"lng": 8.4452,
+					"date": "Jun 25",
+					"caption": "Rhein riverfront and industrial shoreline."
 				}
 			]
 		}

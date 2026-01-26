@@ -8,6 +8,7 @@
 	interface Project {
 		title: string;
 		image: string;
+		backupImage?: string;
 		link?: string;
 		code?: string;
 		created: string;
@@ -30,6 +31,16 @@
 			return parseInt(p.score.$numberLong);
 		}
 		return typeof p.score === 'number' ? p.score : 0;
+	}
+
+	function getThumbnail(p: Project): string {
+		if (p.image && p.image !== '') {
+			return 'https://assets.martvenck.com/portfolio/archive/170x170/' + p.image;
+		} else if (p.backupImage && p.backupImage !== '') {
+			return p.backupImage;
+		}
+
+		return '';
 	}
 
 	// Helper to normalize date for sorting
@@ -97,38 +108,48 @@
 
 <svelte:window onclick={() => (isDropdownOpen = false)} onkeydown={handleKeydown} />
 
-<section id="archive" class="border-t border-white/5 px-6 py-32">
+<section id="archive" class="relative overflow-hidden border-t border-white/5 px-6 py-32">
 	<div class="mx-auto max-w-7xl">
-		<div class="mb-20 space-y-4">
-			<h2 class="text-3xl font-medium text-white">Project Archive</h2>
-			<div class="h-px w-12 bg-white/20"></div>
-			<p class="text-sm text-gray-500">
-				A collection of experiments, games, and tools from the past.
+		<div class="mb-20 space-y-6">
+			<div class="flex items-center gap-3">
+				<div class="h-px w-8 bg-emerald-500/50"></div>
+				<span class="text-[10px] font-bold tracking-[0.3em] text-emerald-400 uppercase">
+					The Vault
+				</span>
+			</div>
+			<h2 class="text-4xl font-medium text-white md:text-5xl">
+				Project <span class="text-gray-500 italic">Archive.</span>
+			</h2>
+			<p class="max-w-lg text-lg text-gray-400">
+				A messy collection of custom 3D engines, geometric experiments, and tools I built while
+				learning how to code.
 			</p>
 		</div>
 
 		<div
-			class="grid grid-cols-1 overflow-hidden rounded-2xl border border-white/5 bg-white/5 shadow-2xl lg:grid-cols-12"
+			class="grid grid-cols-1 overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] shadow-2xl lg:grid-cols-12"
 		>
 			<!-- Controls Sidebar -->
 			<div
 				class="flex flex-col border-b border-white/5 bg-black/40 p-8 backdrop-blur-xl lg:col-span-3 lg:border-r lg:border-b-0"
 			>
-				<div class="space-y-8">
+				<div class="space-y-10">
 					<div class="space-y-4">
-						<h3 class="text-[10px] font-bold tracking-widest text-white/40 uppercase">Sort By</h3>
+						<h3 class="text-[10px] font-bold tracking-widest text-emerald-400/60 uppercase">
+							Sort By
+						</h3>
 						<div class="flex flex-col gap-2">
 							<button
 								onclick={(e) => {
 									e.stopPropagation();
 									sortBy = 'score';
 								}}
-								class="flex items-center justify-between rounded-full border px-6 py-3 text-[10px] font-bold tracking-widest uppercase transition-all {sortBy ===
+								class="flex items-center justify-between rounded-xl border px-5 py-3 text-[10px] font-bold tracking-widest uppercase transition-all {sortBy ===
 								'score'
-									? 'border-white bg-white text-black'
-									: 'border-white/10 text-gray-500 hover:border-white/30 hover:text-white'}"
+									? 'border-emerald-500/50 bg-emerald-500 text-black'
+									: 'border-white/5 bg-white/[0.03] text-gray-500 hover:border-white/20 hover:text-white'}"
 							>
-								Best
+								Quality
 								{#if sortBy === 'score'}
 									<div class="h-1 w-1 rounded-full bg-black"></div>
 								{/if}
@@ -138,12 +159,12 @@
 									e.stopPropagation();
 									sortBy = 'date';
 								}}
-								class="flex items-center justify-between rounded-full border px-6 py-3 text-[10px] font-bold tracking-widest uppercase transition-all {sortBy ===
+								class="flex items-center justify-between rounded-xl border px-5 py-3 text-[10px] font-bold tracking-widest uppercase transition-all {sortBy ===
 								'date'
-									? 'border-white bg-white text-black'
-									: 'border-white/10 text-gray-500 hover:border-white/30 hover:text-white'}"
+									? 'border-emerald-500/50 bg-emerald-500 text-black'
+									: 'border-white/5 bg-white/[0.03] text-gray-500 hover:border-white/20 hover:text-white'}"
 							>
-								Recent
+								Chronological
 								{#if sortBy === 'date'}
 									<div class="h-1 w-1 rounded-full bg-black"></div>
 								{/if}
@@ -152,16 +173,18 @@
 					</div>
 
 					<div class="space-y-4">
-						<h3 class="text-[10px] font-bold tracking-widest text-white/40 uppercase">Category</h3>
+						<h3 class="text-[10px] font-bold tracking-widest text-emerald-400/60 uppercase">
+							Filter
+						</h3>
 						<div class="relative">
 							<button
 								onclick={(e) => {
 									e.stopPropagation();
 									isDropdownOpen = !isDropdownOpen;
 								}}
-								class="flex w-full items-center justify-between rounded-full border border-white/10 bg-black/50 px-6 py-3 text-[10px] font-bold tracking-widest text-white uppercase transition-colors outline-none hover:border-white/30"
+								class="flex w-full items-center justify-between rounded-xl border border-white/5 bg-white/[0.03] px-5 py-3 text-[10px] font-bold tracking-widest text-white uppercase transition-colors outline-none hover:border-white/20"
 							>
-								<span>{filterTag || 'All'}</span>
+								<span>{filterTag || 'All Categories'}</span>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
@@ -218,9 +241,19 @@
 						</div>
 					</div>
 
-					<div class="pt-8">
-						<div class="font-mono text-[9px] text-white/20 uppercase">
-							Showing {filteredProjects.length} Projects
+					<div class="space-y-4 pt-4">
+						<h3 class="text-[10px] font-bold tracking-widest text-emerald-400/60 uppercase">
+							Stats
+						</h3>
+						<div class="grid grid-cols-2 gap-4">
+							<div class="rounded-xl border border-white/5 bg-white/[0.03] p-4">
+								<div class="text-[10px] font-bold text-gray-500 uppercase">Total</div>
+								<div class="text-xl font-medium text-white">{archiveData.length}</div>
+							</div>
+							<div class="rounded-xl border border-white/5 bg-white/[0.03] p-4">
+								<div class="text-[10px] font-bold text-gray-500 uppercase">Tags</div>
+								<div class="text-xl font-medium text-white">{allTags.length}</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -228,23 +261,23 @@
 
 			<!-- Grid Area -->
 			<div class="bg-black/20 lg:col-span-9">
-				<div class="custom-scrollbar h-[600px] overflow-y-auto p-8">
-					<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
+				<div class="custom-scrollbar h-[600px] overflow-y-auto p-12">
+					<div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
 						{#each filteredProjects as project (project.title)}
 							<button
 								onclick={() => (selectedProject = project)}
-								class="group relative aspect-square overflow-hidden rounded-xl bg-neutral-900/50 text-left transition-all active:scale-95"
+								class="group relative aspect-square overflow-hidden rounded-2xl bg-neutral-900/50 text-left transition-all active:scale-95"
 							>
 								<img
-									src={project.image}
+									src={getThumbnail(project)}
 									alt={project.title}
-									class="h-full w-full object-cover opacity-70 grayscale-[0.4] transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
+									class="h-full w-full object-cover opacity-60 grayscale-[0.5] transition-all duration-700 group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
 								/>
 								<div
-									class="absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 opacity-0 transition-opacity group-hover:opacity-100"
+									class="absolute inset-0 flex items-end bg-gradient-to-t from-black/90 via-black/20 to-transparent p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
 								>
 									<span
-										class="line-clamp-2 text-[10px] font-bold tracking-widest text-white uppercase"
+										class="line-clamp-2 text-[10px] leading-relaxed font-bold tracking-[0.2em] text-white uppercase"
 									>
 										{project.title}
 									</span>
@@ -268,58 +301,65 @@
 	>
 		<div
 			transition:fly={{ y: 20, duration: 400 }}
-			class="relative flex max-h-[60vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-neutral-950 shadow-2xl md:flex-row"
+			class="relative flex max-h-[85vh] w-full max-w-5xl flex-col overflow-hidden rounded-[32px] border border-white/10 bg-[#0a0a0a] shadow-[0_0_100px_rgba(0,0,0,0.5)] md:flex-row"
 			onclick={(e) => e.stopPropagation()}
 		>
 			<button
 				onclick={closeModal}
-				class="absolute top-6 right-6 z-20 text-gray-500 transition-colors hover:text-white"
+				class="absolute top-8 right-8 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-gray-400 backdrop-blur-xl transition-all hover:bg-emerald-500 hover:text-black"
 				aria-label="Close modal"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
 					viewBox="0 0 24 24"
-					stroke-width="1.5"
+					stroke-width="2"
 					stroke="currentColor"
-					class="h-6 w-6"
+					class="h-5 w-5"
 				>
 					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
 				</svg>
 			</button>
 
-			<div class="w-full bg-neutral-900 md:w-[40%]">
+			<div class="relative w-full bg-neutral-900 md:w-[45%]">
 				<img
-					src={selectedProject.image}
+					src={getThumbnail(selectedProject)}
 					alt={selectedProject.title}
 					class="h-full w-full object-cover"
 				/>
+				<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden"></div>
 			</div>
 
-			<div class="custom-scrollbar flex flex-1 flex-col overflow-y-auto p-8 md:p-12">
-				<div class="mb-8">
-					<div class="mb-2 text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">
-						{selectedProject.created}
+			<div class="custom-scrollbar flex flex-1 flex-col overflow-y-auto p-10 md:p-16">
+				<div class="mb-10">
+					<div class="mb-4 flex items-center gap-3">
+						<div class="h-px w-6 bg-emerald-500/50"></div>
+						<span class="text-[10px] font-bold tracking-[0.3em] text-emerald-400 uppercase">
+							{selectedProject.created}
+						</span>
 					</div>
-					<h3 class="text-3xl font-medium tracking-tight text-white uppercase">
-						{selectedProject.title}
+					<h3 class="text-4xl font-medium tracking-tight text-white md:text-5xl">
+						{selectedProject.title.split(' ')[0]}
+						<span class="text-gray-500 italic"
+							>{selectedProject.title.split(' ').slice(1).join(' ')}</span
+						>
 					</h3>
 				</div>
 
-				<div class="flex-grow space-y-8">
-					<div class="text-base leading-relaxed text-gray-400">
+				<div class="flex-grow space-y-10">
+					<div class="text-lg leading-relaxed text-gray-400">
 						{@html selectedProject.description}
 					</div>
 
 					{#if selectedProject.techStack && selectedProject.techStack.length > 0}
 						<div class="space-y-4">
-							<h4 class="text-[10px] font-bold tracking-widest text-white/40 uppercase">
+							<h4 class="text-[10px] font-bold tracking-widest text-emerald-400/60 uppercase">
 								Tech Stack
 							</h4>
 							<div class="flex flex-wrap gap-2">
 								{#each selectedProject.techStack as tech (tech)}
 									<span
-										class="rounded-full border border-white/5 bg-white/5 px-3 py-1.5 text-[10px] text-gray-400"
+										class="rounded-xl border border-white/5 bg-white/[0.03] px-4 py-2 text-[10px] font-bold tracking-widest text-gray-400 uppercase"
 									>
 										{tech}
 									</span>
@@ -329,15 +369,29 @@
 					{/if}
 				</div>
 
-				<div class="mt-12 flex flex-col gap-3">
+				<div class="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2">
 					{#if selectedProject.link}
 						<a
 							href={selectedProject.link}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="w-full rounded-full bg-white px-8 py-4 text-center text-[10px] font-bold tracking-[0.2em] text-black uppercase transition-transform hover:scale-[1.01] active:scale-[0.99]"
+							class="flex items-center justify-center gap-3 rounded-2xl bg-emerald-500 px-8 py-5 text-center text-[10px] font-bold tracking-[0.2em] text-black uppercase transition-all hover:scale-[1.02] hover:bg-emerald-400 active:scale-[0.98]"
 						>
-							Launch Project
+							Live Demo
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="2.5"
+								stroke="currentColor"
+								class="h-3 w-3"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+								/>
+							</svg>
 						</a>
 					{/if}
 					{#if selectedProject.code}
@@ -345,9 +399,23 @@
 							href={selectedProject.code}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="w-full rounded-full border border-white/10 px-8 py-4 text-center text-[10px] font-bold tracking-[0.2em] text-white uppercase transition-colors hover:bg-white/5"
+							class="flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-8 py-5 text-center text-[10px] font-bold tracking-[0.2em] text-white uppercase transition-all hover:bg-white/[0.08]"
 						>
-							View Source
+							Source Code
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="2.5"
+								stroke="currentColor"
+								class="h-3 w-3"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
+								/>
+							</svg>
 						</a>
 					{/if}
 				</div>

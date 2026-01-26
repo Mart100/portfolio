@@ -9,6 +9,14 @@
 }
 
 @layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	section {
+		scroll-margin-top: 100px;
+	}
+
 	body {
 		@apply bg-background-dark font-sans text-gray-400 antialiased;
 		overflow-x: hidden;

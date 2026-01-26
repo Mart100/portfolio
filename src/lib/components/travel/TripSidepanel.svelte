@@ -5,7 +5,7 @@
 		lng: number;
 		date: string;
 		caption: string;
-		image: string;
+		image?: string;
 	}
 
 	interface Trip {

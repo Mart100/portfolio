@@ -15,10 +15,10 @@
 	},
 	{
 		"title": "Toorney",
-		"description": "A product I made when I was 15, It helps gaming communities organize automated tournaments on Discord. Later acquired by a larger company.",
+		"description": "A product I made when I was 15, It helped gaming communities organize automated tournaments on Discord. Later acquired by a larger company.",
 		"tags": ["Jquery", "Express", "Discord.js"],
-		"image": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=800",
-		"link": "https://github.com"
+		"image": "/images/projects/toorney.png",
+		"link": "https://archive.martvenck.com/toorney/"
 	},
 	{
 		"title": "ReadChinese.org",
