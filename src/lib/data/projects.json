@@ -2,28 +2,46 @@
 	{
 		"title": "DreamWave",
 		"description": "A DAW (Digital Audio Workstation) built from scratch, specialized for creating Dark Ambient / Dreamwave music.",
-		"tags": ["Svelte", "WebAudio", "TypeScript"],
+		"tags": [
+			"Svelte",
+			"WebAudio",
+			"TypeScript"
+		],
 		"image": "/images/projects/dreamwave.png",
 		"link": "https://dreamwave.pages.dev/"
 	},
 	{
 		"title": "Turing Compiler",
 		"description": "A custom compiler written in Rust that compiles javascript-like syntax to a custom language driving a hypothetical Turing Machine.",
-		"tags": ["Rust", "Compiler"],
+		"tags": [
+			"Rust",
+			"Compiler",
+			"WASM",
+			"Svelte"
+		],
 		"image": "/images/projects/turingcompiler.png",
 		"link": "https://turingcompiler.pages.dev/"
 	},
 	{
 		"title": "Toorney",
 		"description": "A product I made when I was 15, It helped gaming communities organize automated tournaments on Discord. Later acquired by a larger company.",
-		"tags": ["Jquery", "Express", "Discord.js"],
+		"tags": [
+			"Jquery",
+			"Express",
+			"Discord.js"
+		],
 		"image": "/images/projects/toorney.png",
 		"link": "https://archive.martvenck.com/toorney/"
 	},
 	{
 		"title": "ReadChinese.org",
 		"description": "Learn Chinese fast and effectively with AI-powered reading tools that adapt to your level.",
-		"tags": ["SvelteKit", "TypeScript", "Supabase", "Openrouter"],
+		"tags": [
+			"SvelteKit",
+			"TypeScript",
+			"Supabase",
+			"Openrouter"
+		],
 		"image": "/images/projects/readchinese.png",
 		"link": "https://readchinese.org"
 	}

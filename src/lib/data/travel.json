@@ -113,7 +113,7 @@
 		{
 			"id": "germany-2023",
 			"name": "All over Germany",
-			"description": "A journey through historic cities and lush forests.",
+			"description": "A month through germany on the 50-euro Deutschlandticket",
 			"startDate": "2023-05-31",
 			"endDate": "2023-06-25",
 			"path": [
@@ -122,49 +122,56 @@
 					"lat": 51.2277,
 					"lng": 6.7735,
 					"date": "Jun 1",
-					"caption": "Rhein promenade and modern architecture."
+					"caption": "My first arrival place, using the Flixbus. Went up some tower, and took some naps on the grass next to the Rhine.",
+					"image": "https://assets.martvenck.com/portfolio/travel/germany/webp/16c486c1-7d14-4b62-90b9-9c794706cf50_f5612612-6030-42bf-b579-ab978cebf844-4f0b59fa.webp"
 				},
 				{
 					"name": "Aachen",
 					"lat": 50.7753,
 					"lng": 6.0839,
 					"date": "Jun 2",
-					"caption": "Historic cathedral and Roman baths."
+					"caption": "Historic cathedral and Roman baths.",
+					"image": "https://assets.martvenck.com/portfolio/travel/germany/webp/01c482ca-a2cc-40be-9502-433a93aaf56a_c7b8c934-63dc-4f6c-85bb-450391e5154d-0eb0866a.webp"
 				},
 				{
 					"name": "Cologne",
 					"lat": 50.9375,
 					"lng": 6.96,
 					"date": "Jun 3",
-					"caption": "The iconic cathedral and Rhine views."
+					"caption": "The iconic cathedral and Rhine views.",
+					"image": "https://assets.martvenck.com/portfolio/travel/germany/webp/38591eab-9fd7-45c6-ac27-8cfa6ab5767e_14ee7078-2c51-4f85-8f38-2cf4a9270ab5-55d3de09.webp"
 				},
 				{
 					"name": "Wuppertal",
 					"lat": 51.2562,
 					"lng": 7.1508,
 					"date": "Jun 4",
-					"caption": "The famous suspended railway."
+					"caption": "The famous suspended railway.",
+					"image": "https://assets.martvenck.com/portfolio/travel/germany/webp/a534c289-8832-4bce-8b07-7cf9eb6741a0_b009f3b9-cc90-444a-b6fc-28be9038e7cb-462c2025.webp"
 				},
 				{
 					"name": "Duisburg",
 					"lat": 51.4344,
 					"lng": 6.7623,
 					"date": "Jun 5",
-					"caption": "Industrial heritage and the inner harbor."
+					"caption": "Industrial heritage and the inner harbor.",
+					"image": "https://assets.martvenck.com/portfolio/travel/germany/webp/dc457a2c-725f-4317-b22a-1052c847137c_eb65ef2a-6058-4038-ac8d-020758deceb7-e61f7d5f.webp"
 				},
 				{
 					"name": "Heidelberg",
 					"lat": 49.3988,
 					"lng": 8.6724,
 					"date": "Jun 6",
-					"caption": "Castle perched above the old town."
+					"caption": "Castle perched above the old town.",
+					"image": "https://assets.martvenck.com/portfolio/travel/germany/webp/fee8f735-faa4-4196-8053-e012ccef9b66_ac114e6a-8332-4383-a4cf-b04780443351-6665acb1.webp"
 				},
 				{
 					"name": "Speyer",
 					"lat": 49.3167,
 					"lng": 8.4333,
 					"date": "Jun 10",
-					"caption": "Romanesque cathedral and riverside charm."
+					"caption": "Romanesque cathedral and riverside charm.",
+					"image": "https://assets.martvenck.com/portfolio/travel/germany/webp/1bd0db0a-e2cf-4a41-8797-f6b225ed52da_0d3dc20a-4923-4aa7-8f2c-af72eb7e9f47-a2d1173a.webp"
 				},
 				{
 					"name": "Fussen",
@@ -236,75 +243,345 @@
 					"date": "Jun 25",
 					"caption": "Rhein riverfront and industrial shoreline."
 				}
-			]
+			],
+			"basePath": "portfolio/travel/germany"
 		}
 	],
 	"places": [
-		{ "name": "Amsterdam", "lat": 52.3676, "lng": 4.9041 },
-		{ "name": "London", "lat": 51.5074, "lng": -0.1278 },
-		{ "name": "Paris", "lat": 48.8566, "lng": 2.3522 },
-		{ "name": "Tokyo", "lat": 35.6762, "lng": 139.6503 },
-		{ "name": "Johannesburg", "lat": -26.2041, "lng": 28.0473 },
-		{ "name": "Vienna", "lat": 48.2082, "lng": 16.3738 },
-		{ "name": "Budapest", "lat": 47.4979, "lng": 19.0402 },
-		{ "name": "Prague", "lat": 50.0755, "lng": 14.4378 },
-		{ "name": "Bratislava", "lat": 48.1486, "lng": 17.1077 },
-		{ "name": "Zagreb", "lat": 45.815, "lng": 15.9819 },
-		{ "name": "Ljubljana", "lat": 46.0569, "lng": 14.5058 },
-		{ "name": "Milan", "lat": 45.4642, "lng": 9.19 },
-		{ "name": "Tirana", "lat": 41.3275, "lng": 19.8189 },
-		{ "name": "Skopje", "lat": 41.9981, "lng": 21.4254 },
-		{ "name": "Sofia", "lat": 42.6977, "lng": 23.3219 },
-		{ "name": "Crete", "lat": 35.2401, "lng": 24.8093 },
-		{ "name": "Carcassonne", "lat": 43.2138, "lng": 2.3511 },
-		{ "name": "Bilbao", "lat": 43.263, "lng": -2.935 },
-		{ "name": "Brussels", "lat": 50.8503, "lng": 4.3517 },
-		{ "name": "Lucerne", "lat": 47.0502, "lng": 8.3093 },
-		{ "name": "Vienna", "lat": 48.2082, "lng": 16.3738 },
-		{ "name": "Salzburg", "lat": 47.8095, "lng": 13.055 },
-		{ "name": "Prizren", "lat": 42.212, "lng": 20.7399 },
-		{ "name": "Berlin", "lat": 52.52, "lng": 13.405 },
-		{ "name": "Munich", "lat": 48.1351, "lng": 11.582 },
-		{ "name": "Heidelberg", "lat": 49.3988, "lng": 8.6724 },
-		{ "name": "Cologne", "lat": 50.9375, "lng": 6.9603 },
-		{ "name": "Dresden", "lat": 51.0504, "lng": 13.7373 },
-		{ "name": "Leipzig", "lat": 51.3397, "lng": 12.3731 },
-		{ "name": "Duisburg", "lat": 51.4344, "lng": 6.7623 },
-		{ "name": "Aachen", "lat": 50.7753, "lng": 6.0839 },
-		{ "name": "Füssen", "lat": 47.5716, "lng": 10.7002 },
-		{ "name": "Weimar", "lat": 50.9795, "lng": 11.329 },
-		{ "name": "Bamberg", "lat": 49.8988, "lng": 10.9028 },
-		{ "name": "Regensburg", "lat": 49.0134, "lng": 12.1016 },
-		{ "name": "Venice", "lat": 45.4408, "lng": 12.3155 },
-		{ "name": "Shkoder", "lat": 42.0683, "lng": 19.5126 },
-		{ "name": "Plovdiv", "lat": 42.1354, "lng": 24.7453 },
-		{ "name": "Bansko", "lat": 41.8381, "lng": 23.4884 },
-		{ "name": "Ohrid", "lat": 41.1231, "lng": 20.8015 },
-		{ "name": "Luxembourg", "lat": 49.6117, "lng": 6.1319 },
-		{ "name": "Beijing", "lat": 39.9042, "lng": 116.4074 },
-		{ "name": "Xi'an", "lat": 34.2658, "lng": 108.9541 },
-		{ "name": "Shanghai", "lat": 31.2304, "lng": 121.4737 },
-		{ "name": "Chongqing", "lat": 29.4316, "lng": 106.9123 },
-		{ "name": "Chengdu", "lat": 30.5728, "lng": 104.0668 },
-		{ "name": "Emei", "lat": 29.5603, "lng": 103.4996 },
-		{ "name": "Xiamen", "lat": 24.4798, "lng": 118.0895 },
-		{ "name": "Zhangjiajie", "lat": 29.117, "lng": 110.479 },
-		{ "name": "Guilin", "lat": 25.2736, "lng": 110.2903 },
-		{ "name": "Guangzhou", "lat": 23.1291, "lng": 113.2644 },
-		{ "name": "Hong Kong", "lat": 22.3193, "lng": 114.1694 },
-		{ "name": "Shenzhen", "lat": 22.5431, "lng": 114.0579 },
-		{ "name": "Fukuoka", "lat": 33.5904, "lng": 130.4017 },
-		{ "name": "Kagoshima", "lat": 31.5966, "lng": 130.5571 },
-		{ "name": "Kumamoto", "lat": 32.8031, "lng": 130.7079 },
-		{ "name": "Nagasaki", "lat": 32.7503, "lng": 129.8777 },
-		{ "name": "Beppu", "lat": 33.2842, "lng": 131.4973 },
-		{ "name": "Osaka", "lat": 34.6937, "lng": 135.5023 },
-		{ "name": "Kyoto", "lat": 35.0116, "lng": 135.7681 },
-		{ "name": "Wakayama", "lat": 34.226, "lng": 135.1675 },
-		{ "name": "Himeji", "lat": 34.8151, "lng": 134.6853 },
-		{ "name": "Kaohsiung", "lat": 22.6273, "lng": 120.3014 },
-		{ "name": "Taipei", "lat": 25.033, "lng": 121.5654 },
-		{ "name": "Sun Moon Lake", "lat": 23.8655, "lng": 120.9115 },
-		{ "name": "Tainan", "lat": 22.9999, "lng": 120.227 }
+		{
+			"name": "Matsumoto",
+			"lat": 36.238885,
+			"lng": 137.969581
+		},
+		{
+			"name": "Amsterdam",
+			"lat": 52.3676,
+			"lng": 4.9041
+		},
+		{
+			"name": "London",
+			"lat": 51.5074,
+			"lng": -0.1278
+		},
+		{
+			"name": "Paris",
+			"lat": 48.8566,
+			"lng": 2.3522
+		},
+		{
+			"name": "Tokyo",
+			"lat": 35.6762,
+			"lng": 139.6503
+		},
+		{
+			"name": "Johannesburg",
+			"lat": -26.2041,
+			"lng": 28.0473
+		},
+		{
+			"name": "Vienna",
+			"lat": 48.2082,
+			"lng": 16.3738
+		},
+		{
+			"name": "Budapest",
+			"lat": 47.4979,
+			"lng": 19.0402
+		},
+		{
+			"name": "Prague",
+			"lat": 50.0755,
+			"lng": 14.4378
+		},
+		{
+			"name": "Bratislava",
+			"lat": 48.1486,
+			"lng": 17.1077
+		},
+		{
+			"name": "Zagreb",
+			"lat": 45.815,
+			"lng": 15.9819
+		},
+		{
+			"name": "Ljubljana",
+			"lat": 46.0569,
+			"lng": 14.5058
+		},
+		{
+			"name": "Milan",
+			"lat": 45.4642,
+			"lng": 9.19
+		},
+		{
+			"name": "Tirana",
+			"lat": 41.3275,
+			"lng": 19.8189
+		},
+		{
+			"name": "Skopje",
+			"lat": 41.9981,
+			"lng": 21.4254
+		},
+		{
+			"name": "Sofia",
+			"lat": 42.6977,
+			"lng": 23.3219
+		},
+		{
+			"name": "Crete",
+			"lat": 35.2401,
+			"lng": 24.8093
+		},
+		{
+			"name": "Carcassonne",
+			"lat": 43.2138,
+			"lng": 2.3511
+		},
+		{
+			"name": "Bilbao",
+			"lat": 43.263,
+			"lng": -2.935
+		},
+		{
+			"name": "Brussels",
+			"lat": 50.8503,
+			"lng": 4.3517
+		},
+		{
+			"name": "Lucerne",
+			"lat": 47.0502,
+			"lng": 8.3093
+		},
+		{
+			"name": "Vienna",
+			"lat": 48.2082,
+			"lng": 16.3738
+		},
+		{
+			"name": "Salzburg",
+			"lat": 47.8095,
+			"lng": 13.055
+		},
+		{
+			"name": "Prizren",
+			"lat": 42.212,
+			"lng": 20.7399
+		},
+		{
+			"name": "Berlin",
+			"lat": 52.52,
+			"lng": 13.405
+		},
+		{
+			"name": "Munich",
+			"lat": 48.1351,
+			"lng": 11.582
+		},
+		{
+			"name": "Heidelberg",
+			"lat": 49.3988,
+			"lng": 8.6724
+		},
+		{
+			"name": "Cologne",
+			"lat": 50.9375,
+			"lng": 6.9603
+		},
+		{
+			"name": "Dresden",
+			"lat": 51.0504,
+			"lng": 13.7373
+		},
+		{
+			"name": "Leipzig",
+			"lat": 51.3397,
+			"lng": 12.3731
+		},
+		{
+			"name": "Duisburg",
+			"lat": 51.4344,
+			"lng": 6.7623
+		},
+		{
+			"name": "Aachen",
+			"lat": 50.7753,
+			"lng": 6.0839
+		},
+		{
+			"name": "Füssen",
+			"lat": 47.5716,
+			"lng": 10.7002
+		},
+		{
+			"name": "Weimar",
+			"lat": 50.9795,
+			"lng": 11.329
+		},
+		{
+			"name": "Bamberg",
+			"lat": 49.8988,
+			"lng": 10.9028
+		},
+		{
+			"name": "Regensburg",
+			"lat": 49.0134,
+			"lng": 12.1016
+		},
+		{
+			"name": "Venice",
+			"lat": 45.4408,
+			"lng": 12.3155
+		},
+		{
+			"name": "Shkoder",
+			"lat": 42.0683,
+			"lng": 19.5126
+		},
+		{
+			"name": "Plovdiv",
+			"lat": 42.1354,
+			"lng": 24.7453
+		},
+		{
+			"name": "Bansko",
+			"lat": 41.8381,
+			"lng": 23.4884
+		},
+		{
+			"name": "Ohrid",
+			"lat": 41.1231,
+			"lng": 20.8015
+		},
+		{
+			"name": "Luxembourg",
+			"lat": 49.6117,
+			"lng": 6.1319
+		},
+		{
+			"name": "Beijing",
+			"lat": 39.9042,
+			"lng": 116.4074
+		},
+		{
+			"name": "Xi'an",
+			"lat": 34.2658,
+			"lng": 108.9541
+		},
+		{
+			"name": "Shanghai",
+			"lat": 31.2304,
+			"lng": 121.4737
+		},
+		{
+			"name": "Chongqing",
+			"lat": 29.4316,
+			"lng": 106.9123
+		},
+		{
+			"name": "Chengdu",
+			"lat": 30.5728,
+			"lng": 104.0668
+		},
+		{
+			"name": "Emei",
+			"lat": 29.5603,
+			"lng": 103.4996
+		},
+		{
+			"name": "Xiamen",
+			"lat": 24.4798,
+			"lng": 118.0895
+		},
+		{
+			"name": "Zhangjiajie",
+			"lat": 29.117,
+			"lng": 110.479
+		},
+		{
+			"name": "Guilin",
+			"lat": 25.2736,
+			"lng": 110.2903
+		},
+		{
+			"name": "Guangzhou",
+			"lat": 23.1291,
+			"lng": 113.2644
+		},
+		{
+			"name": "Hong Kong",
+			"lat": 22.3193,
+			"lng": 114.1694
+		},
+		{
+			"name": "Shenzhen",
+			"lat": 22.5431,
+			"lng": 114.0579
+		},
+		{
+			"name": "Fukuoka",
+			"lat": 33.5904,
+			"lng": 130.4017
+		},
+		{
+			"name": "Kagoshima",
+			"lat": 31.5966,
+			"lng": 130.5571
+		},
+		{
+			"name": "Kumamoto",
+			"lat": 32.8031,
+			"lng": 130.7079
+		},
+		{
+			"name": "Nagasaki",
+			"lat": 32.7503,
+			"lng": 129.8777
+		},
+		{
+			"name": "Beppu",
+			"lat": 33.2842,
+			"lng": 131.4973
+		},
+		{
+			"name": "Osaka",
+			"lat": 34.6937,
+			"lng": 135.5023
+		},
+		{
+			"name": "Kyoto",
+			"lat": 35.0116,
+			"lng": 135.7681
+		},
+		{
+			"name": "Wakayama",
+			"lat": 34.226,
+			"lng": 135.1675
+		},
+		{
+			"name": "Himeji",
+			"lat": 34.8151,
+			"lng": 134.6853
+		},
+		{
+			"name": "Kaohsiung",
+			"lat": 22.6273,
+			"lng": 120.3014
+		},
+		{
+			"name": "Taipei",
+			"lat": 25.033,
+			"lng": 121.5654
+		},
+		{
+			"name": "Sun Moon Lake",
+			"lat": 23.8655,
+			"lng": 120.9115
+		},
+		{
+			"name": "Tainan",
+			"lat": 22.9999,
+			"lng": 120.227
+		}
 	]
 }
