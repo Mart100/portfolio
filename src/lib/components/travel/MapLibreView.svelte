@@ -13,6 +13,8 @@
 	let mapContainer: HTMLDivElement;
 	let map: maplibregl.Map | null = null;
 	let isLoaded = $state(false);
+	let isFirstNodeForTrip = $state(true);
+	let lastTripId = $state<string | null>(null);
 
 	// Watch for visibility changes to resize the map
 	$effect(() => {
@@ -26,7 +28,16 @@
 
 	// Watch for trip changes
 	$effect(() => {
-		if (activeTrip && map && isLoaded && isVisible) {
+		if (!activeTrip) {
+			lastTripId = null;
+			return;
+		}
+
+		if (map && isLoaded && isVisible) {
+			if (activeTrip.id !== lastTripId) {
+				isFirstNodeForTrip = true;
+				lastTripId = activeTrip.id;
+			}
 			updateTripPath();
 		}
 	});
@@ -34,15 +45,39 @@
 	// Watch for selected node changes to fly to it
 	$effect(() => {
 		if (selectedNode && map && isLoaded && isVisible) {
+			let targetZoom;
+
+			if (isFirstNodeForTrip) {
+				// Zoom in to the node on initial entry/selection
+				targetZoom = 12;
+			} else {
+				// While scrolling, stay at the zoom level that shows the entire trip
+				const bounds = getTripBounds();
+				const camera = bounds ? map.cameraForBounds(bounds, { padding: 80 }) : null;
+				targetZoom = camera?.zoom || map.getZoom();
+			}
+
 			map.flyTo({
 				center: [selectedNode.lng, selectedNode.lat],
-				zoom: 12,
+				zoom: targetZoom,
 				duration: 2000,
 				essential: true
 			});
+
+			isFirstNodeForTrip = false;
 			updateSelectedNodeHighlight();
 		}
 	});
+
+	function getTripBounds() {
+		if (!activeTrip || !activeTrip.path || activeTrip.path.length === 0) return null;
+		const path = activeTrip.path;
+		const coordinates = path.map((p: any) => [p.lng, p.lat] as [number, number]);
+		return coordinates.reduce(
+			(acc: maplibregl.LngLatBounds, coord: [number, number]) => acc.extend(coord),
+			new maplibregl.LngLatBounds(coordinates[0], coordinates[0])
+		);
+	}
 
 	function updateSelectedNodeHighlight() {
 		if (!map || !isLoaded || !selectedNode) return;
@@ -164,12 +199,10 @@
 
 		// Calculate bounds if not specifically looking at a node
 		if (!selectedNode) {
-			const coordinates = path.map((p: any) => [p.lng, p.lat] as [number, number]);
-			const bounds = coordinates.reduce(
-				(acc: maplibregl.LngLatBounds, coord: [number, number]) => acc.extend(coord),
-				new maplibregl.LngLatBounds(coordinates[0], coordinates[0])
-			);
-			map.fitBounds(bounds, { padding: 80, duration: 800, animate: true });
+			const bounds = getTripBounds();
+			if (bounds) {
+				map.fitBounds(bounds, { padding: 80, duration: 800, animate: true });
+			}
 		}
 	}
 

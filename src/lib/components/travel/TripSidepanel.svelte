@@ -91,7 +91,7 @@
 					<div class="node-item group relative block w-full text-left" data-index={i}>
 						<!-- Node Dot -->
 						<div
-							class="absolute top-1.5 -left-[37px] h-4 w-4 rounded-full border-2 border-black transition-all duration-500
+							class="absolute top-1.5 -left-[40px] h-4 w-4 rounded-full border-2 border-black transition-all duration-500
 							{selectedNode?.name === node.name ? 'scale-125 bg-white ring-4 ring-white/20' : 'bg-white/40'}"
 						></div>
 
