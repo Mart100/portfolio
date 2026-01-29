@@ -14,9 +14,11 @@
 	href={link}
 	target="_blank"
 	rel="noopener noreferrer"
-	class="group relative flex flex-col gap-8 rounded-[40px] border border-transparent p-6 transition-all duration-500 hover:border-white/10 hover:bg-white/[0.03] hover:shadow-2xl"
+	class="group relative flex flex-col gap-6 rounded-[32px] border border-transparent p-4 transition-all duration-500 hover:border-white/10 hover:bg-white/[0.03] hover:shadow-2xl sm:gap-8 sm:rounded-[40px] sm:p-6"
 >
-	<div class="relative aspect-[16/10] w-full overflow-hidden rounded-[28px] bg-neutral-900">
+	<div
+		class="relative aspect-[16/10] w-full overflow-hidden rounded-[24px] bg-neutral-900 sm:rounded-[28px]"
+	>
 		<img
 			src={image}
 			alt={title}
@@ -25,15 +27,15 @@
 		<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 	</div>
 
-	<div class="space-y-5 px-2">
+	<div class="space-y-4 px-2 sm:space-y-5">
 		<div class="flex items-center justify-between">
 			<h3
-				class="text-2xl font-medium tracking-tight text-white transition-colors group-hover:text-emerald-400"
+				class="text-xl font-medium tracking-tight text-white transition-colors group-hover:text-emerald-400 sm:text-2xl"
 			>
 				{title}
 			</h3>
 			<div
-				class="flex h-10 w-10 items-center justify-center rounded-full border border-white/5 bg-white/[0.03] transition-all group-hover:border-emerald-500/50 group-hover:bg-emerald-500 group-hover:text-black"
+				class="flex h-8 w-8 items-center justify-center rounded-full border border-white/5 bg-white/[0.03] transition-all group-hover:border-emerald-500/50 group-hover:bg-emerald-500 group-hover:text-black sm:h-10 sm:w-10"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

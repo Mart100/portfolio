@@ -35,9 +35,9 @@
 	}
 </script>
 
-<section id="travel" class="overflow-hidden border-t border-white/5 py-32">
+<section id="travel" class="overflow-hidden border-t border-white/5 py-16 md:py-32">
 	<div class="mx-auto max-w-7xl px-6">
-		<div class="mb-20 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+		<div class="mb-12 flex flex-col justify-between gap-6 md:mb-20 md:flex-row md:items-end">
 			<div class="space-y-4">
 				<div class="flex items-center gap-3">
 					<div class="h-px w-8 bg-emerald-500/50"></div>
@@ -70,7 +70,7 @@
 		>
 			<!-- Timeline Sidebar -->
 			<div
-				class="flex h-[600px] flex-col border-r border-white/5 bg-black/40 backdrop-blur-xl lg:col-span-4"
+				class="flex h-[350px] flex-col border-white/5 bg-black/40 backdrop-blur-xl lg:col-span-4 lg:h-[600px] lg:border-r"
 			>
 				<TripSidepanel
 					{activeTrip}
@@ -82,7 +82,7 @@
 			</div>
 
 			<!-- Interactive Visualization -->
-			<div class="relative h-[600px] bg-black lg:col-span-8">
+			<div class="relative h-[400px] bg-black lg:col-span-8 lg:h-[600px]">
 				<div class="absolute inset-0" class:hidden={activeTripIndex !== -1}>
 					{#if Globe}
 						<Globe

@@ -31,38 +31,42 @@
 	});
 </script>
 
-<section id="contact" class="relative overflow-hidden px-6 py-32">
+<section id="contact" class="relative overflow-hidden px-6 py-12 md:py-32">
 	<div class="mx-auto max-w-7xl">
 		<div
-			class="relative overflow-hidden rounded-[40px] border border-white/5 bg-white/[0.02] p-12 backdrop-blur-xl md:p-24"
+			class="relative overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] p-6 backdrop-blur-xl sm:rounded-[40px] sm:p-12 md:p-24"
 		>
-			<!-- Background Glow -->
+			<!-- Background Glow (Hidden on mobile) -->
 			<div
-				class="absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-emerald-500/10 blur-[120px]"
+				class="absolute -right-24 -bottom-24 hidden h-96 w-96 rounded-full bg-emerald-500/10 blur-[120px] md:block"
 			></div>
 
-			<div class="grid grid-cols-1 gap-20 lg:grid-cols-2 lg:items-center">
-				<div class="space-y-12">
-					<div class="space-y-6">
+			<div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
+				<div class="space-y-8 md:space-y-12">
+					<div class="space-y-4 md:space-y-6">
 						<div class="flex items-center gap-3">
 							<div class="h-px w-8 bg-emerald-500/50"></div>
-							<span class="text-[10px] font-bold tracking-[0.3em] text-emerald-400 uppercase"
+							<span
+								class="text-[9px] font-bold tracking-[0.3em] text-emerald-400 uppercase md:text-[10px]"
 								>Connect</span
 							>
 						</div>
-						<h2 class="text-5xl font-medium tracking-tight text-white md:text-7xl">
+						<h2 class="text-3xl font-medium tracking-tight text-white sm:text-5xl md:text-7xl">
 							Get in <span class="text-gray-500 italic">Touch.</span>
 						</h2>
-						<p class="max-w-md text-lg leading-relaxed text-gray-400">
+						<p class="max-w-md text-sm leading-relaxed text-gray-400 md:text-lg">
 							Have a project in mind or just want to chat? I'm always open to new connections and
 							interesting conversations.
 						</p>
 					</div>
 
-					<div class="flex flex-col gap-8">
-						<a href={'mailto:' + EMAIL} class="group flex items-center gap-6 transition-all">
+					<div class="flex flex-col gap-4 md:gap-8">
+						<a
+							href={'mailto:' + EMAIL}
+							class="group flex items-center gap-4 transition-all sm:gap-6"
+						>
 							<div
-								class="flex h-16 w-16 items-center justify-center rounded-[20px] border border-white/5 bg-white/[0.03] transition-all group-hover:border-emerald-500/50 group-hover:bg-emerald-500 group-hover:text-black"
+								class="flex h-12 w-12 items-center justify-center rounded-[14px] border border-white/5 bg-white/[0.03] transition-all group-hover:border-emerald-500/50 group-hover:bg-emerald-500 group-hover:text-black md:h-16 md:w-16 md:rounded-[20px]"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +74,7 @@
 									viewBox="0 0 24 24"
 									stroke-width="1.5"
 									stroke="currentColor"
-									class="h-7 w-7"
+									class="h-5 w-5 md:h-7 md:w-7"
 								>
 									<path
 										stroke-linecap="round"
@@ -79,12 +83,14 @@
 									/>
 								</svg>
 							</div>
-							<div>
-								<div class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">
+							<div class="min-w-0">
+								<div
+									class="text-[8px] font-bold tracking-[0.2em] text-gray-500 uppercase md:text-[10px]"
+								>
 									Direct Email
 								</div>
 								<div
-									class="text-xl font-medium text-white transition-colors group-hover:text-emerald-400"
+									class="truncate text-base font-medium text-white transition-colors group-hover:text-emerald-400 md:text-xl"
 								>
 									{EMAIL}
 								</div>
@@ -95,16 +101,16 @@
 							href={LINKEDIN}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="group flex items-center gap-6 transition-all"
+							class="group flex items-center gap-4 transition-all md:gap-6"
 						>
 							<div
-								class="flex h-16 w-16 items-center justify-center rounded-[20px] border border-white/5 bg-white/[0.03] transition-all group-hover:border-emerald-500/50 group-hover:bg-emerald-500 group-hover:text-black"
+								class="flex h-12 w-12 items-center justify-center rounded-[14px] border border-white/5 bg-white/[0.03] transition-all group-hover:border-emerald-500/50 group-hover:bg-emerald-500 group-hover:text-black md:h-16 md:w-16 md:rounded-[20px]"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="currentColor"
 									viewBox="0 0 24 24"
-									class="h-7 w-7"
+									class="h-5 w-5 md:h-7 md:w-7"
 								>
 									<path
 										d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
@@ -112,11 +118,13 @@
 								</svg>
 							</div>
 							<div>
-								<div class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">
+								<div
+									class="text-[8px] font-bold tracking-[0.2em] text-gray-500 uppercase md:text-[10px]"
+								>
 									LinkedIn
 								</div>
 								<div
-									class="text-xl font-medium text-white transition-colors group-hover:text-emerald-400"
+									class="text-base font-medium text-white transition-colors group-hover:text-emerald-400 md:text-xl"
 								>
 									martvenck
 								</div>
@@ -127,16 +135,16 @@
 
 				<div class="relative">
 					<div
-						class="relative overflow-hidden rounded-[32px] border border-white/10 bg-black/40 p-10 shadow-2xl ring-1 ring-white/5 backdrop-blur-2xl md:p-14"
+						class="relative overflow-hidden rounded-[24px] border border-white/10 bg-black/40 p-6 shadow-2xl ring-1 ring-white/5 backdrop-blur-2xl md:rounded-[32px] md:p-14"
 					>
 						<!-- Glow in card -->
 						<div
 							class="absolute -top-12 -left-12 h-40 w-40 rounded-full bg-emerald-500/20 blur-3xl"
 						></div>
 
-						<div class="relative z-10 mb-8 flex items-center justify-between">
+						<div class="relative z-10 mb-6 flex items-center justify-between md:mb-8">
 							<div
-								class="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500 text-black shadow-[0_0_30px_rgba(16,185,129,0.3)]"
+								class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500 text-black shadow-[0_0_30px_rgba(16,185,129,0.3)] md:h-14 md:w-14 md:rounded-2xl"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -144,7 +152,7 @@
 									viewBox="0 0 24 24"
 									stroke-width="2"
 									stroke="currentColor"
-									class="h-7 w-7"
+									class="h-6 w-6 md:h-7 md:w-7"
 								>
 									<path
 										stroke-linecap="round"
@@ -154,17 +162,23 @@
 								</svg>
 							</div>
 							<div
-								class="flex items-center gap-2 rounded-full bg-emerald-500/10 px-4 py-2 ring-1 ring-emerald-500/20"
+								class="flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1.5 ring-1 ring-emerald-500/20 md:px-4 md:py-2"
 							>
-								<div class="h-2 w-2 animate-pulse rounded-full bg-emerald-500"></div>
-								<span class="text-[10px] font-bold tracking-widest text-emerald-400 uppercase"
+								<div
+									class="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500 md:h-2 md:w-2"
+								></div>
+								<span class="text-[9px] font-bold tracking-widest text-emerald-400 uppercase"
 									>Limited Slots</span
 								>
 							</div>
 						</div>
 
-						<h3 class="relative z-10 mb-4 text-3xl font-medium text-white">Let's hop on a call.</h3>
-						<p class="relative z-10 mb-10 leading-relaxed text-gray-500">
+						<h3 class="relative z-10 mb-3 text-2xl font-medium text-white md:mb-4 md:text-3xl">
+							Let's hop on a call.
+						</h3>
+						<p
+							class="relative z-10 mb-8 text-sm leading-relaxed text-gray-500 md:mb-10 lg:text-base"
+						>
 							Schedule a 30-minute discovery call via Google Meet. Perfect for project briefings or
 							technical deep-dives.
 						</p>
@@ -174,12 +188,12 @@
 						</div>
 					</div>
 
-					<!-- Decorative background elements -->
+					<!-- Decorative background elements (Hidden on mobile) -->
 					<div
-						class="absolute -top-6 -right-6 -z-10 h-32 w-32 rotate-12 rounded-[28px] border border-emerald-500/10 bg-emerald-500/5 blur-[1px]"
+						class="absolute -top-6 -right-6 -z-10 hidden h-32 w-32 rotate-12 rounded-[28px] border border-emerald-500/10 bg-emerald-500/5 blur-[1px] md:block"
 					></div>
 					<div
-						class="absolute -bottom-10 -left-10 -z-10 h-40 w-40 -rotate-6 rounded-[32px] border border-emerald-500/10 bg-emerald-500/5 blur-[1px]"
+						class="absolute -bottom-10 -left-10 -z-10 hidden h-40 w-40 -rotate-6 rounded-[32px] border border-emerald-500/10 bg-emerald-500/5 blur-[1px] md:block"
 					></div>
 				</div>
 			</div>

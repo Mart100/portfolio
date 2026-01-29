@@ -108,9 +108,9 @@
 
 <svelte:window onclick={() => (isDropdownOpen = false)} onkeydown={handleKeydown} />
 
-<section id="archive" class="relative overflow-hidden border-t border-white/5 px-6 py-32">
+<section id="archive" class="relative overflow-hidden border-t border-white/5 px-6 py-16 md:py-32">
 	<div class="mx-auto max-w-7xl">
-		<div class="mb-20 space-y-6">
+		<div class="mb-12 space-y-6 md:mb-20">
 			<div class="flex items-center gap-3">
 				<div class="h-px w-8 bg-emerald-500/50"></div>
 				<span class="text-[10px] font-bold tracking-[0.3em] text-emerald-400 uppercase">
@@ -130,9 +130,9 @@
 		>
 			<!-- Controls Sidebar -->
 			<div
-				class="flex flex-col border-b border-white/5 bg-black/40 p-8 backdrop-blur-xl lg:col-span-3 lg:border-r lg:border-b-0"
+				class="flex flex-col border-b border-white/5 bg-black/40 p-6 backdrop-blur-xl md:p-8 lg:col-span-3 lg:border-r lg:border-b-0"
 			>
-				<div class="space-y-10">
+				<div class="space-y-8 md:space-y-10">
 					<div class="space-y-4">
 						<h3 class="text-[10px] font-bold tracking-widest text-emerald-400/60 uppercase">
 							Sort By
@@ -208,7 +208,6 @@
 									class="custom-scrollbar absolute top-full left-0 z-30 mt-2 max-h-60 w-full overflow-y-auto rounded-xl border border-white/10 bg-neutral-900 p-2 shadow-2xl backdrop-blur-xl"
 									onclick={(e) => e.stopPropagation()}
 								>
-									<!-- Dropdown content omitted for brevity in replacement but I will include it all in the final file -->
 									<button
 										onclick={() => {
 											filterTag = null;
@@ -245,13 +244,17 @@
 							Stats
 						</h3>
 						<div class="grid grid-cols-2 gap-4">
-							<div class="rounded-xl border border-white/5 bg-white/[0.03] p-4">
-								<div class="text-[10px] font-bold text-gray-500 uppercase">Total</div>
-								<div class="text-xl font-medium text-white">{archiveData.length}</div>
+							<div
+								class="rounded-xl border border-white/5 bg-white/[0.03] p-4 text-center sm:text-left"
+							>
+								<div class="text-[8px] font-bold text-gray-500 uppercase md:text-[10px]">Total</div>
+								<div class="text-lg font-medium text-white md:text-xl">{archiveData.length}</div>
 							</div>
-							<div class="rounded-xl border border-white/5 bg-white/[0.03] p-4">
-								<div class="text-[10px] font-bold text-gray-500 uppercase">Tags</div>
-								<div class="text-xl font-medium text-white">{allTags.length}</div>
+							<div
+								class="rounded-xl border border-white/5 bg-white/[0.03] p-4 text-center sm:text-left"
+							>
+								<div class="text-[8px] font-bold text-gray-500 uppercase md:text-[10px]">Tags</div>
+								<div class="text-lg font-medium text-white md:text-xl">{allTags.length}</div>
 							</div>
 						</div>
 					</div>
@@ -260,8 +263,8 @@
 
 			<!-- Grid Area -->
 			<div class="bg-black/20 backdrop-blur-lg lg:col-span-9">
-				<div class="custom-scrollbar h-[600px] overflow-y-auto p-12">
-					<div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
+				<div class="custom-scrollbar h-[500px] overflow-y-auto p-6 md:h-[600px] md:p-12">
+					<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-6 xl:grid-cols-5">
 						{#each filteredProjects as project (project.title)}
 							<button
 								onclick={() => (selectedProject = project)}
@@ -305,7 +308,7 @@
 		>
 			<button
 				onclick={closeModal}
-				class="absolute top-8 right-8 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-gray-400 backdrop-blur-xl transition-all hover:bg-emerald-500 hover:text-black"
+				class="absolute top-4 right-4 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-gray-400 backdrop-blur-xl transition-all hover:bg-emerald-500 hover:text-black sm:top-8 sm:right-8"
 				aria-label="Close modal"
 			>
 				<svg
@@ -329,15 +332,15 @@
 				<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden"></div>
 			</div>
 
-			<div class="custom-scrollbar flex flex-1 flex-col overflow-y-auto p-10 md:p-16">
-				<div class="mb-10">
+			<div class="custom-scrollbar flex flex-1 flex-col overflow-y-auto p-8 sm:p-10 md:p-16">
+				<div class="mb-8 md:mb-10">
 					<div class="mb-4 flex items-center gap-3">
 						<div class="h-px w-6 bg-emerald-500/50"></div>
 						<span class="text-[10px] font-bold tracking-[0.3em] text-emerald-400 uppercase">
 							{selectedProject.created}
 						</span>
 					</div>
-					<h3 class="text-4xl font-medium tracking-tight text-white md:text-5xl">
+					<h3 class="text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
 						{selectedProject.title.split(' ')[0]}
 						<span class="text-gray-500 italic"
 							>{selectedProject.title.split(' ').slice(1).join(' ')}</span
@@ -345,8 +348,8 @@
 					</h3>
 				</div>
 
-				<div class="flex-grow space-y-10">
-					<div class="text-lg leading-relaxed text-gray-400">
+				<div class="flex-grow space-y-8 md:space-y-10">
+					<div class="text-base leading-relaxed text-gray-400 md:text-lg">
 						{@html selectedProject.description}
 					</div>
 
@@ -358,7 +361,7 @@
 							<div class="flex flex-wrap gap-2">
 								{#each selectedProject.techStack as tech (tech)}
 									<span
-										class="rounded-xl border border-white/5 bg-white/[0.03] px-4 py-2 text-[10px] font-bold tracking-widest text-gray-400 uppercase"
+										class="rounded-xl border border-white/5 bg-white/[0.03] px-3 py-2 text-[9px] font-bold tracking-widest text-gray-400 uppercase md:px-4 md:text-[10px]"
 									>
 										{tech}
 									</span>
@@ -368,13 +371,13 @@
 					{/if}
 				</div>
 
-				<div class="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2">
+				<div class="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 md:mt-16 md:gap-4">
 					{#if selectedProject.link}
 						<a
 							href={selectedProject.link}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="flex items-center justify-center gap-3 rounded-2xl bg-emerald-500 px-8 py-5 text-center text-[10px] font-bold tracking-[0.2em] text-black uppercase transition-all hover:scale-[1.02] hover:bg-emerald-400 active:scale-[0.98]"
+							class="flex items-center justify-center gap-3 rounded-2xl bg-emerald-500 px-6 py-4 text-center text-[10px] font-bold tracking-[0.2em] text-black uppercase transition-all hover:scale-[1.02] hover:bg-emerald-400 active:scale-[0.98] md:px-8 md:py-5"
 						>
 							Live Demo
 							<svg
@@ -398,7 +401,7 @@
 							href={selectedProject.code}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-8 py-5 text-center text-[10px] font-bold tracking-[0.2em] text-white uppercase transition-all hover:bg-white/[0.08]"
+							class="flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-6 py-4 text-center text-[10px] font-bold tracking-[0.2em] text-white uppercase transition-all hover:bg-white/[0.08] md:px-8 md:py-5"
 						>
 							Source Code
 							<svg

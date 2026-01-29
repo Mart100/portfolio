@@ -5,9 +5,9 @@
 	let mouse = { x: 0, y: 0 };
 	let size = { width: 0, height: 0 };
 
-	const PARTICLE_COUNT = 60;
-	const CONNECTION_DISTANCE = 180;
-	const MOUSE_INFLUENCE = 150;
+	let particleCount = $state(60);
+	let connectionDistance = $state(180);
+	let mouseInfluence = $state(150);
 
 	interface Particle {
 		x: number;
@@ -21,7 +21,7 @@
 
 	function init() {
 		particles = [];
-		for (let i = 0; i < PARTICLE_COUNT; i++) {
+		for (let i = 0; i < particleCount; i++) {
 			particles.push({
 				x: Math.random() * size.width,
 				y: Math.random() * size.height,
@@ -39,6 +39,9 @@
 			canvas.width = size.width;
 			canvas.height = size.height;
 		}
+		particleCount = size.width < 768 ? 20 : 60;
+		connectionDistance = size.width < 768 ? 100 : 180;
+		mouseInfluence = size.width < 768 ? 80 : 150;
 		init();
 	}
 
@@ -84,9 +87,9 @@
 				const dy = mouse.y - p1.y;
 				const dist = Math.sqrt(dx * dx + dy * dy);
 
-				if (dist < MOUSE_INFLUENCE) {
+				if (dist < mouseInfluence) {
 					const angle = Math.atan2(dy, dx);
-					const force = (MOUSE_INFLUENCE - dist) / MOUSE_INFLUENCE;
+					const force = (mouseInfluence - dist) / mouseInfluence;
 					p1.x -= Math.cos(angle) * force * 1.5;
 					p1.y -= Math.sin(angle) * force * 1.5;
 				}
@@ -104,8 +107,8 @@
 					const dy = p1.y - p2.y;
 					const dist = Math.sqrt(dx * dx + dy * dy);
 
-					if (dist < CONNECTION_DISTANCE) {
-						ctx.strokeStyle = `rgba(16, 185, 129, ${0.4 * (1 - dist / CONNECTION_DISTANCE)})`;
+					if (dist < connectionDistance) {
+						ctx.strokeStyle = `rgba(16, 185, 129, ${0.4 * (1 - dist / connectionDistance)})`;
 						ctx.beginPath();
 						ctx.moveTo(p1.x, p1.y);
 						ctx.lineTo(p2.x, p2.y);

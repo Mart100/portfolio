@@ -3,9 +3,9 @@
 	import projects from '$lib/data/projects.json';
 </script>
 
-<section id="work" class="px-6 py-32">
+<section id="work" class="px-6 py-16 md:py-32">
 	<div class="mx-auto max-w-7xl">
-		<div class="mb-24 space-y-6">
+		<div class="mb-12 space-y-6 md:mb-24">
 			<div class="flex items-center gap-3">
 				<div class="h-px w-8 bg-emerald-500/50"></div>
 				<span class="text-[10px] font-bold tracking-[0.3em] text-emerald-400 uppercase"
@@ -17,7 +17,7 @@
 			</h2>
 		</div>
 
-		<div class="grid grid-cols-1 gap-10 sm:grid-cols-2">
+		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-10">
 			{#each projects as project}
 				<ProjectCard {...project} />
 			{/each}
