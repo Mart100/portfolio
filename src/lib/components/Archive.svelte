@@ -121,8 +121,7 @@
 				Project <span class="text-gray-500 italic">Archive.</span>
 			</h2>
 			<p class="max-w-lg text-lg text-gray-400">
-				A messy collection of custom 3D engines, geometric experiments, and tools I built while
-				learning how to code.
+				A messy collection of all of my projects over the years.
 			</p>
 		</div>
 
@@ -260,7 +259,7 @@
 			</div>
 
 			<!-- Grid Area -->
-			<div class="bg-black/20 lg:col-span-9">
+			<div class="bg-black/20 backdrop-blur-lg lg:col-span-9">
 				<div class="custom-scrollbar h-[600px] overflow-y-auto p-12">
 					<div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
 						{#each filteredProjects as project (project.title)}

@@ -43,6 +43,9 @@
 					<a href="#about" onclick={handleAnchorClick} class="transition-colors hover:text-white"
 						>About</a
 					>
+					<a href="#archive" onclick={handleAnchorClick} class="transition-colors hover:text-white"
+						>Archive</a
+					>
 				</div>
 				<a
 					href="#contact"
