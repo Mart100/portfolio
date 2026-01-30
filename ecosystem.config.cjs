@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'portfolio',
       script: 'build/index.js',
-      interpreter: 'bun',
+      interpreter: 'node',
       env: {
         NODE_ENV: 'production',
         PORT: 4020,
