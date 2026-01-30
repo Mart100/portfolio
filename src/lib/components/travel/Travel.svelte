@@ -7,6 +7,7 @@
 	let activeTripIndex = $state(-1); // -1 means global view (Globe)
 	let activeTrip = $derived(activeTripIndex === -1 ? null : travelData.trips[activeTripIndex]);
 	let selectedNode = $state<any>(null);
+	let mobileTab = $state<'list' | 'map'>('map');
 
 	// Components loaded dynamically to prevent SSR issues and improve performance
 	let Globe = $state<any>(null);
@@ -57,7 +58,7 @@
 			{#if activeTripIndex !== -1}
 				<button
 					onclick={() => (activeTripIndex = -1)}
-					class="group flex items-center gap-2 text-[10px] font-bold tracking-widest text-emerald-400 uppercase transition-colors hover:text-white"
+					class="group hidden items-center gap-2 text-[10px] font-bold tracking-widest text-emerald-400 uppercase transition-colors hover:text-white md:flex"
 				>
 					<span class="transition-transform group-hover:-translate-x-1">←</span>
 					Back to Globe
@@ -66,29 +67,92 @@
 		</div>
 
 		<div
-			class="grid grid-cols-1 gap-px overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] shadow-2xl lg:grid-cols-12"
+			class="grid grid-cols-1 overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] shadow-2xl lg:grid-cols-12"
 		>
+			<!-- Mobile Tab Switcher -->
+			<div class="flex border-b border-white/5 bg-black/40 lg:hidden">
+				{#if activeTripIndex !== -1 && mobileTab === 'list'}
+					<button
+						onclick={() => (activeTripIndex = -1)}
+						class="flex items-center justify-center border-r border-white/5 px-6 text-emerald-400 transition-colors active:bg-white/5"
+						aria-label="Back to all trips"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="2.5"
+							stroke="currentColor"
+							class="h-4 w-4"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+							/>
+						</svg>
+					</button>
+				{/if}
+				<button
+					onclick={() => (mobileTab = 'map')}
+					class="flex-1 py-4 text-[10px] font-bold tracking-[0.2em] uppercase transition-all {mobileTab ===
+					'map'
+						? 'text-emerald-400'
+						: 'text-gray-500'}"
+				>
+					Visual
+					{#if mobileTab === 'map'}
+						<div class="mx-auto mt-1 h-0.5 w-4 bg-emerald-400"></div>
+					{/if}
+				</button>
+				<div class="w-px bg-white/5"></div>
+				<button
+					onclick={() => (mobileTab = 'list')}
+					class="flex-1 py-4 text-[10px] font-bold tracking-[0.2em] uppercase transition-all {mobileTab ===
+					'list'
+						? 'text-emerald-400'
+						: 'text-gray-500'}"
+				>
+					{activeTripIndex === -1 ? 'Details' : 'Trip Nodes'}
+					{#if mobileTab === 'list'}
+						<div class="mx-auto mt-1 h-0.5 w-4 bg-emerald-400"></div>
+					{/if}
+				</button>
+			</div>
+
 			<!-- Timeline Sidebar -->
 			<div
-				class="flex h-[350px] flex-col border-white/5 bg-black/40 backdrop-blur-xl lg:col-span-4 lg:h-[600px] lg:border-r"
+				class="flex h-[450px] flex-col border-white/5 bg-black/40 backdrop-blur-xl {mobileTab ===
+				'list'
+					? 'flex'
+					: 'hidden'} lg:col-span-4 lg:flex lg:h-[600px] lg:border-r"
 			>
 				<TripSidepanel
 					{activeTrip}
 					allTrips={travelData.trips}
-					onTripSelect={(index) => (activeTripIndex = index)}
-					onNodeClick={handleNodeClick}
+					onTripSelect={(index) => {
+						activeTripIndex = index;
+					}}
+					onNodeClick={(node) => {
+						handleNodeClick(node);
+					}}
 					onBackToList={() => (activeTripIndex = -1)}
 				/>
 			</div>
 
 			<!-- Interactive Visualization -->
-			<div class="relative h-[400px] bg-black lg:col-span-8 lg:h-[600px]">
-				<div class="absolute inset-0" class:hidden={activeTripIndex !== -1}>
+			<div
+				class="relative h-[450px] bg-black {mobileTab === 'map'
+					? 'block'
+					: 'hidden'} lg:col-span-8 lg:block lg:h-[600px]"
+			>
+				<!-- Show Globe: Always on mobile map tab, or on desktop when no trip is active -->
+				<div class="absolute inset-0" class:lg:hidden={activeTripIndex !== -1} class:block={true}>
 					{#if Globe}
 						<Globe
 							visitedCountries={travelData.visited}
 							places={travelData.places}
-							isVisible={activeTripIndex === -1}
+							isVisible={mobileTab === 'map' || activeTripIndex === -1}
 						/>
 					{:else}
 						<div
@@ -99,13 +163,14 @@
 					{/if}
 				</div>
 
+				<!-- Show Map: Only on desktop when a trip is active -->
 				{#if MapLibreView}
-					<div class="absolute inset-0" class:hidden={activeTripIndex === -1}>
+					<div class="absolute inset-0 hidden lg:block" class:lg:hidden={activeTripIndex === -1}>
 						<MapLibreView {activeTrip} {selectedNode} isVisible={activeTripIndex !== -1} />
 					</div>
 				{:else if activeTripIndex !== -1}
 					<div
-						class="flex h-full items-center justify-center font-mono text-[10px] tracking-widest text-white/20 uppercase"
+						class="absolute inset-0 hidden items-center justify-center font-mono text-[10px] tracking-widest text-white/20 uppercase lg:flex"
 					>
 						Initializing Map System...
 					</div>
@@ -113,14 +178,16 @@
 
 				<!-- HUD -->
 				<div class="pointer-events-none absolute bottom-8 left-8">
-					<div class="space-y-2">
+					<div class="space-y-1 lg:space-y-2">
 						<div class="flex items-center gap-3">
 							<div class="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400"></div>
-							<span class="text-[10px] font-bold tracking-widest text-white uppercase">
+							<span
+								class="text-[9px] font-bold tracking-widest text-white uppercase md:text-[10px]"
+							>
 								{activeTripIndex === -1 ? 'Globe Exploration' : 'Mapping ' + activeTrip?.name}
 							</span>
 						</div>
-						<div class="font-mono text-[9px] tracking-tight text-gray-500 uppercase">
+						<div class="font-mono text-[8px] tracking-tight text-gray-500 uppercase md:text-[9px]">
 							{activeTripIndex === -1 ? 'Click countries to view nodes' : '52.3676° N, 4.9041° E'}
 						</div>
 					</div>

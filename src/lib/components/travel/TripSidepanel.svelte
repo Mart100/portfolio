@@ -74,7 +74,9 @@
 <div class="relative flex h-full flex-col overflow-hidden">
 	{#if view === 'detail' && activeTrip}
 		<!-- Header for Detail View -->
-		<div class="flex items-center justify-between border-b border-white/5 bg-black/20 p-6">
+		<div
+			class="hidden items-center justify-between border-b border-white/5 bg-black/20 p-6 md:flex"
+		>
 			<button
 				class="flex items-center gap-2 text-[10px] font-bold tracking-widest text-gray-500 uppercase transition-colors hover:text-white"
 				onclick={goBackToList}

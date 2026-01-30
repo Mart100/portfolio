@@ -155,6 +155,27 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Mobile Scroll Indicator -->
+	<div
+		class="absolute bottom-12 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 md:hidden"
+	>
+		<span class="text-[9px] font-bold tracking-[0.2em] text-gray-500 uppercase">
+			See my projects
+		</span>
+		<div class="animate-bounce text-emerald-400">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="2.5"
+				stroke="currentColor"
+				class="h-4 w-4"
+			>
+				<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+			</svg>
+		</div>
+	</div>
 </section>
 
 <style>

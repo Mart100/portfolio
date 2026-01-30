@@ -4,6 +4,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import { SvelteSet } from 'svelte/reactivity';
 	import { browser } from '$app/environment';
+	import ArchiveModal from './ArchiveModal.svelte';
 
 	interface Project {
 		title: string;
@@ -93,17 +94,9 @@
 	// Close modal on escape
 	function handleKeydown(e: KeyboardEvent) {
 		if (e.key === 'Escape') {
-			closeModal();
 			isDropdownOpen = false;
 		}
 	}
-
-	// Disable body scroll when modal is open
-	$effect(() => {
-		if (browser) {
-			document.body.style.overflow = selectedProject ? 'hidden' : '';
-		}
-	});
 </script>
 
 <svelte:window onclick={() => (isDropdownOpen = false)} onkeydown={handleKeydown} />
@@ -294,136 +287,7 @@
 </section>
 
 {#if selectedProject}
-	<!-- svelte-ignore a11y_click_events_have_key_events -->
-	<!-- svelte-ignore a11y_no_static_element_interactions -->
-	<div
-		transition:fade={{ duration: 200 }}
-		class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-6 backdrop-blur-sm"
-		onclick={closeModal}
-	>
-		<div
-			transition:fly={{ y: 20, duration: 400 }}
-			class="relative flex max-h-[85vh] w-full max-w-5xl flex-col overflow-hidden rounded-[32px] border border-white/10 bg-[#0a0a0a] shadow-[0_0_100px_rgba(0,0,0,0.5)] md:flex-row"
-			onclick={(e) => e.stopPropagation()}
-		>
-			<button
-				onclick={closeModal}
-				class="absolute top-4 right-4 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-gray-400 backdrop-blur-xl transition-all hover:bg-emerald-500 hover:text-black sm:top-8 sm:right-8"
-				aria-label="Close modal"
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke-width="2"
-					stroke="currentColor"
-					class="h-5 w-5"
-				>
-					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-				</svg>
-			</button>
-
-			<div class="relative w-full bg-neutral-900 md:w-[45%]">
-				<img
-					src={getThumbnail(selectedProject)}
-					alt={selectedProject.title}
-					class="h-full w-full object-cover"
-				/>
-				<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden"></div>
-			</div>
-
-			<div class="custom-scrollbar flex flex-1 flex-col overflow-y-auto p-8 sm:p-10 md:p-16">
-				<div class="mb-8 md:mb-10">
-					<div class="mb-4 flex items-center gap-3">
-						<div class="h-px w-6 bg-emerald-500/50"></div>
-						<span class="text-[10px] font-bold tracking-[0.3em] text-emerald-400 uppercase">
-							{selectedProject.created}
-						</span>
-					</div>
-					<h3 class="text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
-						{selectedProject.title.split(' ')[0]}
-						<span class="text-gray-500 italic"
-							>{selectedProject.title.split(' ').slice(1).join(' ')}</span
-						>
-					</h3>
-				</div>
-
-				<div class="flex-grow space-y-8 md:space-y-10">
-					<div class="text-base leading-relaxed text-gray-400 md:text-lg">
-						{@html selectedProject.description}
-					</div>
-
-					{#if selectedProject.techStack && selectedProject.techStack.length > 0}
-						<div class="space-y-4">
-							<h4 class="text-[10px] font-bold tracking-widest text-emerald-400/60 uppercase">
-								Tech Stack
-							</h4>
-							<div class="flex flex-wrap gap-2">
-								{#each selectedProject.techStack as tech (tech)}
-									<span
-										class="rounded-xl border border-white/5 bg-white/[0.03] px-3 py-2 text-[9px] font-bold tracking-widest text-gray-400 uppercase md:px-4 md:text-[10px]"
-									>
-										{tech}
-									</span>
-								{/each}
-							</div>
-						</div>
-					{/if}
-				</div>
-
-				<div class="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 md:mt-16 md:gap-4">
-					{#if selectedProject.link}
-						<a
-							href={selectedProject.link}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="flex items-center justify-center gap-3 rounded-2xl bg-emerald-500 px-6 py-4 text-center text-[10px] font-bold tracking-[0.2em] text-black uppercase transition-all hover:scale-[1.02] hover:bg-emerald-400 active:scale-[0.98] md:px-8 md:py-5"
-						>
-							Live Demo
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke-width="2.5"
-								stroke="currentColor"
-								class="h-3 w-3"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-								/>
-							</svg>
-						</a>
-					{/if}
-					{#if selectedProject.code}
-						<a
-							href={selectedProject.code}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-6 py-4 text-center text-[10px] font-bold tracking-[0.2em] text-white uppercase transition-all hover:bg-white/[0.08] md:px-8 md:py-5"
-						>
-							Source Code
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke-width="2.5"
-								stroke="currentColor"
-								class="h-3 w-3"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
-								/>
-							</svg>
-						</a>
-					{/if}
-				</div>
-			</div>
-		</div>
-	</div>
+	<ArchiveModal project={selectedProject} onclose={closeModal} />
 {/if}
 
 <style>
