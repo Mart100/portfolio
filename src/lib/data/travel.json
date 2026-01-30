@@ -41,72 +41,71 @@
 					"lng": 116.4074,
 					"date": "May 1",
 					"caption": "The Great Wall was even more massive than I imagined.",
-					"image": "https://images.unsplash.com/photo-1508804185872-47adb4b6746f?auto=format&fit=crop&q=80&w=800"
+					"image": ""
+				},
+				{
+					"name": "Gubeikou",
+					"lat": 40.683586,
+					"lng": 117.164399,
+					"date": "",
+					"caption": "",
+					"image": ""
 				},
 				{
 					"name": "Xi'an",
-					"lat": 34.2658,
-					"lng": 108.9541,
-					"date": "May 8",
-					"caption": "Terracotta Army and incredible food at the Muslim Quarter.",
-					"image": "https://images.unsplash.com/photo-1599572412854-7279b9b5bb41?auto=format&fit=crop&q=80&w=800"
+					"lat": 34.260756,
+					"lng": 108.941704,
+					"date": "",
+					"caption": "",
+					"image": ""
 				},
 				{
-					"name": "Chengdu",
-					"lat": 30.5728,
-					"lng": 104.0668,
-					"date": "May 15",
-					"caption": "Pandas and the most spicy hotpot I've ever had.",
-					"image": "https://images.unsplash.com/photo-1529144415895-6aaf8be872ec?auto=format&fit=crop&q=80&w=800"
-				},
-				{
-					"name": "Zhangjiajie",
-					"lat": 29.117,
-					"lng": 110.479,
-					"date": "May 22",
-					"caption": "The floating mountains that inspired Avatar.",
-					"image": "https://images.unsplash.com/photo-1549693578-d683be217e58?auto=format&fit=crop&q=80&w=800"
+					"name": "Chongqing",
+					"lat": 29.559971,
+					"lng": 106.567797,
+					"date": "",
+					"caption": "",
+					"image": ""
 				},
 				{
 					"name": "Shanghai",
-					"lat": 31.2304,
-					"lng": 121.4737,
-					"date": "May 28",
-					"caption": "The neon skyline of the future.",
-					"image": "https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?auto=format&fit=crop&q=80&w=800"
-				}
-			]
-		},
-		{
-			"id": "japan-2023",
-			"name": "Japan Discovery",
-			"description": "Exploring the blend of tradition and future across the Japanese archipelago.",
-			"startDate": "2023-11-01",
-			"endDate": "2023-12-01",
-			"path": [
-				{
-					"name": "Tokyo",
-					"lat": 35.6762,
-					"lng": 139.6503,
-					"date": "Nov 1",
-					"caption": "Shibuya Crossing and endless ramen.",
-					"image": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&q=80&w=800"
+					"lat": 31.239456,
+					"lng": 121.501829,
+					"date": "",
+					"caption": "",
+					"image": ""
 				},
 				{
-					"name": "Kyoto",
-					"lat": 35.0116,
-					"lng": 135.7681,
-					"date": "Nov 10",
-					"caption": "Golden Pavilion and peaceful Zen gardens.",
-					"image": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=800"
+					"name": "Zhangjiajie",
+					"lat": 29.110662,
+					"lng": 110.48107,
+					"date": "",
+					"caption": "",
+					"image": ""
 				},
 				{
-					"name": "Osaka",
-					"lat": 34.6937,
-					"lng": 135.5023,
-					"date": "Nov 20",
-					"caption": "Dotonbori neon and world-class street food.",
-					"image": "https://images.unsplash.com/photo-1590559899731-397e79438260?auto=format&fit=crop&q=80&w=800"
+					"name": "Guilin",
+					"lat": 25.280301,
+					"lng": 110.296012,
+					"date": "",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Shenzhen",
+					"lat": 22.537957,
+					"lng": 114.054635,
+					"date": "",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Hong Kong",
+					"lat": 22.298618,
+					"lng": 114.172827,
+					"date": "",
+					"caption": "",
+					"image": ""
 				}
 			]
 		},
