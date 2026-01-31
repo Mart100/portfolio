@@ -119,14 +119,22 @@ export async function saveAndSync(type: string, data: unknown, commitMsg?: strin
 
 	// 3. PM2 Reload (optional based on ENV)
 	if (PM2_RELOAD === 'true') {
-		// Wait for Git sync (push) to complete before triggering reload
 		syncPromise.finally(() => {
 			setTimeout(async () => {
 				try {
 					console.log('Triggering PM2 reload...');
-					await execAsync('pm2 reload portfolio');
-				} catch (e) {
-					console.error('PM2 reload failed:', e);
+					const { stdout } = await execAsync('pm2 reload portfolio');
+					if (stdout.includes('[PM2] Applying action reload')) {
+						console.log('PM2 reload command accepted.');
+					}
+				} catch (e: unknown) {
+					// Ignore errors caused by the process being interrupted by its own reload
+					const err = e as { signal?: string } | undefined;
+					if (err?.signal === 'SIGINT' || err?.signal === 'SIGTERM') {
+						console.log('PM2 reload in progress (process received signal).');
+					} else {
+						console.error('PM2 reload failed with unexpected error:', e);
+					}
 				}
 			}, 500);
 		});
