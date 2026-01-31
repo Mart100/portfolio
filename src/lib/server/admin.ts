@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { simpleGit, type SimpleGit } from 'simple-git';
-import { env } from '$env/dynamic/private';
+import { GIT_AUTO_SYNC, GIT_REMOTE_URL, PM2_RELOAD } from '$env/static/private';
 import { exec } from 'node:child_process';
 import { promisify } from 'node:util';
 
@@ -54,7 +54,7 @@ export async function saveAndSync(type: string, data: unknown, commitMsg?: strin
 	console.log(`Data for type "${type}" saved to ${filePath}`);
 
 	// 2. Git Sync (optional based on ENV)
-	if (env.GIT_AUTO_SYNC === 'true') {
+	if (GIT_AUTO_SYNC === 'true') {
 		console.log(`Starting Git auto-sync for ${type}...`);
 		try {
 			const git: SimpleGit = simpleGit();
@@ -63,10 +63,10 @@ export async function saveAndSync(type: string, data: unknown, commitMsg?: strin
 			const isRepo = await git.checkIsRepo();
 			if (isRepo) {
 				// Configure remote (SSH or HTTPS)
-				if (env.GIT_REMOTE_URL) {
-					console.log(`Configuring Git remote to: ${env.GIT_REMOTE_URL}`);
+				if (GIT_REMOTE_URL) {
+					console.log(`Configuring Git remote to: ${GIT_REMOTE_URL}`);
 					await git.removeRemote('origin').catch(() => {});
-					await git.addRemote('origin', env.GIT_REMOTE_URL);
+					await git.addRemote('origin', GIT_REMOTE_URL);
 				}
 
 				console.log(`Adding ${filePath} to index...`);
@@ -117,7 +117,7 @@ export async function saveAndSync(type: string, data: unknown, commitMsg?: strin
 	}
 
 	// 3. PM2 Reload (optional based on ENV)
-	if (env.PM2_RELOAD === 'true') {
+	if (PM2_RELOAD === 'true') {
 		// Caution: This will skip waiting for the reload to finish to respond faster
 		// but it might restart the process while Git is still pushing.
 		// Since git.push() above is also backgrounded, we should be okay
