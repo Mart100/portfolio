@@ -37,7 +37,6 @@
 <style>
 	:global(body) {
 		background-color: #0a0a0a;
-		overflow: hidden;
 	}
 
 	::-webkit-scrollbar {

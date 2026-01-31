@@ -1,23 +1,11 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 	import { browser } from '$app/environment';
+	import type { ArchiveItem } from '$lib/types';
 
-	interface Project {
-		title: string;
-		image: string;
-		backupImage?: string;
-		link?: string;
-		code?: string;
-		created: string;
-		score: number | { $numberLong: string };
-		description: string;
-		techStack?: string[];
-		tags?: string[];
-	}
+	let { project, onclose }: { project: ArchiveItem; onclose: () => void } = $props();
 
-	let { project, onclose }: { project: Project; onclose: () => void } = $props();
-
-	function getThumbnail(p: Project): string {
+	function getThumbnail(p: ArchiveItem): string {
 		if (p.image && p.image !== '') {
 			return 'https://assets.martvenck.com/portfolio/archive/170x170/' + p.image;
 		} else if (p.backupImage && p.backupImage !== '') {
@@ -173,20 +161,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	.custom-scrollbar::-webkit-scrollbar {
-		width: 4px;
-	}
-	.custom-scrollbar::-webkit-scrollbar-track {
-		background: rgba(255, 255, 255, 0.02);
-		border-radius: 2px;
-	}
-	.custom-scrollbar::-webkit-scrollbar-thumb {
-		background: rgba(255, 255, 255, 0.1);
-		border-radius: 2px;
-	}
-	.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-		background: rgba(255, 255, 255, 0.2);
-	}
-</style>

@@ -47,7 +47,7 @@
 		<div class="mb-12 flex flex-col justify-between gap-6 md:mb-20 md:flex-row md:items-end">
 			<div class="space-y-4">
 				<div class="flex items-center gap-3">
-					<div class="h-px w-8 bg-emerald-500/50"></div>
+					<div class="h-px w-8 bg-emerald-400/50"></div>
 					<span class="text-[10px] font-bold tracking-[0.3em] text-emerald-400 uppercase">
 						Digital Nomad
 					</span>

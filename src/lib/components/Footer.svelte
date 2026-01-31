@@ -10,7 +10,7 @@
 	>
 		<div class="space-y-4 text-center md:text-left">
 			<div class="flex items-center justify-center gap-3 md:justify-start">
-				<div class="h-px w-8 bg-emerald-500/50"></div>
+				<div class="h-px w-8 bg-emerald-400/50"></div>
 				<span class="text-[10px] font-bold tracking-[0.3em] text-emerald-400 uppercase">Status</span
 				>
 			</div>

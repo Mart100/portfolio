@@ -13,7 +13,7 @@ export interface ArchiveItem {
 	link?: string;
 	code?: string;
 	created: string;
-	score: number | { $numberLong: string };
+	score: number;
 	description: string;
 	techStack?: string[];
 	tags?: string[];

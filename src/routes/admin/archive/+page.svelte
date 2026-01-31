@@ -10,9 +10,7 @@
 	let { data, form }: PageProps = $props();
 
 	// Load initial state from layout data - forked state for local editing
-	let archive = $state(
-		untrack(() => (data.archive ? JSON.parse(JSON.stringify(data.archive)) : []))
-	);
+	let archive = $state(untrack(() => (data.archive ? $state.snapshot(data.archive) : [])));
 	let saving = $state(false);
 	let message = $state('');
 	let commitMessage = $state('');
@@ -29,7 +27,7 @@
 				image: '',
 				link: '',
 				description: '',
-				created: new Date().toLocaleDateString('en-GB'),
+				created: new Date().toISOString().split('T')[0],
 				score: 0,
 				tags: [],
 				techStack: []
@@ -65,7 +63,7 @@
 				saving = false;
 
 				if (result.type === 'success') {
-					archive = JSON.parse(JSON.stringify(data.archive));
+					archive = $state.snapshot(data.archive);
 					commitMessage = '';
 				}
 			};
@@ -169,9 +167,9 @@
 							>
 							<input
 								id="project-created"
+								type="date"
 								bind:value={archive[editingIndex].created}
 								class="w-full rounded-2xl border border-white/5 bg-white/5 p-4 text-white outline-none focus:ring-1 focus:ring-emerald-500"
-								placeholder="e.g. 12/04/2018"
 							/>
 						</div>
 						<div class="space-y-2">
@@ -183,17 +181,7 @@
 							<input
 								id="project-score"
 								type="number"
-								value={typeof archive[editingIndex].score === 'object'
-									? archive[editingIndex].score.$numberLong
-									: archive[editingIndex].score}
-								oninput={(e) => {
-									const val = parseInt((e.target as HTMLInputElement).value);
-									if (typeof archive[editingIndex!].score === 'object') {
-										archive[editingIndex!].score.$numberLong = val.toString();
-									} else {
-										archive[editingIndex!].score = val;
-									}
-								}}
+								bind:value={archive[editingIndex].score}
 								class="w-full rounded-2xl border border-white/5 bg-white/5 p-4 text-white outline-none focus:ring-1 focus:ring-emerald-500"
 							/>
 						</div>

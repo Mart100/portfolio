@@ -13,14 +13,6 @@
 
 	const projects = $derived(archiveData as ArchiveItem[]);
 
-	// Helper to normalize score
-	function getScore(p: ArchiveItem): number {
-		if (typeof p.score === 'object' && p.score !== null && '$numberLong' in p.score) {
-			return parseInt(p.score.$numberLong);
-		}
-		return typeof p.score === 'number' ? p.score : 0;
-	}
-
 	function getThumbnail(p: ArchiveItem): string {
 		if (p.image && p.image !== '') {
 			return 'https://assets.martvenck.com/portfolio/archive/170x170/' + p.image;
@@ -33,20 +25,18 @@
 
 	// Helper to normalize date for sorting
 	function getUnixTime(dateStr: string): number {
-		if (!dateStr || dateStr === '00/00/0000') return 0;
+		if (!dateStr || dateStr.startsWith('0000')) return 0;
 		try {
-			// Clean string (e.g. "00./0/2018")
-			const cleanStr = dateStr.replace(/[^0-9\/\-.]/g, '');
-			const parts = cleanStr.split(/[\/\-.]/);
+			const date = new Date(dateStr);
+			if (!isNaN(date.getTime())) return date.getTime();
 
+			// Fallback for partial ISO dates like "2018-00-00"
+			const parts = dateStr.split('-');
 			if (parts.length === 3) {
-				const day = Math.max(1, parseInt(parts[0]) || 1);
-				const month = Math.max(0, (parseInt(parts[1]) || 1) - 1);
-				const year = parseInt(parts[2]);
-				if (!isNaN(year)) return new Date(year, month, day).getTime();
-			} else if (parts.length === 1) {
 				const year = parseInt(parts[0]);
-				if (!isNaN(year)) return new Date(year, 0, 1).getTime();
+				const month = Math.max(0, (parseInt(parts[1]) || 1) - 1);
+				const day = Math.max(1, parseInt(parts[2]) || 1);
+				if (!isNaN(year)) return new Date(year, month, day).getTime();
 			}
 		} catch (e) {}
 		return 0;
@@ -67,7 +57,7 @@
 
 		return filtered.sort((a, b) => {
 			if (sortBy === 'score') {
-				return getScore(b) - getScore(a);
+				return b.score - a.score;
 			} else {
 				return getUnixTime(b.created) - getUnixTime(a.created);
 			}
@@ -92,7 +82,7 @@
 	<div class="mx-auto max-w-7xl">
 		<div class="mb-12 space-y-6 md:mb-20">
 			<div class="flex items-center gap-3">
-				<div class="h-px w-8 bg-emerald-500/50"></div>
+				<div class="h-px w-8 bg-emerald-400/50"></div>
 				<span class="text-[10px] font-bold tracking-[0.3em] text-emerald-400 uppercase">
 					The Vault
 				</span>
@@ -248,6 +238,7 @@
 						{#each filteredProjects as project (project.title)}
 							<button
 								onclick={() => (selectedProject = project)}
+								aria-label="View {project.title}"
 								class="group relative aspect-square overflow-hidden rounded-2xl bg-neutral-900/50 text-left transition-all active:scale-95"
 							>
 								<img
@@ -276,21 +267,3 @@
 {#if selectedProject}
 	<ArchiveModal project={selectedProject} onclose={closeModal} />
 {/if}
-
-<style>
-	/* Custom scrollbar */
-	.custom-scrollbar::-webkit-scrollbar {
-		width: 4px;
-	}
-	.custom-scrollbar::-webkit-scrollbar-track {
-		background: rgba(255, 255, 255, 0.02);
-		border-radius: 2px;
-	}
-	.custom-scrollbar::-webkit-scrollbar-thumb {
-		background: rgba(255, 255, 255, 0.1);
-		border-radius: 2px;
-	}
-	.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-		background: rgba(255, 255, 255, 0.2);
-	}
-</style>

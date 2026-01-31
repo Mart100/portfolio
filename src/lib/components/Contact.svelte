@@ -45,7 +45,7 @@
 				<div class="space-y-8 md:space-y-12">
 					<div class="space-y-4 md:space-y-6">
 						<div class="flex items-center gap-3">
-							<div class="h-px w-8 bg-emerald-500/50"></div>
+							<div class="h-px w-8 bg-emerald-400/50"></div>
 							<span
 								class="text-[9px] font-bold tracking-[0.3em] text-emerald-400 uppercase md:text-[10px]"
 								>Connect</span

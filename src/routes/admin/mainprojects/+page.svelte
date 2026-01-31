@@ -9,9 +9,7 @@
 	let { data, form }: PageProps = $props();
 
 	// Load initial state from layout data - forked state for local editing
-	let projects = $state(
-		untrack(() => (data.projects ? JSON.parse(JSON.stringify(data.projects)) : []))
-	);
+	let projects = $state(untrack(() => (data.projects ? $state.snapshot(data.projects) : [])));
 	let saving = $state(false);
 	let message = $state('');
 	let commitMessage = $state('');
@@ -47,7 +45,7 @@
 				saving = false;
 
 				if (result.type === 'success') {
-					projects = JSON.parse(JSON.stringify(data.projects));
+					projects = $state.snapshot(data.projects);
 					commitMessage = '';
 				}
 			};

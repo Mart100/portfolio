@@ -99,105 +99,100 @@
 			</div>
 		</div>
 
-		<div class="flex items-center justify-between gap-4 md:justify-end">
-			{#if hasChanges && !saving}
-				<div
-					in:fly={{ x: 20, duration: 300 }}
-					class="flex flex-1 flex-col items-end gap-1 md:flex-none md:flex-row md:items-center md:gap-4"
-				>
-					<input
-						type="text"
-						name="message"
-						bind:value={commitMessage}
-						placeholder="Git message..."
-						class="w-full rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-[10px] text-white placeholder:text-neutral-600 focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 focus:outline-none md:w-48"
-					/>
-
-					<div class="hidden flex-col items-end md:flex">
-						{#if message}
-							<div
-								in:fly={{ y: 5, duration: 300 }}
-								out:fade
-								class="text-[9px] font-black tracking-widest text-emerald-400 uppercase"
-							>
-								{message}
-							</div>
-						{:else}
-							<div class="flex items-center gap-2">
-								<div class="h-1.5 w-1.5 animate-pulse rounded-full bg-amber-500"></div>
-								<span class="text-[9px] font-black tracking-widest text-amber-500 uppercase"
-									>Unsaved</span
-								>
-							</div>
-						{/if}
-					</div>
-				</div>
-			{:else}
-				<div class="flex flex-col items-end">
-					{#if message}
-						<div
-							in:fly={{ y: 5, duration: 300 }}
-							out:fade
-							class="text-[9px] font-black tracking-widest text-emerald-400 uppercase"
-						>
-							{message}
-						</div>
-					{:else}
+		<div class="flex items-center justify-end gap-3 md:gap-6">
+			<div class="grid items-center justify-end">
+				{#if hasChanges || saving}
+					<div
+						transition:fade={{ duration: 150 }}
+						class="col-start-1 row-start-1 flex items-center gap-3 rounded-full border border-white/5 bg-white/[0.02] px-1 py-1 pr-4 shadow-inner"
+					>
+						<input
+							type="text"
+							name="message"
+							bind:value={commitMessage}
+							disabled={saving}
+							placeholder="Commit message..."
+							class="h-7 w-28 rounded-full bg-black/40 px-3 text-[10px] text-white placeholder:text-neutral-700 focus:ring-1 focus:ring-emerald-500/30 focus:outline-none md:w-44"
+						/>
 						<div class="flex items-center gap-2">
-							<div class="h-1.5 w-1.5 rounded-full bg-emerald-500/50"></div>
-							<span class="text-[9px] font-black tracking-widest text-neutral-500 uppercase"
-								>Synced</span
+							<div
+								class="h-1.5 w-1.5 rounded-full {saving
+									? 'animate-pulse bg-emerald-500'
+									: 'bg-amber-500'}"
+							></div>
+							<span
+								class="hidden text-[9px] font-black tracking-widest uppercase md:block {saving
+									? 'text-emerald-500'
+									: 'text-amber-500'}"
 							>
+								{saving ? 'Saving' : 'Pending'}
+							</span>
 						</div>
-					{/if}
-				</div>
-			{/if}
+					</div>
+				{:else if message}
+					<div
+						in:fly={{ y: 5, duration: 200, delay: 100 }}
+						out:fade={{ duration: 150 }}
+						class="col-start-1 row-start-1 flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-1.5"
+					>
+						<svg
+							class="h-3 w-3 text-emerald-500"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="3"
+								d="M5 13l4 4L19 7"
+							/>
+						</svg>
+						<span class="text-[9px] font-black tracking-widest text-emerald-400 uppercase">
+							{message.replace('Successfully saved ', '')}
+						</span>
+					</div>
+				{:else}
+					<div
+						transition:fade={{ duration: 150 }}
+						class="col-start-1 row-start-1 flex items-center gap-2 px-2 text-right opacity-40"
+					>
+						<div class="h-1 w-1 rounded-full bg-neutral-600"></div>
+						<span class="text-[9px] font-black tracking-widest text-neutral-600 uppercase"
+							>Cloud Synced</span
+						>
+					</div>
+				{/if}
+			</div>
 
 			<button
 				type="submit"
 				disabled={saving || !hasChanges}
-				class="group relative flex items-center gap-2 overflow-hidden rounded-full border px-6 py-2 text-[10px] font-black tracking-[0.2em] uppercase transition-all md:px-8 md:py-2.5
+				class="group relative flex h-10 items-center justify-center overflow-hidden rounded-full border px-6 text-[10px] font-black tracking-[0.2em] uppercase transition-all md:px-10
 				{saving
-					? 'border-emerald-500/20 bg-emerald-500/10 text-emerald-400 opacity-70'
+					? 'border-emerald-500/20 bg-emerald-500/10 text-emerald-400'
 					: hasChanges
-						? 'border-emerald-500 bg-emerald-500 text-black hover:scale-105 active:scale-95'
+						? 'border-emerald-500 bg-emerald-500 text-black shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:scale-105 active:scale-95'
 						: 'cursor-not-allowed border-white/5 bg-white/[0.02] text-neutral-500'}"
 			>
 				{#if saving}
 					<div
-						class="h-3 w-3 animate-spin rounded-full border-2 border-emerald-400 border-t-transparent group-hover:border-black md:h-4 md:w-4"
+						class="h-3 w-3 animate-spin rounded-full border-2 border-emerald-400 border-t-transparent"
 					></div>
-					<span>Saving...</span>
 				{:else if hasChanges}
-					<svg
-						class="h-3.5 w-3.5 md:h-4 md:w-4"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="3"
-							d="M5 13l4 4L19 7"
-						/>
-					</svg>
-					<span>Save Changes</span>
+					<span>Deploy Changes</span>
 				{:else}
-					<svg
-						class="h-3.5 w-3.5 md:h-4 md:w-4"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2.5"
-							d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-						/>
-					</svg>
-					<span>Synced</span>
+					<div class="flex items-center gap-2">
+						<svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2.5"
+								d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+							/>
+						</svg>
+						<span class="hidden sm:inline">Up to date</span>
+					</div>
 				{/if}
 			</button>
 		</div>

@@ -11,15 +11,6 @@
 		if (image.startsWith('http')) return image;
 		return 'https://assets.martvenck.com/portfolio/archive/170x170/' + image;
 	}
-
-	function getScore(score: any): number {
-		if (typeof score === 'object' && score !== null && '$numberLong' in score) {
-			return parseInt(score.$numberLong);
-		}
-		return typeof score === 'number' ? score : 0;
-	}
-
-	const displayScore = $derived(getScore(item.score));
 </script>
 
 <div
@@ -64,7 +55,7 @@
 				<div class="flex gap-0.5">
 					{#each { length: 3 } as _, starI}
 						<div
-							class="h-1 w-1 rounded-full {displayScore > starI * 30
+							class="h-1 w-1 rounded-full {item.score > starI * 30
 								? 'bg-emerald-500'
 								: 'bg-neutral-800'}"
 						></div>

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
-	import maplibregl from 'maplibre-gl';
 	import 'maplibre-gl/dist/maplibre-gl.css';
 
 	let { activeTrip, selectedNode, isVisible } = $props<{
@@ -11,10 +10,59 @@
 	}>();
 
 	let mapContainer: HTMLDivElement;
-	let map: maplibregl.Map | null = null;
+	let map: any = null;
+	let ml: any = null; // Store maplibre-gl library reference
 	let isLoaded = $state(false);
 	let isFirstNodeForTrip = $state(true);
 	let lastTripId = $state<string | null>(null);
+
+	onMount(async () => {
+		if (!browser) return;
+
+		const maplibregl = await import('maplibre-gl');
+		ml = maplibregl.default;
+
+		if (!mapContainer) return;
+
+		map = new ml.Map({
+			container: mapContainer,
+			style: {
+				version: 8,
+				sources: {
+					'raster-tiles': {
+						type: 'raster',
+						tiles: ['https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png'],
+						tileSize: 256,
+						attribution: '&copy; OpenStreetMap &copy; CARTO'
+					}
+				},
+				layers: [
+					{
+						id: 'simple-tiles',
+						type: 'raster',
+						source: 'raster-tiles',
+						minzoom: 0,
+						maxzoom: 22
+					}
+				]
+			},
+			center: [selectedNode?.lng || 0, selectedNode?.lat || 0],
+			zoom: 2,
+			attributionControl: false
+		});
+
+		map.on('load', () => {
+			isLoaded = true;
+			updateTripPath();
+			updateSelectedNodeHighlight();
+		});
+	});
+
+	onDestroy(() => {
+		if (map) {
+			map.remove();
+		}
+	});
 
 	// Watch for visibility changes to resize the map
 	$effect(() => {
@@ -70,12 +118,12 @@
 	});
 
 	function getTripBounds() {
-		if (!activeTrip || !activeTrip.path || activeTrip.path.length === 0) return null;
+		if (!activeTrip || !activeTrip.path || activeTrip.path.length === 0 || !ml) return null;
 		const path = activeTrip.path;
 		const coordinates = path.map((p: any) => [p.lng, p.lat] as [number, number]);
 		return coordinates.reduce(
-			(acc: maplibregl.LngLatBounds, coord: [number, number]) => acc.extend(coord),
-			new maplibregl.LngLatBounds(coordinates[0], coordinates[0])
+			(acc: any, coord: [number, number]) => acc.extend(coord),
+			new ml.LngLatBounds(coordinates[0], coordinates[0])
 		);
 	}
 
@@ -97,9 +145,9 @@
 			]
 		};
 
-		const source = map.getSource(sourceId) as maplibregl.GeoJSONSource;
+		const source = map.getSource(sourceId);
 		if (source) {
-			source.setData(geojson);
+			(source as any).setData(geojson);
 		} else {
 			map.addSource(sourceId, { type: 'geojson', data: geojson });
 			map.addLayer({
@@ -164,9 +212,9 @@
 		};
 
 		// Update or Add Route
-		const routeSource = map.getSource(routeSourceId) as maplibregl.GeoJSONSource;
+		const routeSource = map.getSource(routeSourceId);
 		if (routeSource) {
-			routeSource.setData(routeGeojson);
+			(routeSource as any).setData(routeGeojson);
 		} else {
 			map.addSource(routeSourceId, { type: 'geojson', data: routeGeojson });
 			map.addLayer({
@@ -179,9 +227,9 @@
 		}
 
 		// Update or Add Nodes
-		const nodesSource = map.getSource(nodesSourceId) as maplibregl.GeoJSONSource;
+		const nodesSource = map.getSource(nodesSourceId);
 		if (nodesSource) {
-			nodesSource.setData(nodesGeojson);
+			(nodesSource as any).setData(nodesGeojson);
 		} else {
 			map.addSource(nodesSourceId, { type: 'geojson', data: nodesGeojson });
 			map.addLayer({
@@ -205,48 +253,6 @@
 			}
 		}
 	}
-
-	onMount(() => {
-		if (!browser || !mapContainer) return;
-
-		map = new maplibregl.Map({
-			container: mapContainer,
-			style: {
-				version: 8,
-				sources: {
-					'raster-tiles': {
-						type: 'raster',
-						tiles: ['https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png'],
-						tileSize: 256,
-						attribution: '&copy; OpenStreetMap &copy; CARTO'
-					}
-				},
-				layers: [
-					{
-						id: 'simple-tiles',
-						type: 'raster',
-						source: 'raster-tiles',
-						minzoom: 0,
-						maxzoom: 22
-					}
-				]
-			},
-			center: [0, 0],
-			zoom: 2,
-			attributionControl: false
-		});
-
-		map.on('load', () => {
-			isLoaded = true;
-			updateTripPath();
-		});
-	});
-
-	onDestroy(() => {
-		if (map) {
-			map.remove();
-		}
-	});
 </script>
 
 <div bind:this={mapContainer} class="h-full w-full bg-black"></div>

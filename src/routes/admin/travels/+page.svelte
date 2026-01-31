@@ -14,7 +14,7 @@
 	// Fork state from layout data for local editing
 	let travel = $state(
 		untrack(() =>
-			data.travel ? JSON.parse(JSON.stringify(data.travel)) : { visited: [], trips: [], places: [] }
+			data.travel ? $state.snapshot(data.travel) : { visited: [], trips: [], places: [] }
 		)
 	);
 	let saving = $state(false);
@@ -74,12 +74,13 @@
 	}
 
 	function addTrip() {
+		const today = new Date().toISOString().split('T')[0];
 		const newTrip = {
 			id: `trip-${Date.now()}`,
 			name: 'New Trip',
 			description: '',
-			startDate: '',
-			endDate: '',
+			startDate: today,
+			endDate: today,
 			path: []
 		};
 		travel.trips = [newTrip, ...travel.trips];
@@ -112,7 +113,7 @@
 				if (result.type === 'success') {
 					// Sync local state with server data to ensure consistency
 					// and pick up any server-side transformations
-					travel = JSON.parse(JSON.stringify(data.travel));
+					travel = $state.snapshot(data.travel);
 					commitMessage = '';
 				}
 			};
