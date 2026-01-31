@@ -31,9 +31,9 @@
 		{
 			"id": "china-2024",
 			"name": "One Month in China",
-			"description": "A deep dive into Chinas high-tech cities and ancient landscapes.",
-			"startDate": "2024-05-01",
-			"endDate": "2024-06-01",
+			"description": "My first big solo trip when I was 19",
+			"startDate": "2023-10-09",
+			"endDate": "2023-11-10",
 			"path": [
 				{
 					"name": "Beijing",
@@ -107,7 +107,8 @@
 					"caption": "",
 					"image": ""
 				}
-			]
+			],
+			"basePath": "travel/china1"
 		},
 		{
 			"id": "germany-2023",
