@@ -5,8 +5,32 @@ import { env } from '$env/dynamic/private';
 import { exec } from 'node:child_process';
 import { promisify } from 'node:util';
 
+import { fail, type RequestEvent } from '@sveltejs/kit';
+
 const execAsync = promisify(exec);
 const DATA_DIR = path.resolve('src/lib/data');
+
+/**
+ * Shared SvelteKit action for admin data saving
+ */
+export const adminSaveAction = async ({ request }: RequestEvent) => {
+	const formData = await request.formData();
+	const type = formData.get('type') as string;
+	const data = formData.get('data') as string;
+
+	if (!type || !data) {
+		return fail(400, { message: 'Missing type or data' });
+	}
+
+	try {
+		const parsed = JSON.parse(data);
+		await saveAndSync(type, parsed);
+		return { success: true, type };
+	} catch (error) {
+		console.error('Save error:', error);
+		return fail(500, { message: 'Error saving and syncing data' });
+	}
+};
 
 /**
  * Handles saving data to JSON and synchronizing with Git
