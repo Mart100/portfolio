@@ -5,6 +5,7 @@
 	import type { PageProps } from './$types';
 	import ArchiveCard from '../_components/ArchiveCard.svelte';
 	import AdminHeader from '../_components/AdminHeader.svelte';
+	import ImagePickerModal from '../_components/ImagePickerModal.svelte';
 
 	let { data, form }: PageProps = $props();
 
@@ -17,6 +18,7 @@
 	let commitMessage = $state('');
 
 	let editingIndex = $state<number | null>(null);
+	let isPickerOpen = $state(false);
 
 	let hasChanges = $derived(JSON.stringify(archive) !== JSON.stringify(data.archive));
 
@@ -204,12 +206,29 @@
 								class="text-[10px] font-black tracking-widest text-neutral-500 uppercase"
 								>Image Filename</label
 							>
-							<input
-								id="project-image"
-								bind:value={archive[editingIndex].image}
-								class="w-full rounded-2xl border border-white/5 bg-white/5 p-4 text-white outline-none focus:ring-1 focus:ring-emerald-500"
-								placeholder="filename.jpg"
-							/>
+							<div class="relative">
+								<input
+									id="project-image"
+									bind:value={archive[editingIndex].image}
+									class="w-full rounded-2xl border border-white/5 bg-white/5 p-4 pr-14 text-white outline-none focus:ring-1 focus:ring-emerald-500"
+									placeholder="filename.jpg"
+								/>
+								<button
+									type="button"
+									onclick={() => (isPickerOpen = true)}
+									class="absolute top-1/2 right-2 -translate-y-1/2 rounded-xl bg-emerald-500/10 p-2 text-emerald-500 transition-colors hover:bg-emerald-500 hover:text-black"
+									title="Pick from gallery"
+								>
+									<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+										/>
+									</svg>
+								</button>
+							</div>
 						</div>
 						<div class="space-y-2">
 							<label
@@ -327,6 +346,18 @@
 			</div>
 		</div>
 	</div>
+{/if}
+
+{#if editingIndex !== null}
+	<ImagePickerModal
+		bind:isOpen={isPickerOpen}
+		basePath="portfolio/archive"
+		onSelect={(url) => {
+			// Extract filename from URL (since archive data stores filenames)
+			const filename = url.split('/').pop() || '';
+			archive[editingIndex!].image = filename;
+		}}
+	/>
 {/if}
 
 <style>

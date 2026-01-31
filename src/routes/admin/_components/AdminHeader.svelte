@@ -101,15 +101,18 @@
 
 		<div class="flex items-center justify-between gap-4 md:justify-end">
 			{#if hasChanges && !saving}
-				<div in:fly={{ x: 20, duration: 300 }} class="flex flex-1 flex-col items-end gap-1 md:flex-none md:flex-row md:items-center md:gap-4">
+				<div
+					in:fly={{ x: 20, duration: 300 }}
+					class="flex flex-1 flex-col items-end gap-1 md:flex-none md:flex-row md:items-center md:gap-4"
+				>
 					<input
 						type="text"
 						name="message"
 						bind:value={commitMessage}
 						placeholder="Git message..."
-						class="w-full rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-[10px] text-white placeholder:text-neutral-600 focus:border-emerald-500/50 focus:outline-none focus:ring-1 focus:ring-emerald-500/50 md:w-48"
+						class="w-full rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-[10px] text-white placeholder:text-neutral-600 focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 focus:outline-none md:w-48"
 					/>
-					
+
 					<div class="hidden flex-col items-end md:flex">
 						{#if message}
 							<div

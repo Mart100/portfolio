@@ -77,7 +77,7 @@ export async function saveAndSync(type: string, data: unknown, commitMsg?: strin
 					: `admin: update ${type} data [auto]`;
 				console.log(`Committing changes: "${commitMessage}"`);
 				const commitResult = await git.commit(commitMessage);
-				
+
 				if (commitResult.commit) {
 					console.log(`Commit successful: [${commitResult.commit.slice(0, 7)}]`);
 				} else {
