@@ -157,8 +157,9 @@
 	</div>
 
 	<!-- Mobile Scroll Indicator -->
-	<div
-		class="absolute bottom-12 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 md:hidden"
+	<a
+		href="#work"
+		class="absolute bottom-12 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 active:scale-95 md:hidden"
 	>
 		<span class="text-[9px] font-bold tracking-[0.2em] text-gray-500 uppercase">
 			See my projects
@@ -179,7 +180,7 @@
 				/>
 			</svg>
 		</div>
-	</div>
+	</a>
 </section>
 
 <style>

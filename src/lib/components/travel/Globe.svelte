@@ -22,6 +22,7 @@
 	let renderer = $state<THREE.WebGLRenderer>();
 	let controls = $state<any>();
 	let frameId: number;
+	let observer: IntersectionObserver;
 	let lastInteractionTime = $state(0);
 	const AUTO_ROTATE_DELAY = 5000; // 5 seconds
 
@@ -33,16 +34,26 @@
 	const FRAME_INTERVAL = 1000 / FPS;
 
 	let raycaster = new THREE.Raycaster();
+	// Reduce thresholds to prevent "pre-emptive" hits on lines (strokes) or points
+	raycaster.params.Line.threshold = 0.01;
+	raycaster.params.Points.threshold = 0.01;
 	let mouse = new THREE.Vector2();
 	let countriesData = $state<any[]>([]);
 
 	let hoveredCountry = $state<any>(null);
 	let mousePosition = $state({ x: 0, y: 0 });
+	let isIntersecting = $state(true);
 
 	$effect(() => {
 		if (isVisible && renderer) {
 			handleResize();
 			needRender = true;
+		}
+	});
+
+	$effect(() => {
+		if (!isVisible || !isIntersecting) {
+			hoveredCountry = null;
 		}
 	});
 
@@ -90,6 +101,7 @@
 		if (browser) {
 			window.removeEventListener('resize', handleResize);
 			window.removeEventListener('mousemove', handleMouseMove);
+			if (observer) observer.disconnect();
 			if (frameId) cancelAnimationFrame(frameId);
 			if (renderer) renderer.dispose();
 		}
@@ -99,6 +111,15 @@
 		if (!container) return;
 
 		window.addEventListener('mousemove', handleMouseMove);
+
+		// Intersection observer to clear hover when scrolled out of view
+		observer = new IntersectionObserver(
+			(entries) => {
+				isIntersecting = entries[0].isIntersecting;
+			},
+			{ threshold: 0.1 }
+		);
+		observer.observe(container);
 
 		const width = container.clientWidth;
 		const height = container.clientHeight;
@@ -179,6 +200,14 @@
 		};
 		controls.addEventListener('start', updateInteractionTime);
 		controls.addEventListener('change', (e: any) => {
+			// Adjust rotation speed based on zoom level (more zoomed in = slower rotation)
+			const distance = e.target.getDistance();
+			const maxDistance = e.target.maxDistance;
+			const minDistance = e.target.minDistance;
+
+			// Scale rotation speed between ~0.3 and 1.0 based on distance
+			e.target.rotateSpeed = ((distance - minDistance) / (maxDistance - minDistance)) * 0.8 + 0.2;
+
 			if (e.target.active) {
 				updateInteractionTime();
 				needRaycast = true;
@@ -209,17 +238,31 @@
 				// Raycasting for hover
 				if (needRaycast && camera && scene && countriesData.length > 0 && isVisible) {
 					raycaster.setFromCamera(mouse, camera);
+					// Set raycaster far to not intersect objects behind the globe
 					const intersects = raycaster.intersectObjects(globe.children, true);
 
 					let foundData = null;
-					if (intersects.length > 0) {
-						let current = intersects[0].object as any;
-						while (current && !current.__data && current.parent && current !== globe) {
-							current = current.parent;
+					// Search through intersections to find the first valid country feature
+					for (let i = 0; i < Math.min(intersects.length, 5); i++) {
+						const current = intersects[i].object as any;
+
+						// Search hierarchy for data
+						let dataNode = current;
+						while (dataNode && !dataNode.__data && dataNode.parent && dataNode !== globe) {
+							dataNode = dataNode.parent;
 						}
-						if (current && current.__data) {
-							const data = current.__data.data;
-							if (data?.type === 'Feature') foundData = data;
+
+						// If we found a node with feature data, it's a country
+						if (dataNode && dataNode.__data && dataNode.__data.data?.type === 'Feature') {
+							foundData = dataNode.__data.data;
+							break;
+						}
+
+						// CRITICAL: If we hit a Mesh that has NO data, it is the globe's base sphere (the ocean).
+						// Since land polygons are at a higher altitude, they would have been caught above.
+						// If the first or closest Mesh hit is this base sphere, we are over water.
+						if (current.type === 'Mesh' && !dataNode?.__data) {
+							break;
 						}
 					}
 

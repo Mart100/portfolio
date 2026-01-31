@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 	import { SvelteSet } from 'svelte/reactivity';
-	import { browser } from '$app/environment';
 	import ArchiveModal from './ArchiveModal.svelte';
 	import type { ArchiveItem } from '$lib/types';
 

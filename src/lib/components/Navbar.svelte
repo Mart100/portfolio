@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { scrollY } from 'svelte/reactivity/window';
-	import { fade, slide, fly } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 
 	let scrolled = $derived((scrollY.current ?? 0) > 20);
 	let mobileMenuOpen = $state(false);

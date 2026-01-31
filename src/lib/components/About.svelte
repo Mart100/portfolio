@@ -32,14 +32,14 @@
 					</p>
 					<p>
 						Since then, I've obsessed over a wide range of technologies—from crafting apps with
-						flutter and dart to building games with <span class="text-white">Rust</span> and Bevy,
-						and a lot of web development in between. Lately, I've been focusing on building actual
-						products that solve real problems, such as
+						flutter and dart to building games with <span class="text-white">Rust</span> and
+						<span class="text-white">Bevy</span>, and a lot of web development in between. Lately,
+						I've been focusing on building actual products that solve real problems, such as
 						<span class="text-white">Readchinese.org</span>
 					</p>
 					<!-- Minimal Status Row -->
 					<div
-						class="mt-8 flex flex-col gap-4 border-t border-white/5 pt-6 sm:flex-row sm:items-center sm:justify-between md:mt-12"
+						class="mt-8 hidden gap-4 border-t border-white/5 pt-6 md:mt-12 md:flex md:flex-row md:items-center md:justify-between"
 					>
 						<div class="flex items-center gap-3">
 							<div class="relative flex h-1.5 w-1.5">

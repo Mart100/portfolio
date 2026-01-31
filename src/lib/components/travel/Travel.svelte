@@ -4,7 +4,9 @@
 	import TripSidepanel from './TripSidepanel.svelte';
 	import type { TravelData, Trip } from '$lib/types';
 
-	let { travelData = { visited: [], trips: [], places: [] } } = $props<{ travelData: TravelData }>();
+	let { travelData = { visited: [], trips: [], places: [] } } = $props<{
+		travelData: TravelData;
+	}>();
 
 	let activeTripIndex = $state(-1); // -1 means global view (Globe)
 	let activeTrip = $derived(
