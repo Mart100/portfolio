@@ -127,7 +127,7 @@
 			<button
 				type="submit"
 				disabled={saving || !hasChanges}
-				class="group relative flex items-center gap-2 overflow-hidden rounded-full border px-6 py-2 text-[10px] font-black tracking-[0.2em] uppercase transition-all md:px-8 md:py-2.5 
+				class="group relative flex items-center gap-2 overflow-hidden rounded-full border px-6 py-2 text-[10px] font-black tracking-[0.2em] uppercase transition-all md:px-8 md:py-2.5
 				{saving
 					? 'border-emerald-500/20 bg-emerald-500/10 text-emerald-400 opacity-70'
 					: hasChanges
@@ -140,7 +140,12 @@
 					></div>
 					<span>Saving...</span>
 				{:else if hasChanges}
-					<svg class="h-3.5 w-3.5 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<svg
+						class="h-3.5 w-3.5 md:h-4 md:w-4"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+					>
 						<path
 							stroke-linecap="round"
 							stroke-linejoin="round"
@@ -150,7 +155,12 @@
 					</svg>
 					<span>Save Changes</span>
 				{:else}
-					<svg class="h-3.5 w-3.5 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<svg
+						class="h-3.5 w-3.5 md:h-4 md:w-4"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+					>
 						<path
 							stroke-linecap="round"
 							stroke-linejoin="round"
