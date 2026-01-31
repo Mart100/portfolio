@@ -17,6 +17,7 @@ export const adminSaveAction = async ({ request }: RequestEvent) => {
 	const formData = await request.formData();
 	const type = formData.get('type') as string;
 	const data = formData.get('data') as string;
+	const commitMsg = formData.get('message') as string;
 
 	if (!type || !data) {
 		return fail(400, { message: 'Missing type or data' });
@@ -24,7 +25,7 @@ export const adminSaveAction = async ({ request }: RequestEvent) => {
 
 	try {
 		const parsed = JSON.parse(data);
-		await saveAndSync(type, parsed);
+		await saveAndSync(type, parsed, commitMsg);
 		return { success: true, type };
 	} catch (error) {
 		console.error('Save error:', error);
@@ -35,7 +36,7 @@ export const adminSaveAction = async ({ request }: RequestEvent) => {
 /**
  * Handles saving data to JSON and synchronizing with Git
  */
-export async function saveAndSync(type: string, data: unknown) {
+export async function saveAndSync(type: string, data: unknown, commitMsg?: string) {
 	// Security: Prevent directory traversal
 	const sanitizedType = type.replace(/[^a-zA-Z0-9_-]/g, '');
 	const filePath = path.join(DATA_DIR, `${sanitizedType}.json`);
@@ -54,6 +55,7 @@ export async function saveAndSync(type: string, data: unknown) {
 
 	// 2. Git Sync (optional based on ENV)
 	if (env.GIT_AUTO_SYNC === 'true') {
+		console.log(`Starting Git auto-sync for ${type}...`);
 		try {
 			const git: SimpleGit = simpleGit();
 
@@ -62,25 +64,56 @@ export async function saveAndSync(type: string, data: unknown) {
 			if (isRepo) {
 				// Configure remote (SSH or HTTPS)
 				if (env.GIT_REMOTE_URL) {
+					console.log(`Configuring Git remote to: ${env.GIT_REMOTE_URL}`);
 					await git.removeRemote('origin').catch(() => {});
 					await git.addRemote('origin', env.GIT_REMOTE_URL);
 				}
 
+				console.log(`Adding ${filePath} to index...`);
 				await git.add(filePath);
-				await git.commit(`admin: update ${type} data [auto]`);
+
+				const commitMessage = commitMsg
+					? `admin: ${commitMsg} [auto]`
+					: `admin: update ${type} data [auto]`;
+				console.log(`Committing changes: "${commitMessage}"`);
+				const commitResult = await git.commit(commitMessage);
+				
+				if (commitResult.commit) {
+					console.log(`Commit successful: [${commitResult.commit.slice(0, 7)}]`);
+				} else {
+					console.log('No changes detected since last sync, or commit skipped.');
+				}
 
 				const remotes = await git.getRemotes();
 				if (remotes.length > 0) {
 					const branch = (await git.branchLocal()).current;
+					console.log(`Pushing branch "${branch}" to origin...`);
+
 					// Pushing in background to not block response
 					git
 						.push('origin', branch, { '-u': null })
-						.catch((e) => console.error('Git push failed:', e));
+						.then((result) => {
+							console.log(`Git push successful to "${branch}"`);
+							if (result.pushed && result.pushed.length > 0) {
+								console.log('Pushed refs:', result.pushed.map((p) => p.local).join(', '));
+							}
+						})
+						.catch((e) => {
+							console.error('Git push failed ERROR details:');
+							console.error(e);
+						});
+				} else {
+					console.log('No remotes configured, skipping push.');
 				}
+			} else {
+				console.warn('Current directory is not a Git repository. Skipping sync.');
 			}
 		} catch (error) {
-			console.error('Git synchronization failed:', error);
+			console.error('Git synchronization sequence failed:');
+			console.error(error);
 		}
+	} else {
+		console.log('Git auto-sync is disabled (GIT_AUTO_SYNC !== true)');
 	}
 
 	// 3. PM2 Reload (optional based on ENV)

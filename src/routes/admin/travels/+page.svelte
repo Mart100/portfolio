@@ -19,6 +19,7 @@
 	);
 	let saving = $state(false);
 	let message = $state('');
+	let commitMessage = $state('');
 
 	let hasChanges = $derived(JSON.stringify(travel) !== JSON.stringify(data.travel));
 
@@ -89,6 +90,7 @@
 	$effect(() => {
 		if (form?.success) {
 			message = `Successfully saved ${form.type}!`;
+			commitMessage = '';
 			setTimeout(() => (message = ''), 4000);
 		} else if (form?.message) {
 			message = `Error: ${form.message}`;
@@ -111,6 +113,7 @@
 					// Sync local state with server data to ensure consistency
 					// and pick up any server-side transformations
 					travel = JSON.parse(JSON.stringify(data.travel));
+					commitMessage = '';
 				}
 			};
 		}}
@@ -121,6 +124,7 @@
 			{saving}
 			{message}
 			{hasChanges}
+			bind:commitMessage
 			actions={[{ label: 'Add Trip', icon: 'M12 4v16m8-8H4', onclick: addTrip }]}
 		/>
 

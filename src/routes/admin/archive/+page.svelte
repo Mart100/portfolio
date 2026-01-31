@@ -14,6 +14,7 @@
 	);
 	let saving = $state(false);
 	let message = $state('');
+	let commitMessage = $state('');
 
 	let editingIndex = $state<number | null>(null);
 
@@ -43,6 +44,7 @@
 	$effect(() => {
 		if (form?.success) {
 			message = `Successfully saved ${form.type}!`;
+			commitMessage = '';
 			setTimeout(() => (message = ''), 4000);
 		} else if (form?.message) {
 			message = `Error: ${form.message}`;
@@ -62,6 +64,7 @@
 
 				if (result.type === 'success') {
 					archive = JSON.parse(JSON.stringify(data.archive));
+					commitMessage = '';
 				}
 			};
 		}}
@@ -72,6 +75,7 @@
 			{saving}
 			{message}
 			{hasChanges}
+			bind:commitMessage
 			actions={[{ label: 'Add Entry', icon: 'plus', onclick: addArchive }]}
 		/>
 
@@ -239,7 +243,7 @@
 						<div class="space-y-2">
 							<label
 								for="project-code"
-								class="text-[10px) font-black tracking-widest text-neutral-500 uppercase"
+								class="text-[10px] font-black tracking-widest text-neutral-500 uppercase"
 								>Code Link</label
 							>
 							<input

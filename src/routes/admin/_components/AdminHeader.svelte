@@ -14,6 +14,7 @@
 		message?: string;
 		actions?: HeaderAction[];
 		hasChanges?: boolean;
+		commitMessage?: string;
 	}
 
 	let {
@@ -22,7 +23,8 @@
 		saving = false,
 		message = '',
 		actions = [],
-		hasChanges = false
+		hasChanges = false,
+		commitMessage = $bindable('')
 	}: Props = $props();
 </script>
 
@@ -98,31 +100,55 @@
 		</div>
 
 		<div class="flex items-center justify-between gap-4 md:justify-end">
-			<div class="hidden flex-col items-end md:flex">
-				{#if message}
-					<div
-						in:fly={{ y: 5, duration: 300 }}
-						out:fade
-						class="text-[9px] font-black tracking-widest text-emerald-400 uppercase"
-					>
-						{message}
-					</div>
-				{:else}
-					<div class="flex items-center gap-2">
-						{#if hasChanges}
-							<div class="h-1.5 w-1.5 animate-pulse rounded-full bg-amber-500"></div>
-							<span class="text-[9px] font-black tracking-widest text-amber-500 uppercase"
-								>Unsaved Changes</span
+			{#if hasChanges && !saving}
+				<div in:fly={{ x: 20, duration: 300 }} class="flex flex-1 flex-col items-end gap-1 md:flex-none md:flex-row md:items-center md:gap-4">
+					<input
+						type="text"
+						name="message"
+						bind:value={commitMessage}
+						placeholder="Git message..."
+						class="w-full rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-[10px] text-white placeholder:text-neutral-600 focus:border-emerald-500/50 focus:outline-none focus:ring-1 focus:ring-emerald-500/50 md:w-48"
+					/>
+					
+					<div class="hidden flex-col items-end md:flex">
+						{#if message}
+							<div
+								in:fly={{ y: 5, duration: 300 }}
+								out:fade
+								class="text-[9px] font-black tracking-widest text-emerald-400 uppercase"
 							>
+								{message}
+							</div>
 						{:else}
-							<div class="h-1.5 w-1.5 rounded-full bg-emerald-500/50"></div>
-							<span class="text-[9px] font-black tracking-widest text-neutral-500 uppercase"
-								>Changes Synced</span
-							>
+							<div class="flex items-center gap-2">
+								<div class="h-1.5 w-1.5 animate-pulse rounded-full bg-amber-500"></div>
+								<span class="text-[9px] font-black tracking-widest text-amber-500 uppercase"
+									>Unsaved</span
+								>
+							</div>
 						{/if}
 					</div>
-				{/if}
-			</div>
+				</div>
+			{:else}
+				<div class="flex flex-col items-end">
+					{#if message}
+						<div
+							in:fly={{ y: 5, duration: 300 }}
+							out:fade
+							class="text-[9px] font-black tracking-widest text-emerald-400 uppercase"
+						>
+							{message}
+						</div>
+					{:else}
+						<div class="flex items-center gap-2">
+							<div class="h-1.5 w-1.5 rounded-full bg-emerald-500/50"></div>
+							<span class="text-[9px] font-black tracking-widest text-neutral-500 uppercase"
+								>Synced</span
+							>
+						</div>
+					{/if}
+				</div>
+			{/if}
 
 			<button
 				type="submit"

@@ -14,6 +14,7 @@
 	);
 	let saving = $state(false);
 	let message = $state('');
+	let commitMessage = $state('');
 
 	let hasChanges = $derived(JSON.stringify(projects) !== JSON.stringify(data.projects));
 
@@ -27,6 +28,7 @@
 	$effect(() => {
 		if (form?.success) {
 			message = `Successfully saved ${form.type}!`;
+			commitMessage = '';
 			setTimeout(() => (message = ''), 4000);
 		} else if (form?.message) {
 			message = `Error: ${form.message}`;
@@ -46,6 +48,7 @@
 
 				if (result.type === 'success') {
 					projects = JSON.parse(JSON.stringify(data.projects));
+					commitMessage = '';
 				}
 			};
 		}}
@@ -56,6 +59,7 @@
 			{saving}
 			{message}
 			{hasChanges}
+			bind:commitMessage
 			actions={[{ label: 'Add Project', icon: 'plus', onclick: addProject }]}
 		/>
 
