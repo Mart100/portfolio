@@ -5,6 +5,7 @@
 	import 'maplibre-gl/dist/maplibre-gl.css';
 	import CoordPickerModal from './CoordPickerModal.svelte';
 	import ImagePickerModal from './ImagePickerModal.svelte';
+	import type { Trip } from '$lib/types';
 
 	let {
 		trip = $bindable(),
@@ -13,7 +14,7 @@
 		onToggle,
 		onRemove
 	} = $props<{
-		trip: any;
+		trip: Trip;
 		index: number;
 		isExpanded: boolean;
 		onToggle: () => void;

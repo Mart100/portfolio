@@ -1,40 +1,29 @@
 <script lang="ts">
-	import archiveData from '$lib/data/archive.json';
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { SvelteSet } from 'svelte/reactivity';
 	import { browser } from '$app/environment';
 	import ArchiveModal from './ArchiveModal.svelte';
+	import type { ArchiveItem } from '$lib/types';
 
-	interface Project {
-		title: string;
-		image: string;
-		backupImage?: string;
-		link?: string;
-		code?: string;
-		created: string;
-		score: number | { $numberLong: string };
-		description: string;
-		techStack?: string[];
-		tags?: string[];
-	}
+	let { archiveData = [] } = $props<{ archiveData: ArchiveItem[] }>();
 
 	let sortBy = $state<'date' | 'score'>('score');
 	let filterTag = $state<string | null>(null);
-	let selectedProject = $state<Project | null>(null);
+	let selectedProject = $state<ArchiveItem | null>(null);
 	let isDropdownOpen = $state(false);
 
-	const projects = archiveData as Project[];
+	const projects = $derived(archiveData as ArchiveItem[]);
 
 	// Helper to normalize score
-	function getScore(p: Project): number {
+	function getScore(p: ArchiveItem): number {
 		if (typeof p.score === 'object' && p.score !== null && '$numberLong' in p.score) {
 			return parseInt(p.score.$numberLong);
 		}
 		return typeof p.score === 'number' ? p.score : 0;
 	}
 
-	function getThumbnail(p: Project): string {
+	function getThumbnail(p: ArchiveItem): string {
 		if (p.image && p.image !== '') {
 			return 'https://assets.martvenck.com/portfolio/archive/170x170/' + p.image;
 		} else if (p.backupImage && p.backupImage !== '') {

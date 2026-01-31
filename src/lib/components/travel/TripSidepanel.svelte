@@ -1,29 +1,15 @@
 <script lang="ts">
-	interface PathNode {
-		name: string;
-		lat: number;
-		lng: number;
-		date: string;
-		caption: string;
-		image?: string;
-	}
-
-	interface Trip {
-		id: string;
-		name: string;
-		description: string;
-		path: PathNode[];
-	}
+	import type { Trip, TripNode } from '$lib/types';
 
 	let { activeTrip, allTrips, onTripSelect, onNodeClick, onBackToList } = $props<{
 		activeTrip: Trip | null;
 		allTrips: Trip[];
 		onTripSelect: (index: number) => void;
-		onNodeClick?: (node: any) => void;
+		onNodeClick?: (node: TripNode) => void;
 		onBackToList?: () => void;
 	}>();
 
-	let selectedNode = $state<PathNode | null>(null);
+	let selectedNode = $state<TripNode | null>(null);
 	let view = $state<'list' | 'detail'>('list');
 	let scrollContainer = $state<HTMLDivElement>();
 
@@ -55,7 +41,7 @@
 		}
 	});
 
-	function selectNode(node: PathNode) {
+	function selectNode(node: TripNode) {
 		selectedNode = node;
 		if (onNodeClick) onNodeClick(node);
 	}

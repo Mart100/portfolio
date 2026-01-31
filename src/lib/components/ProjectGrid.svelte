@@ -1,6 +1,8 @@
 <script lang="ts">
+	import type { Project } from '$lib/types';
 	import ProjectCard from './ProjectCard.svelte';
-	import projects from '$lib/data/projects.json';
+
+	let { projects = [] } = $props<{ projects: Project[] }>();
 </script>
 
 <section id="work" class="px-6 py-16 md:py-32">

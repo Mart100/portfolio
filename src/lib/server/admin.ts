@@ -1,13 +1,10 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { simpleGit, type SimpleGit } from 'simple-git';
-import { GIT_AUTO_SYNC, GIT_REMOTE_URL, PM2_RELOAD } from '$env/static/private';
-import { exec } from 'node:child_process';
-import { promisify } from 'node:util';
-
+import { GIT_AUTO_SYNC, GIT_REMOTE_URL } from '$env/static/private';
+import { invalidateCache } from './data';
 import { fail, type RequestEvent } from '@sveltejs/kit';
 
-const execAsync = promisify(exec);
 const DATA_DIR = path.resolve('src/lib/data');
 
 /**
@@ -53,9 +50,10 @@ export async function saveAndSync(type: string, data: unknown, commitMsg?: strin
 
 	console.log(`Data for type "${type}" saved to ${filePath}`);
 
-	let syncPromise = Promise.resolve();
+	// 2. Invalidate in-memory cache
+	invalidateCache(sanitizedType);
 
-	// 2. Git Sync (optional based on ENV)
+	// 3. Git Sync (optional based on ENV)
 	if (GIT_AUTO_SYNC === 'true') {
 		console.log(`Starting Git auto-sync for ${type}...`);
 		try {
@@ -66,9 +64,13 @@ export async function saveAndSync(type: string, data: unknown, commitMsg?: strin
 			if (isRepo) {
 				// Configure remote (SSH or HTTPS)
 				if (GIT_REMOTE_URL) {
-					console.log(`Configuring Git remote to: ${GIT_REMOTE_URL}`);
-					await git.removeRemote('origin').catch(() => {});
-					await git.addRemote('origin', GIT_REMOTE_URL);
+					const remotes = await git.getRemotes(true);
+					const origin = remotes.find((r) => r.name === 'origin');
+					if (!origin || origin.refs.push !== GIT_REMOTE_URL) {
+						console.log(`Configuring Git remote to: ${GIT_REMOTE_URL}`);
+						await git.removeRemote('origin').catch(() => {});
+						await git.addRemote('origin', GIT_REMOTE_URL);
+					}
 				}
 
 				console.log(`Adding ${filePath} to index...`);
@@ -82,27 +84,18 @@ export async function saveAndSync(type: string, data: unknown, commitMsg?: strin
 
 				if (commitResult.commit) {
 					console.log(`Commit successful: [${commitResult.commit.slice(0, 7)}]`);
-					const remotes = await git.getRemotes();
-					if (remotes.length > 0) {
-						const branch = (await git.branchLocal()).current;
-						console.log(`Pushing branch "${branch}" to origin...`);
+					const branch = (await git.branchLocal()).current;
+					console.log(`Pushing branch "${branch}" to origin...`);
 
-						// We assign the push promise so we can wait for it before PM2 reload
-						syncPromise = git
-							.push('origin', branch, { '-u': null })
-							.then((result) => {
-								console.log(`Git push successful to "${branch}"`);
-								if (result.pushed && result.pushed.length > 0) {
-									console.log('Pushed refs:', result.pushed.map((p) => p.local).join(', '));
-								}
-							})
-							.catch((e) => {
-								console.error('Git push failed ERROR details:');
-								console.error(e);
-							});
-					} else {
-						console.log('No remotes configured, skipping push.');
-					}
+					// Push in background to not block response (no PM2 reload to terminate it now)
+					git
+						.push('origin', branch, { '-u': null })
+						.then(() => {
+							console.log(`Git push successful to "${branch}"`);
+						})
+						.catch((e) => {
+							console.error('Git push failed ERROR details:', e.message);
+						});
 				} else {
 					console.log('No changes detected since last sync, or commit skipped.');
 				}
@@ -110,34 +103,10 @@ export async function saveAndSync(type: string, data: unknown, commitMsg?: strin
 				console.warn('Current directory is not a Git repository. Skipping sync.');
 			}
 		} catch (error) {
-			console.error('Git synchronization sequence failed:');
-			console.error(error);
+			console.error('Git synchronization sequence failed:', error);
 		}
 	} else {
 		console.log('Git auto-sync is disabled (GIT_AUTO_SYNC !== true)');
-	}
-
-	// 3. PM2 Reload (optional based on ENV)
-	if (PM2_RELOAD === 'true') {
-		syncPromise.finally(() => {
-			setTimeout(async () => {
-				try {
-					console.log('Triggering PM2 reload...');
-					const { stdout } = await execAsync('pm2 reload portfolio');
-					if (stdout.includes('[PM2] Applying action reload')) {
-						console.log('PM2 reload command accepted.');
-					}
-				} catch (e: unknown) {
-					// Ignore errors caused by the process being interrupted by its own reload
-					const err = e as { signal?: string } | undefined;
-					if (err?.signal === 'SIGINT' || err?.signal === 'SIGTERM') {
-						console.log('PM2 reload in progress (process received signal).');
-					} else {
-						console.error('PM2 reload failed with unexpected error:', e);
-					}
-				}
-			}, 500);
-		});
 	}
 
 	return { success: true };

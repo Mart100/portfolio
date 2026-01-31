@@ -1,11 +1,13 @@
 <script lang="ts">
+	import type { Project } from '$lib/types';
+
 	let {
 		project = $bindable(),
 		index,
 		total,
 		ondelete
 	} = $props<{
-		project: any;
+		project: Project;
 		index: number;
 		total: number;
 		ondelete?: () => void;

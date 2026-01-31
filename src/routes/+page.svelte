@@ -8,6 +8,10 @@
 	import Contact from '$lib/components/Contact.svelte';
 	import InteractiveBackground from '$lib/components/InteractiveBackground.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
 </script>
 
 <svelte:head>
@@ -25,11 +29,11 @@
 
 	<main>
 		<Hero />
-		<ProjectGrid />
-		<Travel />
+		<ProjectGrid projects={data.projects} />
+		<Travel travelData={data.travel} />
 		<About />
 
-		<Archive />
+		<Archive archiveData={data.archive} />
 		<Contact />
 	</main>
 

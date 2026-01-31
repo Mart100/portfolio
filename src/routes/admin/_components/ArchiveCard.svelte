@@ -1,6 +1,8 @@
 <script lang="ts">
+	import type { ArchiveItem } from '$lib/types';
+
 	let { item = $bindable(), onclick } = $props<{
-		item: any;
+		item: ArchiveItem;
 		onclick: () => void;
 	}>();
 

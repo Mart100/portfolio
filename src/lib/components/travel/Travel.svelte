@@ -2,10 +2,14 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import TripSidepanel from './TripSidepanel.svelte';
-	import travelData from '$lib/data/travel.json';
+	import type { TravelData, Trip } from '$lib/types';
+
+	let { travelData = { visited: [], trips: [], places: [] } } = $props<{ travelData: TravelData }>();
 
 	let activeTripIndex = $state(-1); // -1 means global view (Globe)
-	let activeTrip = $derived(activeTripIndex === -1 ? null : travelData.trips[activeTripIndex]);
+	let activeTrip = $derived(
+		activeTripIndex === -1 ? null : (travelData.trips[activeTripIndex] as Trip)
+	);
 	let selectedNode = $state<any>(null);
 	let mobileTab = $state<'list' | 'map'>('map');
 
