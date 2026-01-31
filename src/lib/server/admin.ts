@@ -53,6 +53,8 @@ export async function saveAndSync(type: string, data: unknown, commitMsg?: strin
 
 	console.log(`Data for type "${type}" saved to ${filePath}`);
 
+	let syncPromise = Promise.resolve();
+
 	// 2. Git Sync (optional based on ENV)
 	if (GIT_AUTO_SYNC === 'true') {
 		console.log(`Starting Git auto-sync for ${type}...`);
@@ -80,30 +82,29 @@ export async function saveAndSync(type: string, data: unknown, commitMsg?: strin
 
 				if (commitResult.commit) {
 					console.log(`Commit successful: [${commitResult.commit.slice(0, 7)}]`);
+					const remotes = await git.getRemotes();
+					if (remotes.length > 0) {
+						const branch = (await git.branchLocal()).current;
+						console.log(`Pushing branch "${branch}" to origin...`);
+
+						// We assign the push promise so we can wait for it before PM2 reload
+						syncPromise = git
+							.push('origin', branch, { '-u': null })
+							.then((result) => {
+								console.log(`Git push successful to "${branch}"`);
+								if (result.pushed && result.pushed.length > 0) {
+									console.log('Pushed refs:', result.pushed.map((p) => p.local).join(', '));
+								}
+							})
+							.catch((e) => {
+								console.error('Git push failed ERROR details:');
+								console.error(e);
+							});
+					} else {
+						console.log('No remotes configured, skipping push.');
+					}
 				} else {
 					console.log('No changes detected since last sync, or commit skipped.');
-				}
-
-				const remotes = await git.getRemotes();
-				if (remotes.length > 0) {
-					const branch = (await git.branchLocal()).current;
-					console.log(`Pushing branch "${branch}" to origin...`);
-
-					// Pushing in background to not block response
-					git
-						.push('origin', branch, { '-u': null })
-						.then((result) => {
-							console.log(`Git push successful to "${branch}"`);
-							if (result.pushed && result.pushed.length > 0) {
-								console.log('Pushed refs:', result.pushed.map((p) => p.local).join(', '));
-							}
-						})
-						.catch((e) => {
-							console.error('Git push failed ERROR details:');
-							console.error(e);
-						});
-				} else {
-					console.log('No remotes configured, skipping push.');
 				}
 			} else {
 				console.warn('Current directory is not a Git repository. Skipping sync.');
@@ -118,18 +119,17 @@ export async function saveAndSync(type: string, data: unknown, commitMsg?: strin
 
 	// 3. PM2 Reload (optional based on ENV)
 	if (PM2_RELOAD === 'true') {
-		// Caution: This will skip waiting for the reload to finish to respond faster
-		// but it might restart the process while Git is still pushing.
-		// Since git.push() above is also backgrounded, we should be okay
-		// if the VPS is fast enough or the network is stable.
-		setTimeout(async () => {
-			try {
-				console.log('Triggering PM2 reload...');
-				await execAsync('pm2 reload portfolio');
-			} catch (e) {
-				console.error('PM2 reload failed:', e);
-			}
-		}, 1000);
+		// Wait for Git sync (push) to complete before triggering reload
+		syncPromise.finally(() => {
+			setTimeout(async () => {
+				try {
+					console.log('Triggering PM2 reload...');
+					await execAsync('pm2 reload portfolio');
+				} catch (e) {
+					console.error('PM2 reload failed:', e);
+				}
+			}, 500);
+		});
 	}
 
 	return { success: true };
