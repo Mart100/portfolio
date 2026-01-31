@@ -210,14 +210,16 @@
 					"lat": 48.1351,
 					"lng": 11.582,
 					"date": "Jun 18",
-					"caption": "Bavarian traditions and the English Garden."
+					"caption": "Bavarian traditions and the English Garden.",
+					"image": "https://assets.martvenck.com/portfolio/travel/germany/webp/856b9f88-5a4c-4365-a29f-22f4732c398f_a1894d1e-81f1-4748-96fd-b71b928754dd-b3c90bae.webp"
 				},
 				{
 					"name": "Leipzig",
 					"lat": 51.3397,
 					"lng": 12.3731,
 					"date": "Jun 19",
-					"caption": "Music history and vibrant arts scene."
+					"caption": "Music history and vibrant arts scene.",
+					"image": "https://assets.martvenck.com/portfolio/travel/germany/webp/f04200f0-997c-4d4b-99cc-1272cce22873_5d29d9f9-97ce-43ab-abfb-110e49640a74-6be0576f.webp"
 				},
 				{
 					"name": "Weimar",
@@ -231,21 +233,24 @@
 					"lat": 51.0504,
 					"lng": 13.7373,
 					"date": "Jun 22",
-					"caption": "Baroque architecture and riverbanks."
+					"caption": "Baroque architecture and riverbanks.",
+					"image": "https://assets.martvenck.com/portfolio/travel/germany/webp/2cf38719-1767-4069-8147-d87b1bcb8337_d0d69201-65ff-47db-8715-0498b0829335-80608177.webp"
 				},
 				{
 					"name": "Rathen",
 					"lat": 50.9516,
 					"lng": 14.1579,
 					"date": "Jun 24",
-					"caption": "Gateway to the Bastei and Saxon Switzerland."
+					"caption": "Gateway to the Bastei and Saxon Switzerland.",
+					"image": "https://assets.martvenck.com/portfolio/travel/germany/webp/20230624_114247-5ce2fa25.webp"
 				},
 				{
 					"name": "Ludwigshafen",
 					"lat": 49.4774,
 					"lng": 8.4452,
 					"date": "Jun 25",
-					"caption": "Rhein riverfront and industrial shoreline."
+					"caption": "Rhein riverfront and industrial shoreline.",
+					"image": "https://assets.martvenck.com/portfolio/travel/germany/webp/20230625_211112-45a16775.webp"
 				}
 			],
 			"basePath": "portfolio/travel/germany"
