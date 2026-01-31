@@ -1,8 +1,5 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
 import { fail } from '@sveltejs/kit';
-
-const DATA_DIR = path.resolve('src/lib/data');
+import { saveAndSync } from '$lib/server/admin';
 
 export const actions = {
 	save: async ({ request }) => {
@@ -15,12 +12,12 @@ export const actions = {
 		}
 
 		try {
-			const filePath = path.join(DATA_DIR, `${type}.json`);
 			const parsed = JSON.parse(data);
-			await fs.writeFile(filePath, JSON.stringify(parsed, null, '\t'), 'utf-8');
+			await saveAndSync(type, parsed);
 			return { success: true, type };
 		} catch (error) {
-			return fail(500, { message: 'Error saving file' });
+			console.error('Save error:', error);
+			return fail(500, { message: 'Error saving and syncing data' });
 		}
 	}
 };
