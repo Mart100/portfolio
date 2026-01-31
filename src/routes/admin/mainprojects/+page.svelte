@@ -52,7 +52,7 @@
 	>
 		<AdminHeader
 			title="Main Projects"
-			description="Strategic showcase of your primary work."
+			description="Selected Projects"
 			{saving}
 			{message}
 			{hasChanges}

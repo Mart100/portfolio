@@ -68,7 +68,7 @@
 	>
 		<AdminHeader
 			title="Project Archive"
-			description="Legacy work, experiments, and secondary projects."
+			description="Project Archive"
 			{saving}
 			{message}
 			{hasChanges}

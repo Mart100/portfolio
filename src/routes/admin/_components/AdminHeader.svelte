@@ -29,6 +29,14 @@
 <header
 	class="sticky top-0 z-40 border-b border-white/5 bg-neutral-900/80 px-6 py-4 shadow-2xl shadow-black/50 backdrop-blur-xl md:px-12 md:py-6"
 >
+	{#if saving}
+		<div class="absolute top-0 left-0 h-0.5 w-full overflow-hidden bg-emerald-500/20">
+			<div
+				class="h-full w-1/3 animate-[loading_1s_infinite_linear] bg-emerald-500 shadow-[0_0_10px_#10b981]"
+			></div>
+		</div>
+	{/if}
+
 	<div class="mx-auto flex max-w-4xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
 		<div class="flex items-center gap-4 md:gap-6">
 			<div>
@@ -90,20 +98,41 @@
 		</div>
 
 		<div class="flex items-center justify-between gap-4 md:justify-end">
-			{#if message}
-				<div
-					in:fly={{ y: 10, duration: 300 }}
-					out:fade
-					class="text-[10px] font-black tracking-widest text-emerald-400 uppercase"
-				>
-					{message}
-				</div>
-			{/if}
+			<div class="hidden flex-col items-end md:flex">
+				{#if message}
+					<div
+						in:fly={{ y: 5, duration: 300 }}
+						out:fade
+						class="text-[9px] font-black tracking-widest text-emerald-400 uppercase"
+					>
+						{message}
+					</div>
+				{:else}
+					<div class="flex items-center gap-2">
+						{#if hasChanges}
+							<div class="h-1.5 w-1.5 animate-pulse rounded-full bg-amber-500"></div>
+							<span class="text-[9px] font-black tracking-widest text-amber-500 uppercase"
+								>Unsaved Changes</span
+							>
+						{:else}
+							<div class="h-1.5 w-1.5 rounded-full bg-emerald-500/50"></div>
+							<span class="text-[9px] font-black tracking-widest text-neutral-500 uppercase"
+								>Changes Synced</span
+							>
+						{/if}
+					</div>
+				{/if}
+			</div>
 
 			<button
 				type="submit"
-				disabled={saving}
-				class="group relative flex items-center gap-2 overflow-hidden rounded-full border border-emerald-500/20 bg-emerald-500/10 px-6 py-2 text-[10px] font-black tracking-[0.2em] text-emerald-400 uppercase transition-all hover:bg-emerald-500 hover:text-black disabled:opacity-50 md:px-8 md:py-2.5"
+				disabled={saving || !hasChanges}
+				class="group relative flex items-center gap-2 overflow-hidden rounded-full border px-6 py-2 text-[10px] font-black tracking-[0.2em] uppercase transition-all md:px-8 md:py-2.5 
+				{saving
+					? 'border-emerald-500/20 bg-emerald-500/10 text-emerald-400 opacity-70'
+					: hasChanges
+						? 'border-emerald-500 bg-emerald-500 text-black hover:scale-105 active:scale-95'
+						: 'cursor-not-allowed border-white/5 bg-white/[0.02] text-neutral-500'}"
 			>
 				{#if saving}
 					<div
@@ -111,7 +140,7 @@
 					></div>
 					<span>Saving...</span>
 				{:else if hasChanges}
-					<svg class="h-3 w-3 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<svg class="h-3.5 w-3.5 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path
 							stroke-linecap="round"
 							stroke-linejoin="round"
@@ -121,17 +150,28 @@
 					</svg>
 					<span>Save Changes</span>
 				{:else}
-					<svg class="h-3 w-3 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<svg class="h-3.5 w-3.5 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path
 							stroke-linecap="round"
 							stroke-linejoin="round"
 							stroke-width="2.5"
-							d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+							d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
 						/>
 					</svg>
-					<span>Sync Status</span>
+					<span>Synced</span>
 				{/if}
 			</button>
 		</div>
 	</div>
 </header>
+
+<style>
+	@keyframes loading {
+		0% {
+			transform: translateX(-100%);
+		}
+		100% {
+			transform: translateX(300%);
+		}
+	}
+</style>

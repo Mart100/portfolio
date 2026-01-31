@@ -117,7 +117,7 @@
 	>
 		<AdminHeader
 			title="Travel Log"
-			description="Atlas of visited lands and journeys."
+			description="Travels"
 			{saving}
 			{message}
 			{hasChanges}
