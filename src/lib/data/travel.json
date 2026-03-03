@@ -41,7 +41,7 @@
 					"lng": 116.4074,
 					"date": "May 1",
 					"caption": "The Great Wall was even more massive than I imagined.",
-					"image": ""
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/03dedac3-3bfe-46f7-af77-628ce459440f_3e41e45a-9f7a-45c8-98e3-470e7683913f-d039a18e.webp"
 				},
 				{
 					"name": "Gubeikou",
@@ -49,7 +49,7 @@
 					"lng": 117.164399,
 					"date": "",
 					"caption": "",
-					"image": ""
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231013_110529-89b68988.webp"
 				},
 				{
 					"name": "Xi'an",
@@ -57,7 +57,7 @@
 					"lng": 108.941704,
 					"date": "",
 					"caption": "",
-					"image": ""
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231018_115018-9dbcbe30.webp"
 				},
 				{
 					"name": "Chongqing",
@@ -65,7 +65,7 @@
 					"lng": 106.567797,
 					"date": "",
 					"caption": "",
-					"image": ""
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231021_175141-f5577bbc.webp"
 				},
 				{
 					"name": "Shanghai",
@@ -73,7 +73,7 @@
 					"lng": 121.501829,
 					"date": "",
 					"caption": "",
-					"image": ""
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231027_140227-08c516b4.webp"
 				},
 				{
 					"name": "Zhangjiajie",
@@ -81,7 +81,7 @@
 					"lng": 110.48107,
 					"date": "",
 					"caption": "",
-					"image": ""
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231031_104816-206f97ba.webp"
 				},
 				{
 					"name": "Guilin",
@@ -89,7 +89,7 @@
 					"lng": 110.296012,
 					"date": "",
 					"caption": "",
-					"image": ""
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231102_174700-239267b0.webp"
 				},
 				{
 					"name": "Shenzhen",
@@ -97,7 +97,7 @@
 					"lng": 114.054635,
 					"date": "",
 					"caption": "",
-					"image": ""
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231105_130930-b3705fed.webp"
 				},
 				{
 					"name": "Hong Kong",
@@ -105,10 +105,82 @@
 					"lng": 114.172827,
 					"date": "",
 					"caption": "",
-					"image": ""
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231108_154730-92339c82.webp"
+				},
+				{
+					"name": "Kyoto",
+					"lat": 35.011037,
+					"lng": 135.768904,
+					"date": "",
+					"caption": "",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231115_224650-0f19b734.webp"
+				},
+				{
+					"name": "Osaka",
+					"lat": 34.694222,
+					"lng": 135.501051,
+					"date": "",
+					"caption": "",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231118_142413-4f7acb5b.webp"
+				},
+				{
+					"name": "Kobe",
+					"lat": 34.702236,
+					"lng": 135.219205,
+					"date": "",
+					"caption": "",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231123_144346-c927f5eb.webp"
+				},
+				{
+					"name": "Himeji",
+					"lat": 34.826464,
+					"lng": 134.687469,
+					"date": "",
+					"caption": "",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231125_120543-4b51e580.webp"
+				},
+				{
+					"name": "Nara",
+					"lat": 34.684488,
+					"lng": 135.831559,
+					"date": "",
+					"caption": "",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231129_150729-8f12f626.webp"
+				},
+				{
+					"name": "Wakayama",
+					"lat": 34.233437,
+					"lng": 135.172806,
+					"date": "",
+					"caption": "",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231201_140736-2b4b0c25.webp"
+				},
+				{
+					"name": "Koya-san",
+					"lat": 34.215185,
+					"lng": 135.586415,
+					"date": "",
+					"caption": "",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231202_155659-07b51491.webp"
+				},
+				{
+					"name": "Tokyo",
+					"lat": 35.6844,
+					"lng": 139.78232,
+					"date": "",
+					"caption": "",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231205_164955-3da01518.webp"
+				},
+				{
+					"name": "Snowy Beijing",
+					"lat": 39.945816,
+					"lng": 116.386073,
+					"date": "",
+					"caption": "",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231212_144032-459e5ab9.webp"
 				}
 			],
-			"basePath": "travel/china_japan"
+			"basePath": "portfolio/travel/china_japan"
 		},
 		{
 			"id": "germany-2023",
