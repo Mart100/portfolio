@@ -29,11 +29,11 @@
 	],
 	"trips": [
 		{
-			"id": "china-2024",
-			"name": "One Month in China",
+			"id": "china-japan-2024",
+			"name": "One Month China, One Month Japan",
 			"description": "My first big solo trip when I was 19",
 			"startDate": "2023-10-09",
-			"endDate": "2023-11-10",
+			"endDate": "2023-12-14",
 			"path": [
 				{
 					"name": "Beijing",
@@ -108,7 +108,7 @@
 					"image": ""
 				}
 			],
-			"basePath": "travel/china1"
+			"basePath": "travel/china_japan"
 		},
 		{
 			"id": "germany-2023",
