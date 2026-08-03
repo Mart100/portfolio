@@ -25,7 +25,8 @@
 		"China",
 		"Japan",
 		"Taiwan",
-		"Hong Kong"
+		"Hong Kong",
+		"Vietnam"
 	],
 	"trips": [
 		{
@@ -329,6 +330,111 @@
 		}
 	],
 	"places": [
+		{
+			"name": "Foshan",
+			"lat": 23.020772,
+			"lng": 113.118072
+		},
+		{
+			"name": "Shangri-la",
+			"lat": 27.834498,
+			"lng": 99.704564
+		},
+		{
+			"name": "Shaxi",
+			"lat": 26.319857,
+			"lng": 99.850154
+		},
+		{
+			"name": "Dali",
+			"lat": 25.696557,
+			"lng": 100.160198
+		},
+		{
+			"name": "Weishan",
+			"lat": 25.229188,
+			"lng": 100.302336
+		},
+		{
+			"name": "Kunming",
+			"lat": 25.033218,
+			"lng": 102.68136
+		},
+		{
+			"name": "Yuanyang",
+			"lat": 23.08388,
+			"lng": 102.808406
+		},
+		{
+			"name": "Mingshi",
+			"lat": 22.7112,
+			"lng": 106.914072
+		},
+		{
+			"name": "Jianshui",
+			"lat": 23.637994,
+			"lng": 102.828034
+		},
+		{
+			"name": "Mengzi",
+			"lat": 23.373715,
+			"lng": 103.356199
+		},
+		{
+			"name": "Hekou",
+			"lat": 22.53498,
+			"lng": 103.935509
+		},
+		{
+			"name": "Sa Pa",
+			"lat": 22.336367,
+			"lng": 103.84051
+		},
+		{
+			"name": "Hanoi",
+			"lat": 21.029519,
+			"lng": 105.852787
+		},
+		{
+			"name": "Chongzuo",
+			"lat": 22.398036,
+			"lng": 107.339642
+		},
+		{
+			"name": "Nanning",
+			"lat": 22.816555,
+			"lng": 108.318151
+		},
+		{
+			"name": "Chenzhou",
+			"lat": 25.774239,
+			"lng": 113.011858
+		},
+		{
+			"name": "Changsha",
+			"lat": 28.218804,
+			"lng": 112.960735
+		},
+		{
+			"name": "Shaoguan",
+			"lat": 24.8132,
+			"lng": 113.593078
+		},
+		{
+			"name": "Kaiping",
+			"lat": 22.37738,
+			"lng": 112.686546
+		},
+		{
+			"name": "Shanwei",
+			"lat": 22.782352,
+			"lng": 115.364803
+		},
+		{
+			"name": "Huizhou",
+			"lat": 23.104925,
+			"lng": 114.412293
+		},
 		{
 			"name": "Matsumoto",
 			"lat": 36.238885,
