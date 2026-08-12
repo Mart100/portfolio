@@ -1,12 +1,13 @@
 <script lang="ts">
 	import type { Trip, TripNode } from '$lib/types';
 
-	let { activeTrip, allTrips, onTripSelect, onNodeClick, onBackToList } = $props<{
+	let { activeTrip, allTrips, onTripSelect, onNodeClick, onBackToList, onImageClick } = $props<{
 		activeTrip: Trip | null;
 		allTrips: Trip[];
 		onTripSelect: (index: number) => void;
 		onNodeClick?: (node: TripNode) => void;
 		onBackToList?: () => void;
+		onImageClick?: (index: number) => void;
 	}>();
 
 	let selectedNode = $state<TripNode | null>(null);
@@ -44,6 +45,11 @@
 	function selectNode(node: TripNode) {
 		selectedNode = node;
 		if (onNodeClick) onNodeClick(node);
+	}
+
+	function openLightbox(i: number) {
+		selectNode(activeTrip!.path[i]);
+		onImageClick?.(i);
 	}
 
 	function handleTripSelect(index: number) {
@@ -97,7 +103,7 @@
 
 							{#if node.image}
 								<button
-									onclick={() => selectNode(node)}
+									onclick={() => openLightbox(i)}
 									class="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-white/5 transition-all duration-500 outline-none hover:scale-[1.02] active:scale-[0.98]
 									{selectedNode?.name === node.name ? 'border-white/30' : ''}"
 								>
