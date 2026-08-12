@@ -13,7 +13,7 @@
 <a
 	href={link}
 	target="_blank"
-	rel="noopener noreferrer"
+	rel="external noopener noreferrer"
 	class="group relative flex flex-col gap-6 rounded-[32px] border border-transparent p-4 transition-all duration-500 hover:border-white/10 hover:bg-white/[0.03] hover:shadow-2xl sm:gap-8 sm:rounded-[40px] sm:p-6"
 >
 	<div
@@ -61,7 +61,7 @@
 		<div
 			class="flex flex-wrap gap-x-4 gap-y-2 text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase"
 		>
-			{#each tags as tag}
+			{#each tags as tag (tag)}
 				<span class="transition-colors group-hover:text-emerald-400">{tag}</span>
 				{#if tag !== tags[tags.length - 1]}
 					<span class="text-white/10">•</span>

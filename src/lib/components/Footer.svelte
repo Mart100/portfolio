@@ -24,8 +24,10 @@
 				class="flex flex-wrap justify-center gap-6 text-[10px] font-bold tracking-[0.3em] text-gray-400 uppercase sm:gap-10"
 			>
 				<a href={'mailto:' + EMAIL} class="transition-colors hover:text-emerald-400">Email</a>
-				<a href={GITHUB} class="transition-colors hover:text-emerald-400">Github</a>
-				<a href={LINKEDIN} class="transition-colors hover:text-emerald-400">LinkedIn</a>
+				<a rel="external" href={GITHUB} class="transition-colors hover:text-emerald-400">Github</a>
+				<a rel="external" href={LINKEDIN} class="transition-colors hover:text-emerald-400"
+					>LinkedIn</a
+				>
 			</div>
 			<div
 				class="text-center text-[9px] font-bold tracking-[0.1em] text-gray-800 uppercase md:text-right md:text-[10px]"

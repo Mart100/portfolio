@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { resolve } from '$app/paths';
 	import { fly } from 'svelte/transition';
 
 	let { form } = $props();
@@ -102,7 +103,7 @@
 
 		<div class="mt-12 text-center">
 			<a
-				href="/"
+				href={resolve('/')}
 				class="text-[10px] font-black tracking-widest text-neutral-600 uppercase transition-colors hover:text-emerald-500"
 			>
 				← Return to Site

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { scrollY } from 'svelte/reactivity/window';
 	import { fade, fly } from 'svelte/transition';
 
@@ -30,7 +31,7 @@
 				? 'border-white/10'
 				: ''}"
 		>
-			<a href="/" class="group flex items-center gap-2">
+			<a href={resolve('/')} class="group flex items-center gap-2">
 				<div class="h-2 w-2 rounded-full bg-emerald-500"></div>
 				<span class="text-xs font-bold tracking-[0.2em] text-white uppercase">MART_VE</span>
 			</a>

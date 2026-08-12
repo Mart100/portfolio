@@ -3,6 +3,14 @@
 	import { browser } from '$app/environment';
 	import { EMAIL, LINKEDIN } from '$lib/constants';
 
+	interface CalendarSchedulingButton {
+		load: (options: { url: string; color: string; label: string; target: HTMLElement }) => void;
+	}
+
+	interface WindowWithCalendar extends Window {
+		calendar?: { schedulingButton: CalendarSchedulingButton };
+	}
+
 	onMount(() => {
 		if (browser) {
 			// Load Google Calendar Scheduling styles
@@ -17,8 +25,9 @@
 			script.async = true;
 			script.onload = () => {
 				const target = document.getElementById('calendar-button-root');
-				if (target && (window as any).calendar) {
-					(window as any).calendar.schedulingButton.load({
+				const calendar = (window as WindowWithCalendar).calendar;
+				if (target && calendar) {
+					calendar.schedulingButton.load({
 						url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3WaYz8QmuuuVgebjzHTTrZdj1WUNcy2RSYLJmWRLC4PmzTXcggPBVfwSb4PYupzH2E54LTPQgu?gv=true',
 						color: '#10b981',
 						label: 'Schedule Call',
@@ -100,7 +109,7 @@
 						<a
 							href={LINKEDIN}
 							target="_blank"
-							rel="noopener noreferrer"
+							rel="external noopener noreferrer"
 							class="group flex items-center gap-4 transition-all md:gap-6"
 						>
 							<div

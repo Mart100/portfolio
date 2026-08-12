@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { resolve } from '$app/paths';
 
 	let { tabs } = $props<{
 		tabs: { id: string; label: string; icon: string }[];
@@ -26,8 +27,9 @@
 		</h1>
 	</div>
 
+	<!-- eslint-disable svelte/no-navigation-without-resolve -- dynamic tab links; resolve()+typed-routes can't type the computed "/admin/{id}" path -->
 	<nav class="flex-1 space-y-2 overflow-y-auto px-4 py-4">
-		{#each tabs as tab}
+		{#each tabs as tab (tab.id)}
 			<a
 				href="/admin/{tab.id}"
 				class="group flex w-full items-center gap-4 rounded-xl px-4 py-3 transition-all duration-300 {isActive(
@@ -53,10 +55,11 @@
 			</a>
 		{/each}
 	</nav>
+	<!-- eslint-enable svelte/no-navigation-without-resolve -->
 
 	<div class="border-t border-white/5 p-6">
 		<a
-			href="/"
+			href={resolve('/')}
 			class="group flex items-center gap-3 rounded-xl px-4 py-3 text-neutral-500 transition-colors hover:bg-white/5 hover:text-white"
 		>
 			<svg
@@ -75,7 +78,7 @@
 			<span class="text-xs font-bold tracking-widest uppercase">Live Site</span>
 		</a>
 		<a
-			href="/admin/logout"
+			href={resolve('/admin/logout')}
 			class="group flex items-center gap-3 rounded-xl px-4 py-3 text-neutral-600 transition-colors hover:bg-red-500/10 hover:text-red-400"
 		>
 			<svg

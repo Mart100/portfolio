@@ -38,7 +38,9 @@
 				const day = Math.max(1, parseInt(parts[2]) || 1);
 				if (!isNaN(year)) return new Date(year, month, day).getTime();
 			}
-		} catch (e) {}
+		} catch {
+			/* intentionally empty: invalid/partial date string, fall back to 0 */
+		}
 		return 0;
 	}
 

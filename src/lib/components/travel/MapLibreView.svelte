@@ -2,16 +2,26 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import 'maplibre-gl/dist/maplibre-gl.css';
+	import type { Trip, TripNode } from '$lib/types';
+
+	type MaplibreModule = {
+		Map: typeof import('maplibre-gl').Map;
+		LngLatBounds: typeof import('maplibre-gl').LngLatBounds;
+		GeoJSONSource: typeof import('maplibre-gl').GeoJSONSource;
+	};
+	type MapLibreMap = InstanceType<MaplibreModule['Map']>;
+	type LngLatBoundsInstance = InstanceType<MaplibreModule['LngLatBounds']>;
+	type GeoJsonSource = InstanceType<MaplibreModule['GeoJSONSource']>;
 
 	let { activeTrip, selectedNode, isVisible } = $props<{
-		activeTrip: any;
-		selectedNode: any;
+		activeTrip: Trip | null;
+		selectedNode: TripNode | null;
 		isVisible: boolean;
 	}>();
 
 	let mapContainer: HTMLDivElement;
-	let map: any = null;
-	let ml: any = null; // Store maplibre-gl library reference
+	let map: MapLibreMap | null = null;
+	let ml: MaplibreModule | null = null; // Store maplibre-gl library reference
 	let isLoaded = $state(false);
 	let isFirstNodeForTrip = $state(true);
 	let lastTripId = $state<string | null>(null);
@@ -22,7 +32,7 @@
 		const maplibregl = await import('maplibre-gl');
 		ml = maplibregl.default;
 
-		if (!mapContainer) return;
+		if (!mapContainer || !ml) return;
 
 		map = new ml.Map({
 			container: mapContainer,
@@ -120,9 +130,9 @@
 	function getTripBounds() {
 		if (!activeTrip || !activeTrip.path || activeTrip.path.length === 0 || !ml) return null;
 		const path = activeTrip.path;
-		const coordinates = path.map((p: any) => [p.lng, p.lat] as [number, number]);
+		const coordinates = path.map((p: TripNode) => [p.lng, p.lat] as [number, number]);
 		return coordinates.reduce(
-			(acc: any, coord: [number, number]) => acc.extend(coord),
+			(acc: LngLatBoundsInstance, coord: [number, number]) => acc.extend(coord),
 			new ml.LngLatBounds(coordinates[0], coordinates[0])
 		);
 	}
@@ -147,7 +157,7 @@
 
 		const source = map.getSource(sourceId);
 		if (source) {
-			(source as any).setData(geojson);
+			(source as unknown as GeoJsonSource).setData(geojson);
 		} else {
 			map.addSource(sourceId, { type: 'geojson', data: geojson });
 			map.addLayer({
@@ -192,7 +202,7 @@
 					properties: {},
 					geometry: {
 						type: 'LineString',
-						coordinates: path.map((p: any) => [p.lng, p.lat])
+						coordinates: path.map((p: TripNode) => [p.lng, p.lat])
 					}
 				}
 			]
@@ -201,7 +211,7 @@
 		// Nodes Points GeoJSON
 		const nodesGeojson: GeoJSON.FeatureCollection<GeoJSON.Point> = {
 			type: 'FeatureCollection',
-			features: path.map((p: any) => ({
+			features: path.map((p: TripNode) => ({
 				type: 'Feature',
 				properties: { name: p.name },
 				geometry: {
@@ -214,7 +224,7 @@
 		// Update or Add Route
 		const routeSource = map.getSource(routeSourceId);
 		if (routeSource) {
-			(routeSource as any).setData(routeGeojson);
+			(routeSource as unknown as GeoJsonSource).setData(routeGeojson);
 		} else {
 			map.addSource(routeSourceId, { type: 'geojson', data: routeGeojson });
 			map.addLayer({
@@ -229,7 +239,7 @@
 		// Update or Add Nodes
 		const nodesSource = map.getSource(nodesSourceId);
 		if (nodesSource) {
-			(nodesSource as any).setData(nodesGeojson);
+			(nodesSource as unknown as GeoJsonSource).setData(nodesGeojson);
 		} else {
 			map.addSource(nodesSourceId, { type: 'geojson', data: nodesGeojson });
 			map.addLayer({

@@ -119,7 +119,7 @@
 						Interests & Hobbies
 					</h3>
 					<div class="flex flex-wrap gap-x-5 gap-y-3 md:gap-x-6 md:gap-y-4">
-						{#each [['🥾', 'Hiking'], ['🎒', 'Solo-traveling'], ['🍳', 'Cooking'], ['🔌', 'Electronics'], ['💻', 'Coding']] as [icon, label]}
+						{#each [['🥾', 'Hiking'], ['🎒', 'Solo-traveling'], ['🍳', 'Cooking'], ['🔌', 'Electronics'], ['💻', 'Coding']] as [icon, label] (label)}
 							<div class="group/hobby flex items-center gap-2">
 								<span class="text-xs transition-transform group-hover/hobby:scale-110 md:text-sm"
 									>{icon}</span

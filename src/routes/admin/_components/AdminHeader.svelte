@@ -58,7 +58,7 @@
 			<div class="hidden h-10 w-px bg-white/10 md:block"></div>
 
 			<div class="flex items-center gap-2 md:gap-3">
-				{#each actions as action}
+				{#each actions as action (action.label)}
 					<button
 						type="button"
 						onclick={action.onclick}

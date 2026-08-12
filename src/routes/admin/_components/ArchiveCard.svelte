@@ -53,9 +53,9 @@
 			<div class="mt-2 flex items-center gap-2">
 				<span class="text-[8px] font-bold text-emerald-500/70">{item.created}</span>
 				<div class="flex gap-0.5">
-					{#each { length: 3 } as _, starI}
+					{#each [0, 1, 2] as starIndex (starIndex)}
 						<div
-							class="h-1 w-1 rounded-full {item.score > starI * 30
+							class="h-1 w-1 rounded-full {item.score > starIndex * 30
 								? 'bg-emerald-500'
 								: 'bg-neutral-800'}"
 						></div>

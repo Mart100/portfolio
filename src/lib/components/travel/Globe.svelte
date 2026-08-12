@@ -4,6 +4,18 @@
 	import * as THREE from 'three';
 	import ThreeGlobe from 'three-globe';
 	import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+	import type { TravelPlace } from '$lib/types';
+
+	// A country polygon pulled from the countries GeoJSON, carrying its NAME property.
+	interface CountryFeature {
+		type: 'Feature';
+		properties: { NAME: string };
+	}
+
+	// A three-globe child Mesh that has feature data attached via __data.
+	interface GlobeObject extends THREE.Object3D {
+		__data?: { data?: CountryFeature };
+	}
 
 	let {
 		visitedCountries = [],
@@ -11,16 +23,16 @@
 		isVisible = true
 	} = $props<{
 		visitedCountries: string[];
-		places: any[];
+		places: TravelPlace[];
 		isVisible?: boolean;
 	}>();
 
 	let container = $state<HTMLDivElement>();
-	let globe = $state<any>();
+	let globe = $state<ThreeGlobe>();
 	let scene = $state<THREE.Scene>();
 	let camera = $state<THREE.PerspectiveCamera>();
 	let renderer = $state<THREE.WebGLRenderer>();
-	let controls = $state<any>();
+	let controls = $state<OrbitControls>();
 	let frameId: number;
 	let observer: IntersectionObserver;
 	let lastInteractionTime = $state(0);
@@ -38,9 +50,9 @@
 	raycaster.params.Line.threshold = 0.01;
 	raycaster.params.Points.threshold = 0.01;
 	let mouse = new THREE.Vector2();
-	let countriesData = $state<any[]>([]);
+	let countriesData = $state<CountryFeature[]>([]);
 
-	let hoveredCountry = $state<any>(null);
+	let hoveredCountry = $state<CountryFeature | null>(null);
 	let mousePosition = $state({ x: 0, y: 0 });
 	let isIntersecting = $state(true);
 
@@ -70,8 +82,8 @@
 		// Add Places (Points)
 		globe
 			.pointsData(places)
-			.pointLat((d: any) => d.lat)
-			.pointLng((d: any) => d.lng)
+			.pointLat((d: object) => (d as TravelPlace).lat)
+			.pointLng((d: object) => (d as TravelPlace).lng)
 			.pointColor(() => '#ff0000')
 			.pointAltitude(0.015)
 			.pointRadius(0.2);
@@ -135,35 +147,37 @@
 			.atmosphereAltitude(0.12);
 
 		// Disable raycasting on atmosphere so it doesn't block country hover
-		globe.children.forEach((child: any) => {
+		globe.children.forEach((child: THREE.Object3D) => {
 			if (child.name === 'atmosphere') {
 				child.raycast = () => null;
 			}
 		});
 
 		// Draw all countries
+		const globeInstance = globe; // non-null: created above
 		fetch('/countries.geojson')
 			.then((res) => res.json())
 			.then((geoJson) => {
 				countriesData = geoJson.features;
-				globe
+				globeInstance
 					.polygonsData(countriesData)
-					.polygonCapColor((d: any) => {
-						if (hoveredCountry && d.properties.NAME === hoveredCountry.properties.NAME) {
+					.polygonCapColor((d: object) => {
+						const country = d as CountryFeature;
+						if (hoveredCountry && country.properties.NAME === hoveredCountry.properties.NAME) {
 							return 'rgba(255, 255, 255, 0.6)';
 						}
-						return visitedCountries.includes(d.properties.NAME)
+						return visitedCountries.includes(country.properties.NAME)
 							? 'rgba(255, 255, 255, 0.4)'
 							: 'rgba(255, 255, 255, 0.05)';
 					})
 					.polygonSideColor(() => 'rgba(0, 0, 0, 0)')
-					.polygonStrokeColor((d: any) =>
-						visitedCountries.includes(d.properties.NAME)
+					.polygonStrokeColor((d: object) =>
+						visitedCountries.includes((d as CountryFeature).properties.NAME)
 							? 'rgba(255, 255, 255, 0.8)'
 							: 'rgba(255, 255, 255, 0.1)'
 					)
-					.polygonAltitude((d: any) =>
-						visitedCountries.includes(d.properties.NAME) ? 0.012 : 0.01
+					.polygonAltitude((d: object) =>
+						visitedCountries.includes((d as CountryFeature).properties.NAME) ? 0.012 : 0.01
 					);
 				needRender = true;
 			});
@@ -183,6 +197,7 @@
 		renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
 		renderer.setSize(width, height);
 		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
+		// eslint-disable-next-line svelte/no-dom-manipulating -- three.js WebGLRenderer creates & owns its own canvas element; it must be appended to the container at renderer init and cannot be managed by Svelte
 		container.appendChild(renderer.domElement);
 
 		// Setup Controls
@@ -199,16 +214,17 @@
 			needRender = true;
 		};
 		controls.addEventListener('start', updateInteractionTime);
-		controls.addEventListener('change', (e: any) => {
+		controls.addEventListener('change', (e) => {
 			// Adjust rotation speed based on zoom level (more zoomed in = slower rotation)
-			const distance = e.target.getDistance();
-			const maxDistance = e.target.maxDistance;
-			const minDistance = e.target.minDistance;
+			const target = (e as unknown as { target: OrbitControls & { active?: boolean } }).target;
+			const distance = target.getDistance();
+			const maxDistance = target.maxDistance;
+			const minDistance = target.minDistance;
 
 			// Scale rotation speed between ~0.3 and 1.0 based on distance
-			e.target.rotateSpeed = ((distance - minDistance) / (maxDistance - minDistance)) * 0.8 + 0.2;
+			target.rotateSpeed = ((distance - minDistance) / (maxDistance - minDistance)) * 0.8 + 0.2;
 
-			if (e.target.active) {
+			if (target.active) {
 				updateInteractionTime();
 				needRaycast = true;
 				needRender = true;
@@ -241,10 +257,10 @@
 					// Set raycaster far to not intersect objects behind the globe
 					const intersects = raycaster.intersectObjects(globe.children, true);
 
-					let foundData = null;
+					let foundData: CountryFeature | null = null;
 					// Search through intersections to find the first valid country feature
 					for (let i = 0; i < Math.min(intersects.length, 5); i++) {
-						const current = intersects[i].object as any;
+						const current = intersects[i].object as GlobeObject;
 
 						// Search hierarchy for data
 						let dataNode = current;

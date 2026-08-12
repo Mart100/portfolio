@@ -64,12 +64,14 @@
 						<a
 							href={GITHUB}
 							target="_blank"
+							rel="external"
 							class="text-[9px] font-bold tracking-[0.3em] text-gray-400 uppercase transition-colors hover:text-white md:text-[10px]"
 							>Github</a
 						>
 						<a
 							href={LINKEDIN}
 							target="_blank"
+							rel="external"
 							class="text-[9px] font-bold tracking-[0.3em] text-gray-400 uppercase transition-colors hover:text-white md:text-[10px]"
 							>LinkedIn</a
 						>

@@ -1,17 +1,24 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+	import { SvelteMap } from 'svelte/reactivity';
 	import maplibregl from 'maplibre-gl';
 	import 'maplibre-gl/dist/maplibre-gl.css';
 
+	interface Place {
+		name: string;
+		lat: number;
+		lng: number;
+	}
+
 	let { places = $bindable() } = $props<{
-		places: { name: string; lat: number; lng: number }[];
+		places: Place[];
 	}>();
 
 	let mapContainer = $state<HTMLDivElement>();
 	let map: maplibregl.Map | null = null;
-	let markers = new Map<any, maplibregl.Marker>();
+	let markers = new SvelteMap<Place, maplibregl.Marker>();
 	let isLoaded = $state(false);
-	let selectedPlace = $state<any>(null);
+	let selectedPlace = $state<Place | null>(null);
 	let isDraggingMarker = false;
 
 	// Center map on selected place
@@ -99,7 +106,7 @@
 		}
 
 		// 2. Sync markers
-		places.forEach((place: any) => {
+		places.forEach((place: Place) => {
 			let marker = markers.get(place);
 
 			if (!marker) {
@@ -129,7 +136,7 @@
 					e.preventDefault();
 					e.stopPropagation();
 					if (confirm(`Remove "${place.name}"?`)) {
-						places = places.filter((p: any) => p !== place);
+						places = places.filter((p: Place) => p !== place);
 					}
 				});
 
@@ -182,18 +189,12 @@
 
 	$effect(() => {
 		if (isLoaded && places) {
-			// Trigger on data changes
-			selectedPlace;
-			places.forEach((p: any) => {
-				p.lat;
-				p.lng;
-			});
 			syncMarkers();
 		}
 	});
 
 	export function flyTo(lat: number, lng: number) {
-		const place = places.find((p: any) => p.lat === lat && p.lng === lng);
+		const place = places.find((p: Place) => p.lat === lat && p.lng === lng);
 		if (place) {
 			selectedPlace = place;
 		} else {

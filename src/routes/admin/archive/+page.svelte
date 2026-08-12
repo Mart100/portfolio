@@ -84,7 +84,7 @@
 
 		<div class="mx-auto max-w-4xl p-6 md:p-12">
 			<div class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-				{#each archive as _, i}
+				{#each archive as item, i (item)}
 					<ArchiveCard bind:item={archive[i]} onclick={() => (editingIndex = i)} />
 				{/each}
 			</div>

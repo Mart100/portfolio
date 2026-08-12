@@ -31,7 +31,7 @@
 			} else {
 				error = 'No images found in this sector';
 			}
-		} catch (e) {
+		} catch {
 			error = 'Failed to fetch asset manifest';
 		} finally {
 			loading = false;
@@ -123,7 +123,7 @@
 					</div>
 				{:else}
 					<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-						{#each images as img}
+						{#each images as img (img.url)}
 							<button
 								type="button"
 								onclick={() => {

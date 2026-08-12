@@ -85,6 +85,7 @@
 
 			<div class="flex-grow space-y-6 md:space-y-10">
 				<div class="text-sm leading-relaxed text-gray-400 md:text-lg">
+					<!-- eslint-disable-next-line svelte/no-at-html-tags -- trusted admin-authored HTML stored in the archive description field -->
 					{@html project.description}
 				</div>
 
@@ -113,7 +114,7 @@
 					<a
 						href={project.link}
 						target="_blank"
-						rel="noopener noreferrer"
+						rel="external noopener noreferrer"
 						class="flex items-center justify-center gap-3 rounded-xl bg-emerald-500 px-5 py-3.5 text-center text-[9px] font-bold tracking-[0.2em] text-black uppercase transition-all hover:scale-[1.02] hover:bg-emerald-400 active:scale-[0.98] md:rounded-2xl md:px-8 md:py-5 md:text-[10px]"
 					>
 						Live Demo
@@ -137,7 +138,7 @@
 					<a
 						href={project.code}
 						target="_blank"
-						rel="noopener noreferrer"
+						rel="external noopener noreferrer"
 						class="flex items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-5 py-3.5 text-center text-[9px] font-bold tracking-[0.2em] text-white uppercase transition-all hover:bg-white/[0.08] md:rounded-2xl md:px-8 md:py-5 md:text-[10px]"
 					>
 						Source Code

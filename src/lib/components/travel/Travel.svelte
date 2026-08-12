@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import TripSidepanel from './TripSidepanel.svelte';
-	import type { TravelData, Trip } from '$lib/types';
+	import type { TravelData, Trip, TripNode } from '$lib/types';
 
 	let { travelData = { visited: [], trips: [], places: [] } } = $props<{
 		travelData: TravelData;
@@ -12,12 +12,12 @@
 	let activeTrip = $derived(
 		activeTripIndex === -1 ? null : (travelData.trips[activeTripIndex] as Trip)
 	);
-	let selectedNode = $state<any>(null);
+	let selectedNode = $state<TripNode | null>(null);
 	let mobileTab = $state<'list' | 'map'>('map');
 
 	// Components loaded dynamically to prevent SSR issues and improve performance
-	let Globe = $state<any>(null);
-	let MapLibreView = $state<any>(null);
+	let Globe = $state<typeof import('./Globe.svelte').default | null>(null);
+	let MapLibreView = $state<typeof import('./MapLibreView.svelte').default | null>(null);
 
 	// Reset selected node when trip changes
 	$effect(() => {
@@ -37,7 +37,7 @@
 		}
 	});
 
-	function handleNodeClick(node: any) {
+	function handleNodeClick(node: TripNode) {
 		selectedNode = node;
 	}
 </script>

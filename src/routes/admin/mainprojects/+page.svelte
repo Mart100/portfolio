@@ -66,7 +66,7 @@
 
 		<div class="mx-auto max-w-4xl p-6 md:p-12">
 			<div class="grid gap-6">
-				{#each projects as _, i}
+				{#each projects as project, i (project)}
 					<ProjectCard
 						bind:project={projects[i]}
 						index={i}

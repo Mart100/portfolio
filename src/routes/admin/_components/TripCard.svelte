@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
-	import { onMount, onDestroy } from 'svelte';
+	import { onDestroy } from 'svelte';
 	import maplibregl from 'maplibre-gl';
 	import 'maplibre-gl/dist/maplibre-gl.css';
 	import CoordPickerModal from './CoordPickerModal.svelte';
 	import ImagePickerModal from './ImagePickerModal.svelte';
-	import type { Trip } from '$lib/types';
+	import type { Trip, TripNode } from '$lib/types';
 
 	let {
 		trip = $bindable(),
@@ -61,7 +61,10 @@
 	}
 
 	function removePathPoint(pIndex: number) {
-		trip.path = trip.path.filter((_: any, i: number) => i !== pIndex);
+		trip.path = trip.path.filter((point: TripNode, i: number) => {
+			void point;
+			return i !== pIndex;
+		});
 	}
 
 	function openPicker(pIndex: number) {
@@ -108,28 +111,33 @@
 	function updateMap() {
 		if (!map || !isLoaded) return;
 
-		const points = trip.path.filter((p: any) => p.lat !== 0 || p.lng !== 0);
+		const points = trip.path.filter((p: TripNode) => p.lat !== 0 || p.lng !== 0);
 		const sourceId = 'trip-path';
 		const lineLayerId = 'trip-line';
 		const pointLayerId = 'trip-points';
 
-		const geojson: any = {
+		const geojson: GeoJSON.FeatureCollection = {
 			type: 'FeatureCollection',
 			features: [
 				{
 					type: 'Feature',
+					properties: {},
 					geometry: {
 						type: 'LineString',
-						coordinates: points.map((p: any) => [p.lng, p.lat])
+						coordinates: points.map((p: TripNode) => [p.lng, p.lat])
 					}
 				},
-				...points.map((p: any) => ({
-					type: 'Feature',
-					geometry: {
-						type: 'Point',
-						coordinates: [p.lng, p.lat]
-					}
-				}))
+				...points.map(
+					(p: TripNode) =>
+						({
+							type: 'Feature',
+							properties: {},
+							geometry: {
+								type: 'Point',
+								coordinates: [p.lng, p.lat]
+							}
+						}) as GeoJSON.Feature
+				)
 			]
 		};
 
@@ -159,7 +167,7 @@
 
 		if (points.length > 0) {
 			const bounds = new maplibregl.LngLatBounds();
-			points.forEach((p: any) => bounds.extend([p.lng, p.lat]));
+			points.forEach((p: TripNode) => bounds.extend([p.lng, p.lat]));
 			map.fitBounds(bounds, { padding: 40, maxZoom: 10 });
 		}
 	}

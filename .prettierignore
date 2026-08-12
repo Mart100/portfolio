@@ -7,3 +7,5 @@ bun.lockb
 
 # Miscellaneous
 /static/
+# Admin-generated data (written by JSON.stringify; keep as-is)
+/src/lib/data/

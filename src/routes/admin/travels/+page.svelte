@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
+	import { SvelteSet } from 'svelte/reactivity';
 	import { enhance } from '$app/forms';
 	import { fly } from 'svelte/transition';
 	import type { PageProps } from './$types';
@@ -32,7 +33,9 @@
 		try {
 			const res = await fetch('/countries.geojson');
 			const geoData = await res.json();
-			allCountries = geoData.features.map((f: any) => f.properties.NAME).sort();
+			allCountries = geoData.features
+				.map((f: { properties: { NAME: string } }) => f.properties.NAME)
+				.sort();
 		} catch (e) {
 			console.error('Failed to load countries:', e);
 		}
@@ -62,7 +65,7 @@
 	}
 
 	// Track expanded items
-	let expandedTrips = $state<Set<number>>(new Set());
+	let expandedTrips = new SvelteSet<number>();
 
 	function toggleTrip(index: number) {
 		if (expandedTrips.has(index)) {
@@ -70,7 +73,6 @@
 		} else {
 			expandedTrips.add(index);
 		}
-		expandedTrips = new Set(expandedTrips);
 	}
 
 	function addTrip() {
@@ -85,7 +87,6 @@
 		};
 		travel.trips = [newTrip, ...travel.trips];
 		expandedTrips.add(0);
-		expandedTrips = new Set(expandedTrips);
 	}
 
 	$effect(() => {
@@ -156,7 +157,7 @@
 					<div
 						class="mt-2 flex flex-wrap gap-2 rounded-2xl border border-white/5 bg-neutral-900 p-4 shadow-inner"
 					>
-						{#each travel.visited as country}
+						{#each travel.visited as country (country)}
 							<div
 								class="flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1.5 text-[10px] font-black tracking-widest text-emerald-500 uppercase ring-1 ring-emerald-500/30"
 								in:fly={{ x: -10, duration: 200 }}
@@ -200,7 +201,7 @@
 								<div
 									class="absolute top-full left-0 z-50 mt-2 w-64 overflow-hidden rounded-xl border border-white/10 bg-neutral-950 p-1 shadow-2xl backdrop-blur-xl"
 								>
-									{#each suggestions as suggestion}
+									{#each suggestions as suggestion (suggestion)}
 										<button
 											type="button"
 											onclick={() => addCountry(suggestion)}
@@ -222,7 +223,7 @@
 				</div>
 
 				<div class="space-y-4">
-					{#each travel.trips as _, ti}
+					{#each travel.trips as trip, ti (trip)}
 						<TripCard
 							bind:trip={travel.trips[ti]}
 							index={ti}
