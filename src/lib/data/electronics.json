@@ -1,0 +1,16 @@
+[
+	{
+		"id": "electronics-1786567842834",
+		"title": "Doorbell",
+		"description": "Small circuit to connect our 9V AC doorbell to wifi (MQTT)",
+		"images": [
+			"https://assets.martvenck.com/portfolio/electronics/webp/20260308_170202-a50da4d7.webp",
+			"https://assets.martvenck.com/portfolio/electronics/webp/20260308_170226-1acd4b68.webp"
+		],
+		"tags": [
+			"homeiot"
+		],
+		"created": "2026-04-08",
+		"link": ""
+	}
+]

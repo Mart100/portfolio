@@ -43,6 +43,11 @@
 					<a href="#work" onclick={handleAnchorClick} class="transition-colors hover:text-white"
 						>Work</a
 					>
+					<a
+						href="#electronics"
+						onclick={handleAnchorClick}
+						class="transition-colors hover:text-white">Hardware</a
+					>
 					<a href="#travel" onclick={handleAnchorClick} class="transition-colors hover:text-white"
 						>Travel</a
 					>
@@ -128,6 +133,14 @@
 					>
 						<span class="h-1 w-1 rounded-full bg-emerald-500/50"></span>
 						Work
+					</a>
+					<a
+						href="#electronics"
+						onclick={handleAnchorClick}
+						class="flex items-center gap-4 text-sm font-bold tracking-[0.2em] text-gray-400 uppercase transition-colors hover:text-emerald-400"
+					>
+						<span class="h-1 w-1 rounded-full bg-emerald-500/50"></span>
+						Hardware
 					</a>
 					<a
 						href="#travel"

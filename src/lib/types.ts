@@ -46,3 +46,13 @@ export interface TravelData {
 	trips: Trip[];
 	places: TravelPlace[];
 }
+
+export interface ElectronicsProject {
+	id: string;
+	title: string;
+	description: string;
+	images: string[];
+	tags?: string[];
+	created?: string;
+	link?: string;
+}

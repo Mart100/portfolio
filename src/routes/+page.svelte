@@ -3,6 +3,7 @@
 	import ProjectGrid from '$lib/components/ProjectGrid.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Travel from '$lib/components/travel/Travel.svelte';
+	import Electronics from '$lib/components/Electronics.svelte';
 	import Archive from '$lib/components/Archive.svelte';
 	import About from '$lib/components/About.svelte';
 	import Contact from '$lib/components/Contact.svelte';
@@ -30,6 +31,7 @@
 	<main>
 		<Hero />
 		<ProjectGrid projects={data.projects} />
+		<Electronics projects={data.electronics} />
 		<Travel travelData={data.travel} />
 		<About />
 
