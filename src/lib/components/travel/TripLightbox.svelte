@@ -17,6 +17,25 @@
 	let node = $derived(nodes[index]);
 	let hasPrev = $derived(index > 0);
 	let hasNext = $derived(index < nodes.length - 1);
+	let orientations = $state<Record<string, boolean>>({});
+	let ready = $state<Record<string, boolean>>({});
+	let fallbackSrc = $state<string | undefined>(undefined);
+
+	let visibleSrc = $derived.by(() => {
+		const current = node?.image;
+		if (!current) return undefined;
+		if (ready[current]) return current;
+		return fallbackSrc;
+	});
+
+	let nearbySrcs = $derived.by(() => {
+		const srcs: string[] = [];
+		for (const offset of [-2, -1, 0, 1, 2]) {
+			const src = nodes[index + offset]?.image;
+			if (src && !srcs.includes(src)) srcs.push(src);
+		}
+		return srcs;
+	});
 
 	function goTo(nextIndex: number) {
 		if (nextIndex < 0 || nextIndex >= nodes.length) return;
@@ -28,6 +47,22 @@
 		if (e.key === 'Escape') onclose();
 		if (e.key === 'ArrowLeft') goTo(index - 1);
 		if (e.key === 'ArrowRight') goTo(index + 1);
+	}
+
+	function markReady(src: string, img: HTMLImageElement) {
+		if (!src || !img.naturalWidth) return;
+		orientations[src] = img.naturalWidth > img.naturalHeight;
+		ready[src] = true;
+		if (src === node?.image) fallbackSrc = src;
+	}
+
+	function decodeImage(src: string) {
+		return (img: HTMLImageElement) => {
+			const done = () => markReady(src, img);
+			if (img.complete) done();
+			else img.addEventListener('load', done);
+			return () => img.removeEventListener('load', done);
+		};
 	}
 </script>
 
@@ -42,7 +77,7 @@
 >
 	<button
 		onclick={onclose}
-		class="absolute top-4 right-4 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-gray-400 transition-all hover:bg-emerald-500 hover:text-black md:top-5 md:right-5"
+		class="absolute top-4 right-4 z-30 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/70 text-white shadow-lg backdrop-blur-md transition-all hover:bg-emerald-500 hover:text-black md:top-5 md:right-5"
 		aria-label="Close lightbox"
 	>
 		<svg
@@ -100,18 +135,21 @@
 	{/if}
 
 	<!-- Full-bleed media stage -->
-	<div class="absolute inset-0 overflow-hidden">
-		{#if node?.image}
+	<div class="absolute inset-0 overflow-hidden bg-black">
+		{#each nearbySrcs as src (src)}
 			<img
-				src={node.image}
-				alt={node.name}
-				class="absolute inset-0 h-full w-full object-contain"
+				{src}
+				alt={src === visibleSrc ? node?.name : ''}
+				{@attach decodeImage(src)}
+				class="absolute inset-0 h-full w-full {orientations[src]
+					? 'object-cover'
+					: 'object-contain'} {src === visibleSrc ? '' : 'opacity-0'}"
 			/>
-		{:else}
+		{/each}
+
+		{#if !node?.image}
 			<div class="absolute inset-0 flex items-center justify-center bg-white/[0.03]">
-				<span
-					class="text-[10px] font-bold tracking-[0.35em] text-white/25 uppercase"
-				>
+				<span class="text-[10px] font-bold tracking-[0.35em] text-white/25 uppercase">
 					No image
 				</span>
 			</div>
