@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import TripSidepanel from './TripSidepanel.svelte';
-	import type { TravelData, Trip } from '$lib/types';
+	import TripLightbox from './TripLightbox.svelte';
+	import type { TravelData, Trip, TripNode } from '$lib/types';
 
 	let { travelData = { visited: [], trips: [], places: [] } } = $props<{
 		travelData: TravelData;
@@ -12,8 +13,10 @@
 	let activeTrip = $derived(
 		activeTripIndex === -1 ? null : (travelData.trips[activeTripIndex] as Trip)
 	);
-	let selectedNode = $state<any>(null);
+	let selectedNode = $state<TripNode | null>(null);
 	let mobileTab = $state<'list' | 'map'>('map');
+	let lightboxOpen = $state(false);
+	let lightboxIndex = $state(0);
 
 	// Components loaded dynamically to prevent SSR issues and improve performance
 	let Globe = $state<any>(null);
@@ -23,6 +26,8 @@
 	$effect(() => {
 		if (activeTripIndex !== -1) {
 			selectedNode = null;
+		} else {
+			lightboxOpen = false;
 		}
 	});
 
@@ -37,8 +42,13 @@
 		}
 	});
 
-	function handleNodeClick(node: any) {
+	function handleNodeClick(node: TripNode) {
 		selectedNode = node;
+	}
+
+	function openLightbox(index: number) {
+		lightboxIndex = index;
+		lightboxOpen = true;
 	}
 </script>
 
@@ -73,7 +83,7 @@
 		</div>
 
 		<div
-			class="grid grid-cols-1 overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] shadow-2xl lg:grid-cols-12"
+			class="relative grid grid-cols-1 overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] shadow-2xl lg:grid-cols-12"
 		>
 			<!-- Mobile Tab Switcher -->
 			<div class="flex border-b border-white/5 bg-black/40 lg:hidden">
@@ -138,11 +148,16 @@
 					allTrips={travelData.trips}
 					onTripSelect={(index) => {
 						activeTripIndex = index;
+						lightboxOpen = false;
 					}}
 					onNodeClick={(node) => {
 						handleNodeClick(node);
 					}}
-					onBackToList={() => (activeTripIndex = -1)}
+					onBackToList={() => {
+						activeTripIndex = -1;
+						lightboxOpen = false;
+					}}
+					onImageClick={openLightbox}
 				/>
 			</div>
 
@@ -199,6 +214,15 @@
 					</div>
 				</div>
 			</div>
+
+			{#if lightboxOpen && activeTrip}
+				<TripLightbox
+					nodes={activeTrip.path}
+					bind:index={lightboxIndex}
+					onclose={() => (lightboxOpen = false)}
+					onnavigate={(node) => handleNodeClick(node)}
+				/>
+			{/if}
 		</div>
 	</div>
 </section>

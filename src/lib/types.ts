@@ -38,6 +38,7 @@ export interface Trip {
 	startDate: string;
 	endDate: string;
 	path: TripNode[];
+	basePath?: string;
 }
 
 export interface TravelData {
