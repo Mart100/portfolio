@@ -99,7 +99,7 @@
 			aria-label="Previous stop"
 		>
 			<span
-				class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white/50 opacity-0 transition-all group-hover:opacity-100 group-hover:text-white md:h-12 md:w-12"
+				class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white/50 opacity-0 transition-all group-hover:text-white group-hover:opacity-100 md:h-12 md:w-12"
 			>
 				<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path
@@ -120,15 +120,10 @@
 			aria-label="Next stop"
 		>
 			<span
-				class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white/50 opacity-0 transition-all group-hover:opacity-100 group-hover:text-white md:h-12 md:w-12"
+				class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white/50 opacity-0 transition-all group-hover:text-white group-hover:opacity-100 md:h-12 md:w-12"
 			>
 				<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M9 5l7 7-7 7"
-					/>
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
 				</svg>
 			</span>
 		</button>
