@@ -19,6 +19,8 @@
 	let editingIndex = $state<number | null>(null);
 	let isPickerOpen = $state(false);
 	let pickerTarget = $state<'add' | number>('add');
+	let circuitDraft = $state('');
+	let circuitError = $state('');
 
 	let hasChanges = $derived(JSON.stringify(electronics) !== JSON.stringify(data.electronics));
 
@@ -36,10 +38,37 @@
 			...electronics
 		];
 		editingIndex = 0;
+		circuitDraft = '';
+		circuitError = '';
+	}
+
+	function openEdit(i: number) {
+		editingIndex = i;
+		const circuit = electronics[i].circuit;
+		circuitDraft = circuit ? JSON.stringify(circuit, null, 2) : '';
+		circuitError = '';
 	}
 
 	function closeEdit() {
 		editingIndex = null;
+		circuitDraft = '';
+		circuitError = '';
+	}
+
+	function onCircuitInput(value: string) {
+		circuitDraft = value;
+		if (editingIndex === null) return;
+		if (!value.trim()) {
+			electronics[editingIndex].circuit = undefined;
+			circuitError = '';
+			return;
+		}
+		try {
+			electronics[editingIndex].circuit = JSON.parse(value);
+			circuitError = '';
+		} catch {
+			circuitError = 'Invalid JSON — circuit will not be saved until this parses.';
+		}
 	}
 
 	function removeImage(i: number) {
@@ -101,7 +130,7 @@
 		<div class="mx-auto max-w-4xl p-6 md:p-12">
 			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 				{#each electronics as _, i (electronics[i].id)}
-					<ElectronicsCard bind:item={electronics[i]} onclick={() => (editingIndex = i)} />
+					<ElectronicsCard bind:item={electronics[i]} onclick={() => openEdit(i)} />
 				{/each}
 			</div>
 		</div>
@@ -220,6 +249,34 @@
 							class="w-full rounded-2xl border border-white/5 bg-white/5 p-4 text-white outline-none focus:ring-1 focus:ring-emerald-500"
 							placeholder="PCB, ESP32, Analog..."
 						/>
+					</div>
+
+					<div class="space-y-2">
+						<label
+							for="electronics-circuit"
+							class="text-[10px] font-black tracking-widest text-neutral-500 uppercase"
+							>ThePrototyper circuit JSON (optional)</label
+						>
+						<textarea
+							id="electronics-circuit"
+							value={circuitDraft}
+							oninput={(e) => onCircuitInput((e.target as HTMLTextAreaElement).value)}
+							rows="8"
+							spellcheck="false"
+							class="w-full rounded-2xl border border-white/5 bg-white/5 p-4 font-mono text-[11px] leading-relaxed text-neutral-300 outline-none focus:ring-1 focus:ring-emerald-500 {circuitError
+								? 'ring-1 ring-red-500/60'
+								: ''}"
+							placeholder={'{ /* paste circuit.json */ }'}
+						></textarea>
+						{#if circuitError}
+							<p class="text-[11px] text-red-400">{circuitError}</p>
+						{:else if electronics[editingIndex].circuit}
+							<p class="text-[11px] text-emerald-500/70">Circuit embed enabled for this build.</p>
+						{:else}
+							<p class="text-[11px] text-neutral-500">
+								Paste a circuit.json export to embed an interactive Prototyper board.
+							</p>
+						{/if}
 					</div>
 
 					<div class="space-y-3">

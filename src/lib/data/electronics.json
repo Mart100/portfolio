@@ -11,6 +11,506 @@
 			"homeiot"
 		],
 		"created": "2026-04-08",
-		"link": ""
+		"link": "",
+		"circuit": {
+			"cols": 20,
+			"rows": 12,
+			"components": [
+				{
+					"id": "dfbfb493-7315-419a-9a23-46db3768016f",
+					"type": "mosfet",
+					"x": 11,
+					"y": 2,
+					"rotation": 180,
+					"values": {
+						"label": "Q1",
+						"model": "IRLZ44N"
+					}
+				},
+				{
+					"id": "e51f843e-f62b-4933-bd81-c5ae47e6ee34",
+					"type": "tp4056",
+					"x": 14,
+					"y": 0,
+					"rotation": 0,
+					"values": {
+						"label": "U1",
+						"current": "1A"
+					}
+				},
+				{
+					"id": "16b2d069-c91a-416f-9720-660c50aa2573",
+					"type": "esp32c3_supermini",
+					"x": 0,
+					"y": 0,
+					"rotation": 0,
+					"values": {
+						"label": "U1sdf"
+					}
+				},
+				{
+					"id": "7c8e3716-7dbb-4e20-a3cb-e56c900de896",
+					"type": "ht7533",
+					"x": 11,
+					"y": 8,
+					"rotation": 90,
+					"values": {}
+				},
+				{
+					"id": "e834c908-9d48-4dde-9b28-c2d32460bdc5",
+					"type": "capacitor",
+					"x": 7,
+					"y": 2,
+					"rotation": 270,
+					"values": {
+						"value": "470µF",
+						"capacitorType": "electrolytic"
+					}
+				},
+				{
+					"id": "fb259e2a-c174-4fbf-801b-353df34a38ed",
+					"type": "resistor",
+					"x": 12,
+					"y": 2,
+					"rotation": 90,
+					"values": {
+						"value": "100",
+						"band1": "brown",
+						"band2": "black",
+						"band3": "brown",
+						"tolerance": "silver"
+					}
+				},
+				{
+					"id": "4efec406-a4be-45bf-b78b-d91c631fbfb2",
+					"type": "capacitor",
+					"x": 9,
+					"y": 10,
+					"rotation": 270,
+					"values": {
+						"value": "10µF",
+						"capacitorType": "electrolytic"
+					}
+				},
+				{
+					"id": "a3340344-017c-46ab-90ff-ebcf3aaf1e25",
+					"type": "capacitor",
+					"x": 10,
+					"y": 9,
+					"rotation": 270,
+					"values": {
+						"value": "10µF",
+						"capacitorType": "electrolytic"
+					}
+				},
+				{
+					"id": "c5cf3407-34a4-47f9-a837-3e6679261335",
+					"type": "diode",
+					"x": 10,
+					"y": 1,
+					"rotation": 0,
+					"values": {
+						"label": "D1",
+						"model": "1N4148"
+					}
+				},
+				{
+					"id": "d820f423-3a6d-4dff-94a6-426e9f7d8a27",
+					"type": "female_header",
+					"x": 11,
+					"y": 0,
+					"rotation": 180,
+					"values": {
+						"pins": "2"
+					}
+				},
+				{
+					"id": "1943efbf-83fc-4421-a17c-a6919d1a2042",
+					"type": "resistor",
+					"x": 13,
+					"y": 2,
+					"rotation": 90,
+					"values": {
+						"value": "10000",
+						"band1": "brown",
+						"band2": "black",
+						"band3": "orange",
+						"tolerance": "silver"
+					}
+				},
+				{
+					"id": "b50bcc09-4d82-4e4a-a917-ca1bbbee739f",
+					"type": "female_header",
+					"x": 4,
+					"y": 9,
+					"rotation": 0,
+					"values": {
+						"pins": "3"
+					}
+				},
+				{
+					"id": "67bc4b56-b119-486e-823f-3c238ae73446",
+					"type": "text_label",
+					"x": 8.227272727272727,
+					"y": -0.5075757575757582,
+					"rotation": 0,
+					"values": {
+						"text": "Water Pump",
+						"color": "#ffffff",
+						"size": "17"
+					}
+				},
+				{
+					"id": "3b91e087-6f98-4e57-8e66-e613d128f2b2",
+					"type": "text_label",
+					"x": 2.3666666666666676,
+					"y": 10.75,
+					"rotation": 0,
+					"values": {
+						"text": "Moisture Sensor",
+						"color": "#f0f0f0",
+						"size": "14"
+					}
+				},
+				{
+					"id": "03adb045-7941-4feb-a5b3-65ba61e732b2",
+					"type": "text_label",
+					"x": 14.875657575757582,
+					"y": 7.878787878787884,
+					"rotation": 0,
+					"values": {
+						"text": "\\/ Battery \\/",
+						"color": "#f0f0f0",
+						"size": "12"
+					}
+				}
+			],
+			"wires": [
+				{
+					"id": "4e4721c4-acd6-415f-a8ec-7f80d4f69207",
+					"source": {
+						"x": 6,
+						"y": 2
+					},
+					"target": {
+						"x": 7,
+						"y": 2
+					},
+					"color": "#e03030"
+				},
+				{
+					"id": "ad11ca4f-ec5e-4c12-a04d-42414f167f2c",
+					"source": {
+						"x": 6,
+						"y": 1
+					},
+					"target": {
+						"x": 9,
+						"y": 1
+					},
+					"color": "#222222"
+				},
+				{
+					"id": "14934bbd-fd69-400a-ac5a-5fcae47e3a3d",
+					"source": {
+						"x": 10,
+						"y": 0
+					},
+					"target": {
+						"x": 10,
+						"y": 2
+					},
+					"color": "#e0c020"
+				},
+				{
+					"id": "93e8743f-fa3c-4b3e-9264-4a9145b69f19",
+					"source": {
+						"x": 11,
+						"y": 1
+					},
+					"target": {
+						"x": 19,
+						"y": 1
+					},
+					"color": "#e03030"
+				},
+				{
+					"id": "5c9befee-b95c-4f21-bacb-3304f7b672ad",
+					"source": {
+						"x": 11,
+						"y": 0
+					},
+					"target": {
+						"x": 11,
+						"y": 1
+					},
+					"color": "#e03030"
+				},
+				{
+					"id": "b0fd57bd-9c61-4c67-bc4c-9b70c95b9875",
+					"source": {
+						"x": 9,
+						"y": 1
+					},
+					"target": {
+						"x": 9,
+						"y": 8
+					},
+					"color": "#222222"
+				},
+				{
+					"id": "0098e182-85b5-4ddd-9150-53b61fa1b4c3",
+					"source": {
+						"x": 6,
+						"y": 5
+					},
+					"target": {
+						"x": 12,
+						"y": 5
+					},
+					"color": "#e0c020"
+				},
+				{
+					"id": "b5621e6b-6580-48e9-b31e-984f3bcb53b9",
+					"source": {
+						"x": 11,
+						"y": 2
+					},
+					"target": {
+						"x": 12,
+						"y": 2
+					},
+					"color": "#e0c020"
+				},
+				{
+					"id": "da1f3624-2345-4764-8a49-c566a9d19fc5",
+					"source": {
+						"x": 14,
+						"y": 8
+					},
+					"target": {
+						"x": 14,
+						"y": 9
+					},
+					"color": "#222222"
+				},
+				{
+					"id": "b918037e-b314-4fe7-b803-f4112c9184b8",
+					"source": {
+						"x": 19,
+						"y": 1
+					},
+					"target": {
+						"x": 19,
+						"y": 9
+					},
+					"color": "#e03030"
+				},
+				{
+					"id": "d0962d63-307d-4aec-9163-64f7cc5bbc90",
+					"source": {
+						"x": 7,
+						"y": 2
+					},
+					"target": {
+						"x": 7,
+						"y": 10
+					},
+					"color": "#e03030"
+				},
+				{
+					"id": "bdf7288d-2207-42c3-9508-8a28a270a713",
+					"source": {
+						"x": 7,
+						"y": 10
+					},
+					"target": {
+						"x": 11,
+						"y": 10
+					},
+					"color": "#e03030"
+				},
+				{
+					"id": "0b905552-41b1-4ea5-8ee3-28e715c8b0ed",
+					"source": {
+						"x": 11,
+						"y": 9
+					},
+					"target": {
+						"x": 13,
+						"y": 9
+					},
+					"color": "#e03030"
+				},
+				{
+					"id": "296a54d1-c4ac-4a31-aff0-459f615b00b2",
+					"source": {
+						"x": 13,
+						"y": 9
+					},
+					"target": {
+						"x": 13,
+						"y": 10
+					},
+					"color": "#e03030"
+				},
+				{
+					"id": "161b7ae8-cf2b-4e0c-8b93-30f3d1370d57",
+					"source": {
+						"x": 13,
+						"y": 10
+					},
+					"target": {
+						"x": 19,
+						"y": 10
+					},
+					"color": "#e03030"
+				},
+				{
+					"id": "459b670f-2b3e-4766-9d4c-a3fdfc02815b",
+					"source": {
+						"x": 19,
+						"y": 9
+					},
+					"target": {
+						"x": 19,
+						"y": 10
+					},
+					"color": "#e03030"
+				},
+				{
+					"id": "5272d983-294e-440a-ba14-e233649808ef",
+					"source": {
+						"x": 9,
+						"y": 8
+					},
+					"target": {
+						"x": 9,
+						"y": 9
+					},
+					"color": "#222222"
+				},
+				{
+					"id": "370de40e-4708-477e-a9c8-4bda48d36e2a",
+					"source": {
+						"x": 10,
+						"y": 9
+					},
+					"target": {
+						"x": 11,
+						"y": 9
+					},
+					"color": "#e03030"
+				},
+				{
+					"id": "96c2dc96-f16f-4da2-b165-7b1430072c14",
+					"source": {
+						"x": 12,
+						"y": 2
+					},
+					"target": {
+						"x": 13,
+						"y": 2
+					},
+					"color": "#e0c020"
+				},
+				{
+					"id": "a43000b4-7c70-4728-ba85-6bb7bbf308c6",
+					"source": {
+						"x": 9,
+						"y": 8
+					},
+					"target": {
+						"x": 13,
+						"y": 8
+					},
+					"color": "#222222"
+				},
+				{
+					"id": "f78935a0-ea2f-47d0-87e6-61966c69d54c",
+					"source": {
+						"x": 13,
+						"y": 8
+					},
+					"target": {
+						"x": 14,
+						"y": 8
+					},
+					"color": "#222222"
+				},
+				{
+					"id": "bd444bcf-c8cd-4cd0-9f38-555b7ed072f9",
+					"source": {
+						"x": 13,
+						"y": 5
+					},
+					"target": {
+						"x": 13,
+						"y": 8
+					},
+					"color": "#222222"
+				},
+				{
+					"id": "f0ca249c-bbbe-4437-821c-da3ed164c9e3",
+					"source": {
+						"x": 5,
+						"y": 10
+					},
+					"target": {
+						"x": 7,
+						"y": 10
+					},
+					"color": "#e03030"
+				},
+				{
+					"id": "dd4eb5e8-3f79-47d5-8802-64169333c5ec",
+					"source": {
+						"x": 6,
+						"y": 7
+					},
+					"target": {
+						"x": 6,
+						"y": 9
+					},
+					"color": "#20c040"
+				},
+				{
+					"id": "b649cf52-e984-49ab-b067-569e4dce3ef3",
+					"source": {
+						"x": 4,
+						"y": 1
+					},
+					"target": {
+						"x": 6,
+						"y": 1
+					},
+					"color": "#222222"
+				},
+				{
+					"id": "0641eabb-e068-4983-ab09-d4113a4c6b4b",
+					"source": {
+						"x": 4,
+						"y": 1
+					},
+					"target": {
+						"x": 4,
+						"y": 9
+					},
+					"color": "#222222"
+				},
+				{
+					"id": "8154c13e-dc89-4e11-b93b-24b164cf9ec8",
+					"source": {
+						"x": 5,
+						"y": 9
+					},
+					"target": {
+						"x": 5,
+						"y": 10
+					},
+					"color": "#e03030"
+				}
+			]
+		}
 	}
 ]

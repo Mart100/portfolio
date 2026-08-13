@@ -55,4 +55,5 @@ export interface ElectronicsProject {
 	tags?: string[];
 	created?: string;
 	link?: string;
+	circuit?: unknown;
 }

@@ -65,13 +65,22 @@
 								>
 									{project.title}
 								</h3>
-								{#if project.images?.length > 1}
-									<span
-										class="shrink-0 rounded-full border border-white/10 px-2 py-0.5 text-[9px] font-bold tracking-widest text-gray-500 uppercase"
-									>
-										{project.images.length} photos
-									</span>
-								{/if}
+								<div class="flex shrink-0 flex-wrap justify-end gap-1.5">
+									{#if project.circuit}
+										<span
+											class="rounded-full border border-emerald-400/30 px-2 py-0.5 text-[9px] font-bold tracking-widest text-emerald-400/80 uppercase"
+										>
+											Circuit
+										</span>
+									{/if}
+									{#if project.images?.length > 1}
+										<span
+											class="rounded-full border border-white/10 px-2 py-0.5 text-[9px] font-bold tracking-widest text-gray-500 uppercase"
+										>
+											{project.images.length} photos
+										</span>
+									{/if}
+								</div>
 							</div>
 							{#if project.tags?.length}
 								<div

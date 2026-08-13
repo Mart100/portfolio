@@ -50,6 +50,9 @@
 				{#if item.images?.length}
 					<span class="text-neutral-500">· {item.images.length} photos</span>
 				{/if}
+				{#if item.circuit}
+					<span class="text-emerald-400/80">· Circuit</span>
+				{/if}
 			</div>
 		</div>
 	</button>

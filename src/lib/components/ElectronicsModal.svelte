@@ -2,14 +2,17 @@
 	import { fade, fly } from 'svelte/transition';
 	import { browser } from '$app/environment';
 	import type { ElectronicsProject } from '$lib/types';
+	import CircuitEmbed from './CircuitEmbed.svelte';
 
 	let { project, onclose }: { project: ElectronicsProject; onclose: () => void } = $props();
 
 	let imageIndex = $state(0);
+	let showingCircuit = $state(false);
 	let images = $derived(project.images?.filter(Boolean) ?? []);
 	let currentImage = $derived(images[imageIndex] ?? '');
-	let hasPrev = $derived(imageIndex > 0);
-	let hasNext = $derived(imageIndex < images.length - 1);
+	let hasPrev = $derived(!showingCircuit && imageIndex > 0);
+	let hasNext = $derived(!showingCircuit && imageIndex < images.length - 1);
+	let showCircuit = $derived(Boolean(project.circuit) && (showingCircuit || images.length === 0));
 
 	$effect(() => {
 		if (browser) {
@@ -23,10 +26,12 @@
 	function goTo(nextIndex: number) {
 		if (nextIndex < 0 || nextIndex >= images.length) return;
 		imageIndex = nextIndex;
+		showingCircuit = false;
 	}
 
 	function handleKeydown(e: KeyboardEvent) {
 		if (e.key === 'Escape') onclose();
+		if (document.activeElement?.tagName === 'IFRAME') return;
 		if (e.key === 'ArrowLeft') goTo(imageIndex - 1);
 		if (e.key === 'ArrowRight') goTo(imageIndex + 1);
 	}
@@ -64,14 +69,22 @@
 		</button>
 
 		<div class="relative flex w-full shrink-0 flex-col bg-neutral-900 md:w-[48%]">
-			<div class="relative min-h-48 flex-1 sm:min-h-64">
-				{#if currentImage}
+			<div
+				class="relative min-h-48 flex-1 sm:min-h-64 {showCircuit ? 'min-h-[320px] md:min-h-0' : ''}"
+			>
+				{#if project.circuit}
+					<div class="absolute inset-0 {showCircuit ? '' : 'pointer-events-none invisible'}">
+						<CircuitEmbed board={project.circuit} title="{project.title} circuit" />
+					</div>
+				{/if}
+
+				{#if !showCircuit && currentImage}
 					<img
 						src={currentImage}
 						alt={project.title}
 						class="absolute inset-0 h-full w-full object-contain"
 					/>
-				{:else}
+				{:else if !showCircuit}
 					<div
 						class="absolute inset-0 flex items-center justify-center text-[10px] font-bold tracking-widest text-white/25 uppercase"
 					>
@@ -122,13 +135,13 @@
 				{/if}
 			</div>
 
-			{#if images.length > 1}
+			{#if images.length > 1 || (project.circuit && images.length > 0)}
 				<div class="flex gap-2 overflow-x-auto p-3">
 					{#each images as src, i (src + i)}
 						<button
 							onclick={() => goTo(i)}
-							class="h-14 w-14 shrink-0 overflow-hidden rounded-lg border transition-all {i ===
-							imageIndex
+							class="h-14 w-14 shrink-0 overflow-hidden rounded-lg border transition-all {!showingCircuit &&
+							i === imageIndex
 								? 'border-emerald-400 ring-2 ring-emerald-400/30'
 								: 'border-white/10 opacity-60 hover:opacity-100'}"
 							aria-label="Show image {i + 1}"
@@ -136,6 +149,25 @@
 							<img {src} alt="" class="h-full w-full object-cover" />
 						</button>
 					{/each}
+					{#if project.circuit}
+						<button
+							onclick={() => (showingCircuit = true)}
+							class="ml-auto flex h-14 w-14 shrink-0 flex-col items-center justify-center gap-0.5 rounded-lg border transition-all {showingCircuit
+								? 'border-emerald-400 bg-emerald-500/15 text-emerald-400 ring-2 ring-emerald-400/30'
+								: 'border-white/10 text-gray-500 opacity-70 hover:opacity-100 hover:text-emerald-400'}"
+							aria-label="Show interactive circuit"
+						>
+							<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.8"
+									d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+								/>
+							</svg>
+							<span class="text-[7px] font-bold tracking-widest uppercase">Circuit</span>
+						</button>
+					{/if}
 				</div>
 			{/if}
 		</div>
