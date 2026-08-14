@@ -30,6 +30,144 @@
 	],
 	"trips": [
 		{
+			"id": "balkans1",
+			"name": "Balkans",
+			"description": "Trip through the balkans & mountain trek in bulgaria",
+			"startDate": "2025-08-26",
+			"endDate": "2026-08-14",
+			"path": [
+				{
+					"name": "Sofia",
+					"lat": 42.694859,
+					"lng": 23.321975,
+					"date": "2025-08-26",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Plovdiv",
+					"lat": 42.141244,
+					"lng": 24.751114,
+					"date": "2025-08-30",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Bansko",
+					"lat": 41.834624,
+					"lng": 23.484209,
+					"date": "2025-08-02",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Banya",
+					"lat": 41.882255,
+					"lng": 23.526016,
+					"date": "2025-08-05",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Spano pole",
+					"lat": 41.719757,
+					"lng": 23.410822,
+					"date": "2025-08-06",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Tevno Ezero",
+					"lat": 41.698465,
+					"lng": 23.482393,
+					"date": "2025-08-07",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Bezbog",
+					"lat": 41.730951,
+					"lng": 23.523279,
+					"date": "2025-08-08",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Demyanitsa",
+					"lat": 41.742328,
+					"lng": 23.468358,
+					"date": "2025-08-09",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Sofia",
+					"lat": 42.696886,
+					"lng": 23.323222,
+					"date": "2025-08-10",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Skopje",
+					"lat": 41.995196,
+					"lng": 21.429012,
+					"date": "2025-08-13",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Prizren",
+					"lat": 42.212565,
+					"lng": 20.735911,
+					"date": "2025-08-15",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Shkoder",
+					"lat": 42.067705,
+					"lng": 19.512754,
+					"date": "2025-08-17",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Berat",
+					"lat": 40.701743,
+					"lng": 19.956916,
+					"date": "2025-08-18",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Tirana",
+					"lat": 41.326859,
+					"lng": 19.817513,
+					"date": "2025-08-20",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Ohrid",
+					"lat": 41.11526,
+					"lng": 20.800628,
+					"date": "2025-08-22",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Skopje",
+					"lat": 41.995312,
+					"lng": 21.430375,
+					"date": "2025-08-23",
+					"caption": "",
+					"image": ""
+				}
+			],
+			"basePath": "portfolio/travel/balkans"
+		},
+		{
 			"id": "kyushu",
 			"name": "Kyushu",
 			"description": "Exploring the Japanese island Kyushu for a month",
