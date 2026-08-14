@@ -30,6 +30,168 @@
 	],
 	"trips": [
 		{
+			"id": "kyushu",
+			"name": "Kyushu",
+			"description": "Exploring the Japanese island Kyushu for a month",
+			"startDate": "2025-04-12",
+			"endDate": "2025-05-14",
+			"path": [
+				{
+					"name": "Fukuoka",
+					"lat": 33.592094,
+					"lng": 130.404744,
+					"date": "2025-04-13",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Dazaifu",
+					"lat": 33.513007,
+					"lng": 130.525595,
+					"date": "2025-04-15",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Nagasaki",
+					"lat": 32.746573,
+					"lng": 129.873204,
+					"date": "2025-04-16",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Unzen Onsen",
+					"lat": 32.741961,
+					"lng": 130.260474,
+					"date": "2025-04-19",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Obama",
+					"lat": 32.725412,
+					"lng": 130.20493,
+					"date": "2025-04-21",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Shimabara",
+					"lat": 32.787356,
+					"lng": 130.37138,
+					"date": "2025-04-22",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Kumamoto",
+					"lat": 32.801999,
+					"lng": 130.704466,
+					"date": "2025-04-23",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Mt. Aso",
+					"lat": 32.937881,
+					"lng": 131.114429,
+					"date": "2025-04-24",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Beppu",
+					"lat": 33.276924,
+					"lng": 131.504836,
+					"date": "2025-04-27",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Yufu",
+					"lat": 33.180617,
+					"lng": 131.427099,
+					"date": "2025-04-28",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Aoshima",
+					"lat": 31.804621,
+					"lng": 131.476008,
+					"date": "2025-04-29",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Miyazaki",
+					"lat": 31.908239,
+					"lng": 131.421318,
+					"date": "2025-05-01",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Kagoshima",
+					"lat": 31.596164,
+					"lng": 130.557128,
+					"date": "2025-05-02",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Sakurajima",
+					"lat": 31.588095,
+					"lng": 130.665197,
+					"date": "2025-05-05",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Ibusuki",
+					"lat": 31.239263,
+					"lng": 130.643889,
+					"date": "2025-05-07",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Akune",
+					"lat": 32.016578,
+					"lng": 130.193599,
+					"date": "2025-05-09",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Kurume",
+					"lat": 33.318663,
+					"lng": 130.507409,
+					"date": "2025-05-11",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Kitakyushu",
+					"lat": 33.883045,
+					"lng": 130.873241,
+					"date": "2025-05-12",
+					"caption": "",
+					"image": ""
+				},
+				{
+					"name": "Mojiko",
+					"lat": 33.945506,
+					"lng": 130.962422,
+					"date": "2025-05-14",
+					"caption": "",
+					"image": ""
+				}
+			],
+			"basePath": "portfolio/travel/kyushu"
+		},
+		{
 			"id": "trip-1786668173326",
 			"name": "China2+Taiwan",
 			"description": "Month to China and Taiwan while living in Japan",
