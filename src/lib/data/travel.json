@@ -30,6 +30,104 @@
 	],
 	"trips": [
 		{
+			"id": "trip-1786668173326",
+			"name": "China2+Taiwan",
+			"description": "Month to China and Taiwan while living in Japan",
+			"startDate": "2024-11-21",
+			"endDate": "2024-12-23",
+			"path": [
+				{
+					"name": "Chongqing",
+					"lat": 29.559633,
+					"lng": 106.566164,
+					"date": "2024-11-21",
+					"caption": "5 nights in Chongqing. Made a great group of friends. Explored random buildings. Ate my first hotpot. Got invited home by some chinese friends.",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_taiwan/webp/20241122_145244-1-08adce25.webp"
+				},
+				{
+					"name": "Emei",
+					"lat": 29.569341,
+					"lng": 103.448928,
+					"date": "2024-11-25",
+					"caption": "Alone at hotel, owner showed me tiktok videos. Snowy sacred mountain, slipped off the stairs. Next day walked among the temples with a bamboo stick. True monkmaxxing",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_taiwan/webp/20241126_114542-a1f690fe.webp"
+				},
+				{
+					"name": "Chengdu",
+					"lat": 30.661902,
+					"lng": 104.066832,
+					"date": "2024-11-28",
+					"caption": "Randomly met friends from Chongqing again. Had great food, cycled around, fun night with the lads.",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_taiwan/webp/20241129_132403-bff6eadb.webp"
+				},
+				{
+					"name": "Xiamen",
+					"lat": 24.478402,
+					"lng": 118.085808,
+					"date": "2024-11-30",
+					"caption": "Coastal island city. European history. Met a guy off hellotalk. Ate pig intestines",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_taiwan/webp/20241202_153607-a4cf93c7.webp"
+				},
+				{
+					"name": "Kinmen",
+					"lat": 24.430619,
+					"lng": 118.313739,
+					"date": "2024-12-04",
+					"caption": "Small taiwanese island right next to mainland china. Spend 6 nights here, very peaceful rural island. Just spend my time cycling around. ",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_taiwan/webp/20241207_175231-47568a07.webp"
+				},
+				{
+					"name": "Kaohsiung",
+					"lat": 22.623299,
+					"lng": 120.30098,
+					"date": "2024-12-10",
+					"caption": "Went hiking with some adventurous aunties I met on Kinmen.",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_taiwan/webp/20241211_130211-f21a61a1.webp"
+				},
+				{
+					"name": "Tainan",
+					"lat": 22.993387,
+					"lng": 120.202623,
+					"date": "2024-12-12",
+					"caption": "My favorite taiwanese city. Lots of random things to see, dutch colonial history, big nightmarkets, mangrooves.",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_taiwan/webp/20241215_142152-d78ffeed.webp"
+				},
+				{
+					"name": "Sun Moon Lake",
+					"lat": 23.864354,
+					"lng": 120.909851,
+					"date": "2024-12-18",
+					"caption": "Got some exercise by cycling around the lake, friendly taiwanese people, fun small villages, beautifull mountains and monkeys!",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_taiwan/webp/20241218_112744-1-3df64601.webp"
+				},
+				{
+					"name": "Taipei",
+					"lat": 25.039837,
+					"lng": 121.549977,
+					"date": "2024-12-19",
+					"caption": "Woke up at 8pm, climbed a mountain in the dark and cycled back for an hour at midnight. Next day tried to find a christmas gift for secret santa party in japan.",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_taiwan/webp/20241220_213408-a9ae7dd8.webp"
+				},
+				{
+					"name": "Jiufen",
+					"lat": 25.109803,
+					"lng": 121.845568,
+					"date": "2024-12-22",
+					"caption": "Played taiwanese monopoly game in the hostel till 3am. Woke up 1pm next day, climbed a mountain, mexican girl asked me for an oreo, spend the rest of the day with her.",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_taiwan/webp/20241221_200507-3aa99890.webp"
+				},
+				{
+					"name": "Shifen",
+					"lat": 25.045228,
+					"lng": 121.780162,
+					"date": "2024-12-23",
+					"caption": "Visited a small village in the mountains during the day, got soaking went in the rain, went to the airport that evening, and flew back to japan.",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_taiwan/webp/20241223_151259-cdf726c4.webp"
+				}
+			],
+			"basePath": "portfolio/travel/china_taiwan"
+		},
+		{
 			"id": "china-japan-2024",
 			"name": "One Month China, One Month Japan",
 			"description": "My first big solo trip when I was 19",
