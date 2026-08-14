@@ -40,144 +40,144 @@
 					"name": "Beijing",
 					"lat": 39.9042,
 					"lng": 116.4074,
-					"date": "May 1",
-					"caption": "The Great Wall was even more massive than I imagined.",
+					"date": "2023-10-10",
+					"caption": "First day in china, explored the Forbidden City.",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/03dedac3-3bfe-46f7-af77-628ce459440f_3e41e45a-9f7a-45c8-98e3-470e7683913f-d039a18e.webp"
 				},
 				{
 					"name": "Gubeikou",
 					"lat": 40.683586,
 					"lng": 117.164399,
-					"date": "",
-					"caption": "",
+					"date": "2023-10-12",
+					"caption": "Took a train to a small village next to the great wall. Long hike along an unrestored section of the wall, got lost but some friendly strangers brought us home.",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231013_110529-89b68988.webp"
 				},
 				{
 					"name": "Xi'an",
 					"lat": 34.260756,
 					"lng": 108.941704,
-					"date": "",
-					"caption": "",
+					"date": "2023-10-16",
+					"caption": "Saw the famous teraccotta warriers, kinda mid but Xi'an itself was nice.",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231018_115018-9dbcbe30.webp"
 				},
 				{
 					"name": "Chongqing",
 					"lat": 29.559971,
 					"lng": 106.567797,
-					"date": "",
-					"caption": "",
+					"date": "2023-10-19",
+					"caption": "Was a bit overwhelmed by the city at first, but had one of the best times here. Made a friendgroup at the hostel and explored the city.",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231021_175141-f5577bbc.webp"
 				},
 				{
 					"name": "Shanghai",
 					"lat": 31.239456,
 					"lng": 121.501829,
-					"date": "",
-					"caption": "",
-					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231027_140227-08c516b4.webp"
+					"date": "2023-10-24",
+					"caption": "Met with an online friend, saw the bund, and a propeganda museum. ",
+					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231025_181244-263578e1.webp"
 				},
 				{
 					"name": "Zhangjiajie",
 					"lat": 29.110662,
 					"lng": 110.48107,
-					"date": "",
-					"caption": "",
+					"date": "2023-10-29",
+					"caption": "Visited the avatar mountains and the stairway to heaven mountain. It was surprisingly quiet, and beautiful nature.",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231031_104816-206f97ba.webp"
 				},
 				{
 					"name": "Guilin",
 					"lat": 25.280301,
 					"lng": 110.296012,
-					"date": "",
-					"caption": "",
+					"date": "2023-11-01",
+					"caption": "Fun smaller city, interesting landscape. Went to famous Yangshou village",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231102_174700-239267b0.webp"
 				},
 				{
 					"name": "Shenzhen",
 					"lat": 22.537957,
 					"lng": 114.054635,
-					"date": "",
-					"caption": "",
+					"date": "2023-11-04",
+					"caption": "Got food poisining from noodles off the back of a guys scooter, still walked around the city. And took a daytrip to visit a friend in Guangzhou",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231105_130930-b3705fed.webp"
 				},
 				{
 					"name": "Hong Kong",
 					"lat": 22.298618,
 					"lng": 114.172827,
-					"date": "",
-					"caption": "",
+					"date": "2023-11-07",
+					"caption": "Still quite sick from food-poisining. But still visited Hong Kongs most popular places, Victoria Peak, Lantau island, kowloon park, tsim sha tsui",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231108_154730-92339c82.webp"
 				},
 				{
 					"name": "Kyoto",
 					"lat": 35.011037,
 					"lng": 135.768904,
-					"date": "",
-					"caption": "",
+					"date": "2023-11-13",
+					"caption": "First time in japan! Had to get used to the culture, but very peaceful place. Altough with busy tourist attractions.",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231115_224650-0f19b734.webp"
 				},
 				{
 					"name": "Osaka",
 					"lat": 34.694222,
 					"lng": 135.501051,
-					"date": "",
-					"caption": "",
+					"date": "2023-11-17",
+					"caption": "Knew nothing about the city, didnt do research. Got lost in some random places, saw a waterfall",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231118_142413-4f7acb5b.webp"
 				},
 				{
 					"name": "Kobe",
 					"lat": 34.702236,
 					"lng": 135.219205,
-					"date": "",
-					"caption": "",
+					"date": "2023-11-21",
+					"caption": "City had a great vibe, had my daily coffee from a vending machine, and just wandered around.",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231123_144346-c927f5eb.webp"
 				},
 				{
 					"name": "Himeji",
 					"lat": 34.826464,
 					"lng": 134.687469,
-					"date": "",
-					"caption": "",
+					"date": "2023-11-24",
+					"caption": "Best castle of Japan. A nice botanical garden. And a nice sacred mountain. Besides that nothing to do, got lost in the suburbs few times.",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231125_120543-4b51e580.webp"
 				},
 				{
 					"name": "Nara",
 					"lat": 34.684488,
 					"lng": 135.831559,
-					"date": "",
-					"caption": "",
+					"date": "2023-11-27",
+					"caption": "Deers really be everywhere. The mountain at the end of the deer-park is a beautiful hike, has a nice temple hidden in the forest.",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231129_150729-8f12f626.webp"
 				},
 				{
 					"name": "Wakayama",
 					"lat": 34.233437,
 					"lng": 135.172806,
-					"date": "",
-					"caption": "",
+					"date": "2023-11-30",
+					"caption": "No other tourists at all, only interesting thing is yet another Castle. Alternative style hostel with friendly people. Had my first sushi at a sushi-belt place here!",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231201_140736-2b4b0c25.webp"
 				},
 				{
 					"name": "Koya-san",
 					"lat": 34.215185,
 					"lng": 135.586415,
-					"date": "",
-					"caption": "",
+					"date": "2023-12-02",
+					"caption": "Sacred mountain with a bunch of temples. Met a bald monk in the cableway.",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231202_155659-07b51491.webp"
 				},
 				{
 					"name": "Tokyo",
 					"lat": 35.6844,
 					"lng": 139.78232,
-					"date": "",
-					"caption": "",
+					"date": "2023-12-03",
+					"caption": "Made a bunch of friends in the hostel here. Tasted a lot of japanese food. Saw the popular sights. Sneaked on a roof with a japanese guy for a good view of tokyo tower.",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231205_164955-3da01518.webp"
 				},
 				{
 					"name": "Snowy Beijing",
 					"lat": 39.945816,
 					"lng": 116.386073,
-					"date": "",
-					"caption": "",
+					"date": "2023-12-11",
+					"caption": "Constantly cold in -7 degrees weather, no winterjacket. But saw a lot more of beijing. Tempel of heaven, confucius museum and more",
 					"image": "https://assets.martvenck.com/portfolio/travel/china_japan/webp/20231212_144032-459e5ab9.webp"
 				}
 			],
