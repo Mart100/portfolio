@@ -92,8 +92,12 @@
 						class="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-neutral-900 shadow-2xl transition-transform duration-700 group-hover:scale-[1.02] md:rounded-[40px]"
 					>
 						<img
-							src="/images/profile.jpg"
-							alt="Me in a tunnel"
+							src="/images/profile.webp"
+							alt="Mart Venck — developer and traveller"
+							fetchpriority="high"
+							decoding="async"
+							width="640"
+							height="853"
 							class="h-full w-full object-cover transition-all duration-1000 group-hover:scale-110"
 						/>
 
