@@ -22,6 +22,10 @@
 		<img
 			src={image}
 			alt={title}
+			loading="lazy"
+			decoding="async"
+			width="1920"
+			height="911"
 			class="h-full w-full object-cover opacity-60 grayscale-[0.3] transition-all duration-700 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"
 		/>
 		<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>

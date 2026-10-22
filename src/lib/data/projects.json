@@ -7,7 +7,7 @@
 			"WebAudio",
 			"TypeScript"
 		],
-		"image": "/images/projects/dreamwave.png",
+		"image": "/images/projects/dreamwave.webp",
 		"link": "https://dreamwave.pages.dev/"
 	},
 	{
@@ -19,7 +19,7 @@
 			"WASM",
 			"Svelte"
 		],
-		"image": "/images/projects/turingcompiler.png",
+		"image": "/images/projects/turingcompiler.webp",
 		"link": "https://turingcompiler.pages.dev/"
 	},
 	{
@@ -30,7 +30,7 @@
 			"Express",
 			"Discord.js"
 		],
-		"image": "/images/projects/toorney.png",
+		"image": "/images/projects/toorney.webp",
 		"link": "https://archive.martvenck.com/toorney/"
 	},
 	{
@@ -42,7 +42,7 @@
 			"Supabase",
 			"Openrouter"
 		],
-		"image": "/images/projects/readchinese.png",
+		"image": "/images/projects/readchinese.webp",
 		"link": "https://readchinese.org"
 	}
 ]

@@ -246,6 +246,10 @@
 								<img
 									src={getThumbnail(project)}
 									alt={project.title}
+									loading="lazy"
+									decoding="async"
+									width="170"
+									height="170"
 									class="h-full w-full object-cover opacity-60 grayscale-[0.5] transition-all duration-700 group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
 								/>
 								<div

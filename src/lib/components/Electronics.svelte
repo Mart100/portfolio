@@ -47,6 +47,9 @@
 								<img
 									src={cover(project)}
 									alt={project.title}
+									loading="lazy"
+									decoding="async"
+									style="aspect-ratio: 16/10"
 									class="h-full w-full object-cover opacity-70 grayscale-[0.3] transition-all duration-700 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"
 								/>
 							{:else}
