@@ -138,7 +138,7 @@
 
 			<!-- Timeline Sidebar -->
 			<div
-				class="flex h-[450px] flex-col border-white/5 bg-black/40 backdrop-blur-xl {mobileTab ===
+				class="flex h-[450px] min-h-0 flex-col overflow-hidden border-white/5 bg-black/40 backdrop-blur-xl {mobileTab ===
 				'list'
 					? 'flex'
 					: 'hidden'} lg:col-span-4 lg:flex lg:h-[600px] lg:border-r"
