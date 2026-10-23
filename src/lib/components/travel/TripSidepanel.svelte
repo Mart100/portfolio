@@ -79,10 +79,7 @@
 		</div>
 
 		<!-- Path Nodes (Polarsteps Style) -->
-		<div
-			bind:this={scrollContainer}
-			class="custom-scrollbar min-h-0 flex-1 overflow-y-auto px-4"
-		>
+		<div bind:this={scrollContainer} class="custom-scrollbar min-h-0 flex-1 overflow-y-auto px-4">
 			<div class="relative ml-4 space-y-12 border-l border-white/10 py-8 pl-8">
 				{#each activeTrip.path as node, i (node.name + node.date)}
 					<div class="node-item group relative block w-full text-left" data-index={i}>
