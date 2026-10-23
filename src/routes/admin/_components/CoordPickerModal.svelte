@@ -3,6 +3,7 @@
 	import maplibregl from 'maplibre-gl';
 	import 'maplibre-gl/dist/maplibre-gl.css';
 	import { fade, scale } from 'svelte/transition';
+	import { MAP_STYLE } from '$lib/map';
 
 	let {
 		isOpen = $bindable(false),
@@ -25,42 +26,26 @@
 
 		map = new maplibregl.Map({
 			container: mapContainer,
-			style: {
-				version: 8,
-				sources: {
-					'raster-tiles': {
-						type: 'raster',
-						tiles: ['https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png'],
-						tileSize: 256,
-						attribution: '&copy; OpenStreetMap &copy; CARTO'
-					}
-				},
-				layers: [
-					{
-						id: 'simple-tiles',
-						type: 'raster',
-						source: 'raster-tiles',
-						minzoom: 0,
-						maxzoom: 22
-					}
-				]
-			},
+			style: MAP_STYLE,
 			center: [lng || 0, lat || 0],
-			zoom: lat && lng ? 8 : 2,
-			attributionControl: false
+			zoom: lat && lng ? 8 : 2
 		});
 
-		marker = new maplibregl.Marker({
-			draggable: true,
-			color: '#10b981'
-		})
-			.setLngLat([lng || 0, lat || 0])
-			.addTo(map);
+		map.on('load', () => {
+			if (!map) return;
 
-		marker.on('dragend', () => {
-			const pos = marker!.getLngLat();
-			lat = Number(pos.lat.toFixed(6));
-			lng = Number(pos.lng.toFixed(6));
+			marker = new maplibregl.Marker({
+				draggable: true,
+				color: '#10b981'
+			})
+				.setLngLat([lng || 0, lat || 0])
+				.addTo(map);
+
+			marker.on('dragend', () => {
+				const pos = marker!.getLngLat();
+				lat = Number(pos.lat.toFixed(6));
+				lng = Number(pos.lng.toFixed(6));
+			});
 		});
 
 		map.on('click', (e) => {
@@ -78,6 +63,7 @@
 		} else {
 			map?.remove();
 			map = null;
+			marker = null;
 		}
 	});
 
@@ -174,8 +160,3 @@
 	</div>
 {/if}
 
-<style>
-	:global(.maplibregl-ctrl-attrib) {
-		display: none;
-	}
-</style>

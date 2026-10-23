@@ -3,6 +3,7 @@
 	import { onDestroy } from 'svelte';
 	import maplibregl from 'maplibre-gl';
 	import 'maplibre-gl/dist/maplibre-gl.css';
+	import { MAP_STYLE } from '$lib/map';
 	import CoordPickerModal from './CoordPickerModal.svelte';
 	import ImagePickerModal from './ImagePickerModal.svelte';
 	import type { Trip, TripNode } from '$lib/types';
@@ -77,29 +78,9 @@
 
 		map = new maplibregl.Map({
 			container: mapContainer,
-			style: {
-				version: 8,
-				sources: {
-					'raster-tiles': {
-						type: 'raster',
-						tiles: ['https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png'],
-						tileSize: 256,
-						attribution: '&copy; OpenStreetMap &copy; CARTO'
-					}
-				},
-				layers: [
-					{
-						id: 'simple-tiles',
-						type: 'raster',
-						source: 'raster-tiles',
-						minzoom: 0,
-						maxzoom: 22
-					}
-				]
-			},
+			style: MAP_STYLE,
 			center: [0, 0],
-			zoom: 1,
-			attributionControl: false
+			zoom: 1
 		});
 
 		map.on('load', () => {
@@ -609,8 +590,3 @@
 	/>
 {/if}
 
-<style>
-	:global(.maplibregl-ctrl-attrib) {
-		display: none;
-	}
-</style>
