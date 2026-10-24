@@ -63,11 +63,11 @@
 	}
 </script>
 
-<div class="relative flex h-full flex-col overflow-hidden">
+<div class="relative flex h-full min-h-0 flex-col overflow-hidden">
 	{#if view === 'detail' && activeTrip}
 		<!-- Header for Detail View -->
 		<div
-			class="hidden items-center justify-between border-b border-white/5 bg-black/20 p-6 md:flex"
+			class="hidden shrink-0 items-center justify-between border-b border-white/5 bg-black/20 p-6 md:flex"
 		>
 			<button
 				class="flex items-center gap-2 text-[10px] font-bold tracking-widest text-gray-500 uppercase transition-colors hover:text-white"
@@ -79,7 +79,7 @@
 		</div>
 
 		<!-- Path Nodes (Polarsteps Style) -->
-		<div bind:this={scrollContainer} class="custom-scrollbar flex-1 overflow-y-auto px-4">
+		<div bind:this={scrollContainer} class="custom-scrollbar min-h-0 flex-1 overflow-y-auto px-4">
 			<div class="relative ml-4 space-y-12 border-l border-white/10 py-8 pl-8">
 				{#each activeTrip.path as node, i (node.name + node.date)}
 					<div class="node-item group relative block w-full text-left" data-index={i}>
@@ -127,43 +127,53 @@
 		</div>
 	{:else}
 		<!-- Trip Selection List -->
-		<div class="flex flex-1 flex-col p-6">
-			<div class="mb-8">
+		<div class="flex min-h-0 flex-1 flex-col overflow-hidden p-6">
+			<div class="mb-8 shrink-0">
 				<span class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase"
 					>Select Journey</span
 				>
 			</div>
 
-			<div class="space-y-4">
-				{#each allTrips as trip, i (trip.id)}
-					<button
-						class="group w-full rounded-xl border border-white/5 p-4 text-left transition-all hover:bg-white/5
-						{activeTrip?.id === trip.id ? 'border-white/20 bg-white/10' : ''}"
-						onclick={() => handleTripSelect(i)}
-					>
-						<span class="mb-1 block text-[10px] font-medium tracking-widest text-gray-500 uppercase"
-							>{trip.path.length} Stops</span
+			<div class="custom-scrollbar min-h-0 flex-1 overflow-y-auto">
+				<div class="space-y-4">
+					{#each allTrips as trip, i (trip.id)}
+						<button
+							class="group w-full rounded-xl border border-white/5 p-4 text-left transition-all hover:bg-white/5
+							{activeTrip?.id === trip.id ? 'border-white/20 bg-white/10' : ''}"
+							onclick={() => handleTripSelect(i)}
 						>
-						<h4 class="text-sm font-medium text-white transition-colors group-hover:text-primary">
-							{trip.name}
-						</h4>
-						<p class="mt-1 line-clamp-1 text-xs text-gray-500">{trip.description}</p>
-					</button>
-				{/each}
+							<span
+								class="mb-1 block text-[10px] font-medium tracking-widest text-gray-500 uppercase"
+								>{trip.path.length} Stops</span
+							>
+							<h4 class="text-sm font-medium text-white transition-colors group-hover:text-primary">
+								{trip.name}
+							</h4>
+							<p class="mt-1 line-clamp-1 text-xs text-gray-500">{trip.description}</p>
+						</button>
+					{/each}
+				</div>
 			</div>
 		</div>
 	{/if}
 </div>
 
 <style>
+	.custom-scrollbar {
+		scrollbar-width: thin;
+		scrollbar-color: rgba(161, 161, 170, 0.45) #000000;
+	}
 	.custom-scrollbar::-webkit-scrollbar {
 		width: 4px;
 	}
 	.custom-scrollbar::-webkit-scrollbar-track {
-		background: transparent;
+		background: #000000;
 	}
 	.custom-scrollbar::-webkit-scrollbar-thumb {
-		background: rgba(255, 255, 255, 0.1);
+		background: rgba(161, 161, 170, 0.45);
 		border-radius: 10px;
+	}
+	.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+		background: rgba(161, 161, 170, 0.7);
 	}
 </style>
