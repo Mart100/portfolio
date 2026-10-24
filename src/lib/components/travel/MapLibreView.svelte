@@ -2,6 +2,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import 'maplibre-gl/dist/maplibre-gl.css';
+	import { MAP_STYLE } from '$lib/map';
 	import type { Trip, TripNode } from '$lib/types';
 
 	type MaplibreModule = {
@@ -36,29 +37,9 @@
 
 		map = new ml.Map({
 			container: mapContainer,
-			style: {
-				version: 8,
-				sources: {
-					'raster-tiles': {
-						type: 'raster',
-						tiles: ['https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png'],
-						tileSize: 256,
-						attribution: '&copy; OpenStreetMap &copy; CARTO'
-					}
-				},
-				layers: [
-					{
-						id: 'simple-tiles',
-						type: 'raster',
-						source: 'raster-tiles',
-						minzoom: 0,
-						maxzoom: 22
-					}
-				]
-			},
+			style: MAP_STYLE,
 			center: [selectedNode?.lng || 0, selectedNode?.lat || 0],
-			zoom: 2,
-			attributionControl: false
+			zoom: 2
 		});
 
 		map.on('load', () => {
@@ -270,8 +251,5 @@
 <style>
 	:global(.maplibregl-canvas) {
 		outline: none;
-	}
-	:global(.maplibregl-ctrl-attrib) {
-		display: none;
 	}
 </style>
